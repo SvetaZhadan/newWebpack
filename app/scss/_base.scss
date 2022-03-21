@@ -1,1 +1,630 @@
 /* ================================ Base ================================ */
+
+.ripple-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ripple-effect {
+  width: 1px;
+  height: 1px;
+  margin-top: 0px;
+  margin-left: 0px;
+  background-color: rgba(0, 0, 0, 0.033);
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  pointer-events: none;
+
+  &.--light {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  &.--dark {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+}
+
+.b-roundButton {
+  padding: 10px 32px;
+  color: $monochrome-white-100;
+  background-color: $primary-500;
+  border-width: 0px;
+  border-radius: 38px;
+  transition: background-color opacity 0.5s;
+  @include content-s-18-w-600;
+
+  &:hover {
+    background-color: $accents-green-500;
+  }
+
+  &:disabled {
+    background-color: $primary-500;
+    opacity: 0.4;
+  }
+}
+
+.b-iconButton{
+  padding: 16px;
+  background-color: $primary-500;
+  background-position: center;
+  border-radius: 100%;
+  transition: background-color opacity 0.5s;
+
+  svg{
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    background-color: $accents-green-500;
+  }
+
+  &:disabled {
+    background-color: $primary-500;
+    opacity: 0.4;
+  }
+
+  path{
+    fill: #ffffff;
+  }
+}
+
+.b-squareButton{
+  padding: 24px 32px;
+  color: $monochrome-white-100;
+  background-color: $primary-500;
+  border-width: 0px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color opacity 0.5s;
+  @include headings-h-5-s-24-w-600;
+
+  &:hover {
+    background-color: $accents-green-500;
+  }
+
+  &:disabled {
+    background-color: $primary-500;
+    opacity: 0.4;
+  }
+
+  &.--smooth{
+    border-radius: 12px;
+  }
+}
+
+.b-addButton{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  width: 100%;
+  min-width: 280px;
+  max-width: 334px;
+  height: 466px;
+  min-height: 390px;
+  color: $accents-yellow-500;
+  background-color: transparent;
+  border: 4px solid $accents-yellow-500;
+  border-radius: 16px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+ 
+  svg{
+    width: 46px;
+    height: 46px;
+  }
+
+  path{
+    fill: $accents-yellow-500;
+  }
+
+  &__text {
+    width: 176px;
+    margin-top: 16px;
+    opacity: 0;
+    text-align: center;
+    transition-duration: 0.3s; 
+    @include content-s-18-w-600;
+  }
+
+  &:hover{
+    background-color: $accents-yellow-100;
+
+    .b-addButton__text{
+      opacity: 1;
+    }
+  }
+}
+
+.b-transparentIconButton {
+  cursor: pointer;
+  transition-duration: 0.3s;
+
+  svg{
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover{
+    opacity: 0.5;
+  }
+}
+
+.b-textLink{
+  @include headings-h-5-s-24-w-1;
+  cursor: pointer;
+  transition-duration: 0.3s;
+
+  &.--s-18{
+    font-size: 18px;
+  }
+
+  &.--orange{
+    color: $primary-500;
+
+    &:hover{
+      color: $accents-green-500;
+    }
+  }
+
+  &.--gray{
+    color: $monochrome-gray-500;
+    
+    &:hover{
+      color: $primary-500;
+    }
+  }
+
+  &.--black{
+    color: $monochrome-black-100; 
+
+    &:hover{
+      color: $primary-500;
+    }
+  }
+
+  &.--white{
+    color: $monochrome-white-100;
+
+    &:hover{
+      color: $monochrome-black-100;
+    }
+  }
+}
+
+.b-socialLink{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  background-color: $monochrome-white-100;
+  border-radius: 100%;
+  cursor: pointer;
+
+  path{
+    fill: $primary-500;
+    transition-duration: 0.3s;
+  }
+
+  &.--twitter{
+
+    &:hover{
+
+      path{
+        fill: $socials-twitter;
+      }
+
+      &.--outline{
+        outline: 1px solid $socials-twitter;
+      }
+    }
+  }
+
+  &.--facebook{
+    
+    &:hover{
+
+      path{
+        fill: $socials-facebook;
+      }
+
+      &.--outline{
+        outline: 1px solid $socials-facebook;
+      }
+    }
+  }
+
+  &.--vk{
+    
+    &:hover{
+
+      path{
+        fill: $socials-vk;
+      }
+
+      &.--outline{
+        outline: 1px solid $socials-vk;
+      }
+    }
+  }
+}
+
+
+.b-input{
+  padding: 16px 24px;
+  background: $monochrome-gray-30;
+  border-width: 0px;
+  border-radius: 16px;
+  outline: none;
+  transition-duration: 0.1s;
+
+  &:focus{
+    border: 2px solid $primary-400;
+  }
+
+  &.--error{
+    border: 2px solid $accents-red-300;
+  }
+
+  &.--correct{
+    border: 2px solid $accents-green-500;
+  }
+}
+
+.b-secondInput{
+  width: 102px;
+  padding: 12px 12.5px;
+  background: $monochrome-gray-30;
+  border-width: 0px;
+  border-radius: 16px;
+  outline: none;
+  transition-duration: 0.1s;
+
+  &:focus{
+    border: 2px solid $primary-400;
+  }
+
+}
+
+.b-textArea{
+  padding: 16px 20px;
+  background: $monochrome-gray-30;
+  border-width: 0px;
+  border-radius: 16px;
+  outline: none;
+  transition-duration: 0.1s;
+
+  &:focus{
+    border: 2px solid $primary-400;
+  }
+
+  &::-webkit-scrollbar, &::-webkit-scrollbar-corner {
+    background-color: transparent; /* or add it to the track */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $monochrome-gray-100;
+    border-radius: 16px;  
+  }
+
+  &::-webkit-resizer{
+    display: none;
+  }
+}
+
+.b-timeInput{
+  width: 86px;
+  padding: 14px 20px;
+  background: $monochrome-gray-30;
+  border-width: 0px;
+  border-radius: 16px;
+  outline: none;
+  transition-duration: 0.1s;
+
+  &:focus{
+    border: 2px solid $primary-400;
+  }
+
+  &::placeholder{
+    @include content-s-18-w-600;
+  }
+
+  
+  &.--error{
+    border: 2px solid $accents-red-300;
+  }
+
+  &.--correct{
+    border: 2px solid $accents-green-500;
+  }
+}
+
+.b-checkListItem{
+  display: flex;
+  align-items: center;
+
+  &__icon{
+
+    svg{
+      width: 40px;
+      height: 40px;    
+      
+      path{
+        fill: $primary-500;
+      }
+    }
+  }
+
+  &__text{
+    @include headings-h-5-s-24-w-600;
+    margin-left: 16px;
+  }
+}
+
+.b-receptItem{
+
+  &__name{
+    @include text-s-18-w-400;
+
+    &.--x2{
+
+      &::after{
+        content: ' x2';
+        margin-left: 5px;
+        color: $primary-500;
+        @include text-s-18-w-700;
+      }
+    }
+  }
+
+  &__count{
+    @include text-s-16-w-400;
+    opacity: 0.4;
+  }
+}
+
+.b-lunchPrice{
+  display: flex;
+  justify-content: space-between;
+
+  .b-lunchPrice__hr{
+
+    &.--dark{
+      border: 2px solid $monochrome-black-100;
+      // border-color: $monochrome-black-100;
+    }
+
+    &.--light{
+      // background-color: $monochrome-gray-100;
+    }
+  }
+
+  &__container{
+    display: flex;
+    justify-content: space-between;
+
+    &__name{
+      @include content-s-18-w-700;
+      color: $monochrome-gray-500;
+    }
+
+    &__price{
+    
+      @include headings-h-4-s-32-w-700;
+      display: inline-flex;
+      color: $primary-300;
+
+      &__sign{
+        @include headings-h-5-s-24-w-700;
+      }
+    }
+  }
+}
+
+.b-outcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 34px 0 0;
+
+  &__text{
+    @include headings-h-3-s-40-w-700;
+    padding-bottom: 38px;
+    background-image: url('../assets/icons/Illustrations/Fork.svg');
+    background-repeat: no-repeat;
+    background-position: 40px 30px;
+  }
+
+  &__price{
+    display: inline-flex;
+    align-items: flex-end;
+    color: $primary-500;
+    @include headings-h-3-s-40-w-700;
+
+    &__price__sign{
+      @include content-s-18-w-700;
+    }
+  }
+}
+
+.b-iconLabel{
+  display: flex;
+  align-items: center;
+
+  svg{
+    width: 45px;
+    height: 45px;
+
+    path{
+      fill: $accents-yellow-500;
+    }
+  }
+
+  &__name{
+    @include headings-h-5-s-24-w-1;
+    margin-left: 16px;
+    color: $monochrome-gray-650;
+  }
+}
+
+.b-controlHeading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__name{
+    color: $primary-500;
+    @include content-s-18-w-700;
+  }
+
+  hr{
+    width: 100%;
+    margin: auto 16px auto 24px;
+    border: 1px solid $primary-500;
+  }
+
+  svg{
+
+    width: 36px;
+    height: 36px ;
+
+    path{
+      fill: $primary-500;
+    }
+  }
+}
+
+.b-quantityToggle {
+  position: relative;
+  display: inline-block;
+  width: 170px;
+  height: 43px;
+
+  .b-quantityToggle__input {
+    width: 0;
+    height: 0; 
+    opacity: 0;
+  }
+
+  &__slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    background-color: $monochrome-gray-30;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  &__slider::before {
+    position: absolute;
+    display: flex;
+    content: '';
+    width: 50%;
+    height: 100%;
+    background-color: $primary-500;
+    transition: 0.4s;
+  }
+
+  &__input:checked + &__slider {
+    display: flex;
+    align-items: center;
+    background-color: $monochrome-gray-30;
+
+    .b-quantityToggle__container-x2{
+      color: $monochrome-white-100;
+    }
+
+    .b-quantityToggle__container-x1{
+      color: $monochrome-black-100;
+    }
+  }
+
+  &__input:checked + &__slider::before {
+    transform: translateX(86px);
+  }
+
+  .--round {
+    border-radius: 38px;
+
+    &::before{
+      border-radius: 38px;
+
+    }
+  }
+
+  &__container{
+    z-index: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    color: $monochrome-black-100;
+    @include content-s-18-w-700;
+
+    &-x1{
+      color: $monochrome-white-100;
+      transition-duration: 0.3s;
+    }
+
+    &-x2{
+      transition-duration: 0.3s;
+    }
+  }
+}
+
+.b-morphPlus{
+  cursor: pointer;
+
+  svg{
+    width: 32px;
+    height: 32px;
+
+    path{
+
+      fill: $primary-500;
+    }
+  }
+}
+
+.b-menuButton {
+  cursor: pointer;
+  
+  svg{
+    width: 28px;
+    height: 28px;
+    transition-duration: 3s;
+  }
+
+  &.--white{
+    
+    path{
+      fill: $monochrome-white-100;
+
+      &:hover{
+        fill: $primary-500;
+      }
+    }
+  }
+
+  &.--orange{
+
+    path{
+      fill: $primary-500;
+
+      &:hover{
+        fill: $accents-green-500;
+      }
+    }
+  }
+}

@@ -1,1 +1,54 @@
 /* ================================ Media ================================ */
+
+@media (max-width: 1560px){
+
+  .m-header{
+    padding: 0 75px;
+
+    &__logo {
+      margin-right: 36px;
+    }
+  
+    &__list{
+  
+      li{
+        margin-right: 20px;
+      }
+    }
+
+    &__actionButton {
+  
+      a{
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1300px){
+
+  .m-header{
+    padding: 0 24px 20px;
+
+    &__list,  &__actionButton{
+      display: none;
+    }
+
+    &__list{
+      background-color: $monochrome-white-100;
+
+    }
+
+    &__container-wrap {
+      align-items: center;
+    }
+
+    .b-menuButton{
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 600px){
+  
+}

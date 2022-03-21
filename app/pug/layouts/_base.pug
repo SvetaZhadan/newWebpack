@@ -1,0 +1,212 @@
+style.
+  h4{ text-align: center; text-transform: uppercase;}
+
+mixin b-button(className)
+  button.--ripple(class = className)(data-ripple)
+    block
+
+mixin b-addButton(className)
+  div(class=className)
+    include ../../assets/icons/Actions/Plus.svg
+    span.b-addButton__text Нажмите, чтобы выбрать блюдо
+
+mixin b-IconButton(className)
+  button(class=className)
+    block
+
+mixin b-textLink(className)
+  a(class=className)
+    block
+mixin b-input(className)
+  input(type="text" class=className)
+
+mixin b-textArea(className)
+  textarea(class=className)(name="", cols="30", rows="10")
+
+mixin b-checkListItem(className)
+  div(class=className)
+    .b-checkListItem__icon 
+      include ../../assets/icons/Actions/Check.svg
+    .b-checkListItem__text
+      block
+
+mixin b-receptItem(className, name, count, classForName)
+  div(class=className)
+    .b-receptItem__name(class=classForName)=name
+    .b-receptItem__count=count
+
+mixin b-lunchPrice(className, name, price, sign)
+  //- hr.b-lunchPrice__hr.--dark
+  div(class=className)
+    .b-lunchPrice__container__name=name 
+    .b-lunchPrice__container__price=price
+      .b-lunchPrice__container__price__sign=sign
+  //- hr.b-lunchPrice__hr.--light
+mixin b-outcome(className, text, price, sign) 
+  div(class=className)
+    .b-outcome__text=text 
+    .b-outcome__price=price 
+      .b-outcome__price__sign=sign 
+
+mixin b-iconLabel(className, name)
+  div(class=className)
+    block 
+    .b-iconLabel__name=name
+
+mixin b-controlHeading(className, name)
+  div(class=className)
+    .b-controlHeading__name=name 
+    hr
+    block
+
+mixin b-quantityToggle(className)
+  label(class=className)
+    input.b-quantityToggle__input(type="checkbox" checked)
+    span.b-quantityToggle__slider.--round
+      span.b-quantityToggle__container
+        span.b-quantityToggle__container-x1 x1
+        span.b-quantityToggle__container-x2 x2
+
+//- section(style="padding: 50px")
+
+  h4 Buttons
+  h5 Round button
+  h6 --default
+  +b-button('b-roundButton') Заказать
+  h5 Icon Button 
+  +b-button('b-iconButton') 
+    include ../../assets/icons/Actions/ArrowLeft.svg
+  
+  h5 Square Button
+  +b-button('b-squareButton') Добавить
+  
+  h6 --smooth
+  +b-button('b-squareButton --smooth') Добавить
+
+  h5 Add Button
+  +b-addButton('b-addButton')
+
+  h5 Transparent Icon Button
+  +b-IconButton('b-transparentIconButton')
+    include ../../assets/icons/Actions/Close.svg
+
+  h4 Links
+  h5 Text Link
+  h6 --orange
+  +b-textLink('b-textLink --orange') + Добавить еще один обед
+  h6 --gray
+  +b-textLink('b-textLink --gray') + Добавить еще один обед
+  h6 --black
+  +b-textLink('b-textLink --black') + Добавить еще один обед
+  h6 --white
+  section(style="background:#E4E4E4; border-radius: 5px;")
+    +b-textLink('b-textLink --white') + Добавить еще один обед
+
+  h5 Social Link
+  section(style="background:#E4E4E4; padding:10px; border-radius: 20px;")
+    
+    h5 --twitter
+    +b-IconButton('b-socialLink --twitter')
+      include ../../assets/icons/Socials/Twitter.svg
+    h6 --outline
+    +b-IconButton('b-socialLink --twitter --outline')
+      include ../../assets/icons/Socials/Twitter.svg
+
+    h5 --facebook
+    +b-IconButton('b-socialLink --facebook')
+      include ../../assets/icons/Socials/Facebook.svg
+    h6 --outline
+    +b-IconButton('b-socialLink --facebook --outline')
+      include ../../assets/icons/Socials/Facebook.svg
+
+    h5 --vk
+    +b-IconButton('b-socialLink --vk')
+      include ../../assets/icons/Socials/vk.svg
+    h6 --outline
+    +b-IconButton('b-socialLink --vk --outline')
+      include ../../assets/icons/Socials/vk.svg
+
+  h4 Forms
+  h5 Input
+  +b-input('b-input')
+
+  h6 --correct
+  +b-input('b-input --correct')
+  h6 -error
+  +b-input('b-input --error')
+
+  h5 Seccond Input
+  +b-input('b-secondInput --error')
+
+  h5 Text Area
+  +b-textArea('b-textArea')
+
+  h5 Time Input
+  +b-input('b-timeInput')
+  h6 --correct
+  +b-input('b-timeInput --correct')
+  h6 -error
+  +b-input('b-timeInput --error')
+
+  h4 Text
+  h5 Ckeck List Item
+  +b-checkListItem('b-checkListItem') Бесплатная доставка обеденных сетов
+  +b-checkListItem('b-checkListItem') Привлекательная система скидок и бонусов 
+  
+  h5 Receipt Item
+  h6 --x1
+
+  +b-receptItem('b-receptItem',
+   'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
+   '250 г / 125 ккал')
+    .b-receptItem__name
+    .b-receptItem__count
+
+  h6 --x2
+  +b-receptItem('b-receptItem',
+   'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
+   '250 г / 125 ккал', '--x2')
+    .b-receptItem__name
+    .b-receptItem__count
+
+  h5 Lunch price
+  +b-lunchPrice('b-lunchPrice', '1200 г / 800 ккал', '200','₽')
+  +b-lunchPrice('b-lunchPrice', 'Доставка', '200','₽')
+
+  h5 Outcome
+  +b-outcome('b-outcome','Итого', '200', '₽')
+
+  h5 Icon Label
+  +b-iconLabel('b-iconLabel', 'Первое')
+    include ../../assets/icons/Decorations/Soup.svg
+
+  h5 Control Heading 
+  +b-controlHeading('b-controlHeading','Обед 1')
+    include ../../assets/icons/Actions/Trash.svg
+
+  h4 Toggles
+  h5 Quantity Toggle
+
+  +b-quantityToggle('b-quantityToggle')
+
+  h4 Morphs
+  h5 Morph Plus
+  +b-IconButton('b-morphPlus')
+    include ../../assets/icons/Actions/Plus.svg
+  +b-IconButton('b-morphPlus')
+    include ../../assets/icons/Actions/Minus.svg
+
+  h5 Menu Button
+  h6 --white
+  section(style="background:#ececec; padding:10px; border-radius: 20px;")
+    +b-IconButton('b-menuButton --white')
+      include ../../assets/icons/Actions/Menu.svg
+    +b-IconButton('b-menuButton --white')
+      include ../../assets/icons/Actions/Close.svg
+
+  h6 --orange
+  section(style="background:#ececec; padding:10px; border-radius: 20px;")
+    +b-IconButton('b-menuButton --orange')
+      include ../../assets/icons/Actions/Menu.svg
+    +b-IconButton('b-menuButton --orange')
+      include ../../assets/icons/Actions/Close.svg
