@@ -49,10 +49,8 @@ for (const ripple of ripples) {
 
 let menuButton = $('.b-menuButton');
 menuButton.click(function(){
-// $('.m-header__list').toggle();
+$('.m-header-mobile').toggle();
 // $('.b-textLink').removeClass('--white');
 // $('.b-textLink').addClass('--black');
-
-//создать новый блок
 });
 

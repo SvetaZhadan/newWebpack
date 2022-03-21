@@ -5,6 +5,58 @@ body{
   font-family: Mulish, sans-serif;
 }
 
+.m-header-mobile{
+  display: none;
+  width: 100vw;
+  padding: 24px 60px 72px;
+  background-color: $monochrome-white-100;
+  text-align: center;
+
+  &__list{
+    
+    li{
+      margin-bottom: 28px;    
+      transition-duration: 0.3s;
+
+      &:last-child{
+        margin-bottom: 0px;    
+      }
+    }
+
+  }
+
+  &__socialIcons{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 75px;
+    margin-bottom: 40px;
+
+    .b-socialLink{
+      width: 48px;
+      height: 48px;
+      outline: 1px solid $primary-500;
+
+      svg{
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &__bottom{
+
+    .b-textLink{
+      font-weight: 700;
+    }
+
+    &__address{
+      margin-top: 16px;
+      @include content-s-16-w-400;
+    }
+  }
+}
+
 .m-header{
   padding: 0 136px;
   padding-bottom: 10px;

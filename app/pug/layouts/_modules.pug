@@ -36,7 +36,30 @@ mixin m-header
         +b-button('b-roundButton') Заказать
       +b-IconButton('b-menuButton --white')
         include ../../assets/icons/Actions/Menu.svg
-
+  
+mixin m-header-mobile
+  .m-header-mobile
+    ul.m-header-mobile__list
+      li
+        +b-textLink('b-textLink --black --s-20') О нас
+      li 
+        +b-textLink('b-textLink --black --s-20') Создать набор
+      li 
+        +b-textLink('b-textLink --black --s-20') Оплата и доставка
+      li 
+        +b-textLink('b-textLink --black --s-20') Как мы готовим?
+      li 
+        +b-textLink('b-textLink --black --s-20') Контакты
+    .m-header-mobile__socialIcons 
+      +b-IconButton('b-socialLink --twitter --outline')
+        include ../../assets/icons/Socials/Twitter.svg
+      +b-IconButton('b-socialLink --vk --outline')
+        include ../../assets/icons/Socials/vk.svg
+      +b-IconButton('b-socialLink --facebook --outline')
+        include ../../assets/icons/Socials/facebook.svg
+    .m-header-mobile__bottom 
+       +b-textLink('b-textLink --black --s-20') +7 928 246 50 33
+       .m-header-mobile__bottom__address г. Краснодар, ул. Ставропольская, д. 123
 
 
 
