@@ -1,19 +1,37 @@
 /* ================================ Modules ================================ */
 
 body{
-  background-color: $monochrome-gray-650;
   font-family: Mulish, sans-serif;
+  height: 2000px;
+  overflow-y: scroll;
+  background-color: $accents-brown-500;
+}
+
+.--hidden{
+  display: none;
 }
 
 .m-header-mobile{
+  // position: absolute;
   display: none;
   width: 100vw;
+  min-height: 100vh;
+  max-height: 0;
+  // padding: 24px 60px 72px;
   padding: 24px 60px 72px;
+  overflow: scroll;
   background-color: $monochrome-white-100;
   text-align: center;
+  transition: max-height 0.3s ease;
+
+  &.--active{
+    display: block;
+  }
 
   &__list{
     
+    margin-bottom: 10px;
+
     li{
       margin-bottom: 28px;    
       transition-duration: 0.3s;
@@ -42,6 +60,7 @@ body{
         height: 24px;
       }
     }
+
   }
 
   &__bottom{
@@ -55,20 +74,27 @@ body{
       @include content-s-16-w-400;
     }
   }
+      
+
 }
 
 .m-header{
-  padding: 0 136px;
-  padding-bottom: 10px;
-  transition-duration: 0.3s;
+  position: fixed;
+  width: 100vw;
+  padding: 0 136px 24px;
+
+  &.--bg-white{
+    background-color: $monochrome-white-100;
+  }
 
   &__logo {
     margin-right: 72px;
   }
 
   &__list{
+    margin-bottom: 10px;
 
-    li{
+    a{
       display: inline;
       margin-right: 40px;
       transition-duration: 0.3s;
@@ -94,36 +120,53 @@ body{
 
   &__actionButton {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    margin-top: 25px;
 
     a{
       margin-right: 40px;
+      font-weight: 800;
       transition-duration: 0.3s;
+    }
+    
+    button{
+      font-weight: 100;
     }
   }
 
   .b-menuButton{
     display: none;
   }
+
+  .logo-alt{
+    display: none;
+  }
+
+  .b-menuButton__close{
+    display: none;
+  }
 }
 
-// .helloScreen{
-//   display: flex;
-//   align-items: flex-end;
-//   height: 100vh;
-//   background-image: url('../assets/images/Background-header.jpg');
-//   background-position: center;
-//   background-size: cover;
-  
-//   &__baner{
-//     @include headings-h-1-s-84-w-700;
-//     width: 100%;
-//     max-width: 1648px;
-//     margin: 0 auto;
-//     margin-bottom: 270px;
+    
 
-//     &__primary{
-//       color: $primary-500;
-//     }
-//   }
-// }
+.m-helloScreen{
+  display: flex;
+  align-items: flex-end;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/images/Background-header.jpg');
+  background-position: center;
+  background-size: cover;
+  
+  &__baner{
+    @include headings-h-1-s-84-w-700;
+    width: 100%;
+    max-width: 1648px;
+    margin: 0 auto;
+    margin-bottom: 270px;
+
+    &__primary{
+      color: $primary-500;
+    }
+  }
+}
