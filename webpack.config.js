@@ -46,6 +46,7 @@ function MultiplePages(paths) {
         hash: true,
         minify: false,
         inject: 'body',
+        cache: false
       })
     );
   }

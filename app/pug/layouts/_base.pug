@@ -67,6 +67,12 @@ mixin b-quantityToggle(className)
         span.b-quantityToggle__container-x1 x1
         span.b-quantityToggle__container-x2 x2
 
+mixin b-burger(className)
+  .b-burger(class=className)
+    .b-burger__line
+    .b-burger__line
+    .b-burger__line
+
 //- section(style="padding: 50px")
 
   h4 Buttons
@@ -204,9 +210,9 @@ mixin b-quantityToggle(className)
     +b-IconButton('b-menuButton --white')
       include ../../assets/icons/Actions/Close.svg
 
-  h6 --orange
-  section(style="background:#ececec; padding:10px; border-radius: 20px;")
-    +b-IconButton('b-menuButton --orange')
-      include ../../assets/icons/Actions/Menu.svg
-    +b-IconButton('b-menuButton --orange')
-      include ../../assets/icons/Actions/Close.svg
+
+
+  //- +b-IconButton('b-menuButton --orange')
+  //-   include ../../assets/icons/Actions/Menu.svg
+  //- +b-IconButton('b-menuButton --orange')
+  //-   include ../../assets/icons/Actions/Close.svg

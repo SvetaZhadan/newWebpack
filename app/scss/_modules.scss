@@ -1,38 +1,36 @@
 /* ================================ Modules ================================ */
 
 body{
-  font-family: Mulish, sans-serif;
   height: 2000px;
   overflow-y: scroll;
-  background-color: $accents-brown-500;
+  background-color: $accents-green-500;
+  font-family: Mulish, sans-serif;
 }
 
-.--hidden{
-  display: none;
+.--no-scroll{
+  overflow: hidden;
 }
 
-.m-header-mobile{
-  // position: absolute;
-  display: none;
+.m-headerMenu{
+  position: fixed;
   width: 100vw;
-  min-height: 100vh;
-  max-height: 0;
-  // padding: 24px 60px 72px;
-  padding: 24px 60px 72px;
+  height: 0;
   overflow: scroll;
   background-color: $monochrome-white-100;
   text-align: center;
-  transition: max-height 0.3s ease;
+  transition: height 0.3s ease;
 
   &.--active{
     display: block;
+    height: 100vh;
+    padding: 24px 60px 72px
   }
 
-  &__list{
-    
-    margin-bottom: 10px;
+  &__nav{    
+    display: flex;
+    flex-direction: column;
 
-    li{
+    .b-textLink{
       margin-bottom: 28px;    
       transition-duration: 0.3s;
 
@@ -43,7 +41,7 @@ body{
 
   }
 
-  &__socialIcons{
+  &__socials{
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -63,38 +61,106 @@ body{
 
   }
 
-  &__bottom{
-
-    .b-textLink{
-      font-weight: 700;
-    }
-
-    &__address{
-      margin-top: 16px;
-      @include content-s-16-w-400;
-    }
+  &__contacts .b-textLink{
+    font-weight: 700;
   }
-      
 
+  &__address{
+    margin-top: 16px;
+    @include content-s-16-w-400;
+  }
+
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+
+    /* webkit */
+    width: 0;
+    height: 0;
+  }
 }
 
 .m-header{
   position: fixed;
   width: 100vw;
-  padding: 0 136px 24px;
+  transition: display 0.3s ease;
+  // padding: 0 136px 24px;
+
+  &.--p-0{
+    padding: 0;
+  }
 
   &.--bg-white{
     background-color: $monochrome-white-100;
+    transition: display 0.3s ease;
+
+
+    .m-header{
+
+      &__list, &__right{
+
+        .b-textLink{
+          color: $monochrome-black-100;
+  
+          &:hover {
+            color: $primary-500;
+          }
+        }
+      }
+
+    }
+
+    .b-burger{  
+
+      &:hover {
+
+        .b-burger__line{
+          background-color: $accents-green-500;
+        }
+      }
+
+      .b-burger__line{
+        background-color: $primary-500;
+
+      
+      }  
+    }
   }
 
   &__logo {
     margin-right: 72px;
+
+    &.--white{
+
+      svg{
+        
+        path{
+          fill: $monochrome-white-100;
+        } 
+      }
+
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+
+    .b-textLink{
+      font-weight: 700;
+    }
+    
+    .b-roundButton{
+      margin-left: 40px;
+      font-weight: 100; 
+    }
   }
 
   &__list{
     margin-bottom: 10px;
 
-    a{
+    .b-textLink{
       display: inline;
       margin-right: 40px;
       transition-duration: 0.3s;
@@ -106,48 +172,27 @@ body{
     }
   }
   
-  &__nav{
+  &__left{
     display: flex;
     align-items: flex-end;
-    // margin-right: 80px;
+    margin-right: 90px;
 
   }
 
-  &__container-wrap {
+  &__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding-bottom: 24px;
   }
 
-  &__actionButton {
-    display: flex;
-    align-items: center;
-    margin-top: 25px;
-
-    a{
-      margin-right: 40px;
-      font-weight: 800;
-      transition-duration: 0.3s;
-    }
-    
-    button{
-      font-weight: 100;
-    }
+  .--paddingNorm{
+    padding: 0 24px 20px;  
   }
 
-  .b-menuButton{
-    display: none;
-  }
-
-  .logo-alt{
-    display: none;
-  }
-
-  .b-menuButton__close{
+  .b-burger{
     display: none;
   }
 }
-
-    
 
 .m-helloScreen{
   display: flex;

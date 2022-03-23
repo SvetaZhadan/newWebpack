@@ -3,7 +3,7 @@
 @media (max-width: 1560px){
 
   .m-header{
-    padding: 0 75px 24px;
+    // padding: 0 75px 24px;
 
     &__logo {
       margin-right: 36px;
@@ -27,42 +27,36 @@
 
 @media (min-width: 1400px){
 
-  .m-header-mobile.--active{
+  .m-headerMenu{
     display: none;
-  }
-
-  .m-header{
-
-    .m-header__container-wrap {
-
-      .b-menuButton__close{
-        display: none !important;
-      }
-    }
   }
 
 }
 
-
 @media (max-width: 1400px){
 
   .m-header{
-    padding: 0 24px 20px;
+    // padding: 0 24px 20px;
 
-    &__list,  &__actionButton{
+    &__list,  &__right{
       display: none;
     }
 
+    &__left{
+      margin: 0;
+    }
     &__list{
       background-color: $monochrome-white-100;
     }
 
-    &__container-wrap {
+    &__container {
+      justify-content: space-between; 
       align-items: flex-end;
+      padding: 0 24px 20px;   
     }
 
-    .b-menuButton__open{
-      display: block;
+    .b-burger{
+      display: flex;
     }
 
     &__logo{

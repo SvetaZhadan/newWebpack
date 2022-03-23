@@ -24,93 +24,53 @@ for (const ripple of ripples) {
          });
 }
 
-let menuButtonOpen = document.querySelector('.b-menuButton__open'),
-        menuButtonClose = document.querySelector('.b-menuButton__close'),
-        menuButton=document.querySelector('.b-menuButton'),
-        logo=document.querySelector('.logo'),
-        logoAlt=document.querySelector('.logo-alt'),
-        header=document.querySelector('.m-header'),
-        headerMobile=document.querySelector('.m-header-mobile'),
-        actionButton=document.querySelector('.m-header__actionButton'),
-        headerList=document.querySelector('.m-header__list'),
-        listItem=headerList.querySelectorAll('.b-textLink'),
-        listItemPhone=actionButton.querySelector('.b-textLink');
 
-menuButtonOpen.onclick = function(){        
-        headerMobile.classList.add('--active');
-        // headerMobile.style.Height = 100 + 'vh';
-        header.style.position="relative"
-        header.classList.add('--bg-white')
-        header.classList.add('menu-open')
-        logo.style.display="none"
-        logoAlt.style.display="block"
-        menuButtonClose.style.display="block"
-        menuButtonOpen.style.display="none"
-        // window.scrollTo({
-        //         top: 0,
-        //     });
+let header=document.querySelector('.m-header'),
+        headerMobile=document.querySelector('.m-headerMenu'),
+        logo=document.querySelector('.m-header__logo'),
+        burger=document.querySelector('.b-burger');
 
-        document.body.style.overflow="hidden"
+burger.onclick=function() {
+        //onclose
+        if(burger.classList.contains('--close')) {
+                let scrolled = window.pageYOffset;
+                burger.classList.remove('--close') 
+                document.body.classList.remove('--no-scroll')
+                headerMobile.classList.remove('--active')
+                header.classList.remove('--menuOpen')
+
+                if (scrolled < 10) {
+                        header.classList.remove('--bg-white')    
+                        logo.classList.add('--white')
+                }
+        }
+        //onopen
+        else {
+                burger.classList.add('--close') 
+                document.body.classList.add('--no-scroll')
+                headerMobile.classList.add('--active')
+                header.classList.add('--menuOpen')
+                header.classList.add('--bg-white');
+                logo.classList.remove('--white')
+
+                headerMobile.scrollTo({
+                        top:0,
+                        behavior: "smooth"
+                })
+        }
+
 };
-
-menuButtonClose.onclick = function(){
-        headerMobile.classList.remove('--active');
-        // headerMobile.style.maxHeight = 0;
-        header.style.position="fixed"
-        header.classList.remove('--bg-white')
-        header.classList.remove('menu-open')
-        logo.style.display="block"
-        logoAlt.style.display="none"
-        menuButtonClose.style.display="none"
-        menuButtonOpen.style.display="block"
-        document.body.style.overflow=""
-}
 
 window.onscroll = function() {
 let scrolled = window.pageYOffset;
-
-        console.log( 'Позиция скрола: '+scrolled );
-
+        // console.log( 'Позиция скрола: '+scrolled );
         if (scrolled >= 10) {
                 header.classList.add('--bg-white') 
-
-                listItemPhone.classList.remove('--white')   
-                listItemPhone.classList.add('--black')  
-                logo.style.display="none"
-                logoAlt.style.display="block"   
-                menuButton.classList.remove('--white')
-                menuButton.classList.add('--orange')
-
-                for(let i=0; i<=listItem.length; i++){
-                        listItem[i].classList.remove('--white')
-                        listItem[i].classList.add('--black') 
-                }
+                logo.classList.remove('--white')
         }
 
         if (scrolled < 10){ 
-                header.classList.remove('--bg-white') 
-
-                if (header.classList.contains('menu-open')) {
-                        console.log("Lf", header.classList.contains('menu-open'));
-                        header.classList.add('--bg-white') 
-                        logo.style.display="none"
-                        logoAlt.style.display="block"   
-                        menuButton.classList.remove('--white')
-                        menuButton.classList.add('--orange')
-                } else {
-                        listItemPhone.classList.remove('--black')   
-                        listItemPhone.classList.add('--white') 
-                        
-                        logo.style.display="block"
-                        logoAlt.style.display="none"
-                        menuButton.classList.add('--white')
-                        menuButton.classList.remove('--orange')
-                }
-
-                for(let i=0; i<=listItem.length; i++){
-                        listItem[i].classList.remove('--black')
-                        listItem[i].classList.add('--white') 
-                }
+                header.classList.remove('--bg-white')
+                logo.classList.add('--white')
         }
 };
-

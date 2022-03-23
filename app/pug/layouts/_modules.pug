@@ -14,52 +14,44 @@ mixin m-head
     link(rel='icon' href='write your path' type='image/svg+xml')
     link(rel='apple-touch-icon' href='write your path')
 
+
+mixin m-headerMenu
+  .m-headerMenu
+    nav.m-headerMenu__nav
+      +b-textLink('b-textLink --black --s-20') О нас
+      +b-textLink('b-textLink --black --s-20') Создать набор
+      +b-textLink('b-textLink --black --s-20') Оплата и доставка
+      +b-textLink('b-textLink --black --s-20') Как мы готовим?
+      +b-textLink('b-textLink --black --s-20') Контакты
+    .m-headerMenu__socials
+      +b-IconButton('b-socialLink --twitter --outline')
+        include ../../assets/icons/Socials/Twitter.svg
+      +b-IconButton('b-socialLink --vk --outline')
+        include ../../assets/icons/Socials/vk.svg
+      +b-IconButton('b-socialLink --facebook --outline')
+        include ../../assets/icons/Socials/facebook.svg
+    .m-headerMenu__contacts 
+      +b-textLink('b-textLink --black --s-20') +7 928 246 50 33
+      .m-headerMenu__address г. Краснодар, ул. Ставропольская, д. 123
+
+
 mixin m-header 
   header.m-header 
-    .m-header__container-wrap 
-      .m-header__nav
-        .m-header__logo 
-          a(href="#").logo
-            include ../../assets/icons/CookToo-Logo.svg
-          a(href="#").logo-alt 
-            include ../../assets/icons/CookToo-Logo-alt.svg
+    .m-header__container 
+      .m-header__left
+        a(href="#").m-header__logo.--white
+          include ../../assets/icons/CookToo-Logo-alt.svg
         nav.m-header__list
-            +b-textLink('b-textLink --white --s-18') О нас
-            +b-textLink('b-textLink --white --s-18') Создать набор 
-            +b-textLink('b-textLink --white --s-18') Оплата и доставка
-            +b-textLink('b-textLink --white --s-18') Как мы готовим? 
-            +b-textLink('b-textLink --white --s-18') Контакты
-      .m-header__actionButton 
+            +b-textLink('b-textLink --s-18') О нас
+            +b-textLink('b-textLink --s-18') Создать набор 
+            +b-textLink('b-textLink --s-18') Оплата и доставка
+            +b-textLink('b-textLink --s-18') Как мы готовим? 
+            +b-textLink('b-textLink --s-18') Контакты
+      .m-header__right 
         +b-textLink('b-textLink --white --s-18') +7 928 246 50 33
         +b-button('b-roundButton') Заказать
-      +b-IconButton('b-menuButton --white b-menuButton__open')
-        include ../../assets/icons/Actions/Menu.svg
-      +b-IconButton('b-menuButton --orange b-menuButton__close')
-        include ../../assets/icons/Actions/Close.svg
-
-      mixin m-header-mobile
-        nav.m-header-mobile
-          ul.m-header-mobile__list
-            li
-              +b-textLink('b-textLink --black --s-20') О нас
-            li 
-              +b-textLink('b-textLink --black --s-20') Создать набор
-            li 
-              +b-textLink('b-textLink --black --s-20') Оплата и доставка
-            li 
-              +b-textLink('b-textLink --black --s-20') Как мы готовим?
-            li 
-              +b-textLink('b-textLink --black --s-20') Контакты
-          .m-header-mobile__socialIcons 
-            +b-IconButton('b-socialLink --twitter --outline')
-              include ../../assets/icons/Socials/Twitter.svg
-            +b-IconButton('b-socialLink --vk --outline')
-              include ../../assets/icons/Socials/vk.svg
-            +b-IconButton('b-socialLink --facebook --outline')
-              include ../../assets/icons/Socials/facebook.svg
-          .m-header-mobile__bottom 
-            +b-textLink('b-textLink --black --s-20') +7 928 246 50 33
-            .m-header-mobile__bottom__address г. Краснодар, ул. Ставропольская, д. 123
+      +b-burger
+    +m-headerMenu
 
 mixin m-helloScreen 
   .m-helloScreen
