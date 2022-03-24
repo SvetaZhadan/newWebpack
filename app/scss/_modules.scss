@@ -1,8 +1,7 @@
 /* ================================ Modules ================================ */
 
 body{
-  height: 2000px;
-  overflow-y: scroll;
+  overflow-x: hidden;
   background-color: $accents-green-500;
   font-family: Mulish, sans-serif;
 }
@@ -12,18 +11,16 @@ body{
 }
 
 .m-headerMenu{
-  position: fixed;
+  display: none;
   width: 100vw;
   height: 0;
-  overflow: scroll;
-  background-color: $monochrome-white-100;
   text-align: center;
-  transition: height 0.3s ease;
+
 
   &.--active{
     display: block;
     height: 100vh;
-    padding: 24px 60px 72px
+    padding: 24px 60px 72px;
   }
 
   &__nav{    
@@ -83,17 +80,18 @@ body{
 .m-header{
   position: fixed;
   width: 100vw;
-  transition: display 0.3s ease;
-  // padding: 0 136px 24px;
+  overflow-y: scroll;
+  transition: background-color 0.3s, height 0.3s linear;
 
   &.--p-0{
     padding: 0;
   }
 
   &.--bg-white{
+    // height: 100%;
     background-color: $monochrome-white-100;
-    transition: display 0.3s ease;
-
+    transition: background-color 0.3s, height 0.3s linear;
+    
 
     .m-header{
 
@@ -183,6 +181,7 @@ body{
     display: flex;
     justify-content: space-around;
     padding-bottom: 24px;
+    
   }
 
   .--paddingNorm{
@@ -199,7 +198,10 @@ body{
   align-items: flex-end;
   width: 100vw;
   height: 100vh;
+  padding-bottom: 270px;
+  overflow-x: hidden;
   background-image: url('../assets/images/Background-header.jpg');
+
   background-position: center;
   background-size: cover;
   
@@ -208,10 +210,75 @@ body{
     width: 100%;
     max-width: 1648px;
     margin: 0 auto;
-    margin-bottom: 270px;
+    transition: margin 0.3s ease, padding 0.5s;
 
     &__primary{
       color: $primary-500;
     }
   }
 }
+
+.m-footer{
+  
+  padding: 0 138px 46px;
+  background-color: $monochrome-white-100;
+
+  &Top{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+    &__right{
+      color: $monochrome-gray-650;
+      text-align: right;
+
+      .b-textLink{
+        font-weight: 700;
+      }
+    }
+
+
+  }
+
+  &Bottom{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 48px;
+    margin-top: 48px;
+    color: $monochrome-gray-500;
+    border-top: 1px solid $monochrome-gray-100;
+
+    &__right{
+      display: flex;
+      align-items: center;
+      span{
+        margin-right: 17px;
+      }
+    }
+
+    &__left{
+      display: flex;
+      flex-wrap: wrap;
+      span:first-child{
+        margin-right: 48px;
+      }
+    }
+
+
+  }
+
+  &__address{
+    @include content-s-20-w-400;
+  }
+  
+  &__logo{
+
+    svg{
+      width: 230px;
+      height: 120px;
+    }
+  }
+} 

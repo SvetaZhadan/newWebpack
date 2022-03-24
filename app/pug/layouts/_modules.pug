@@ -56,10 +56,32 @@ mixin m-header
 mixin m-helloScreen 
   .m-helloScreen
     .m-helloScreen__baner 
-      .m-helloScreen__baner__default Заказывайте 
-      .m-helloScreen__baner__primary больше <br>
-      .m-helloScreen__baner__default платите
-      .m-helloScreen__baner__primary меньше
+      span.m-helloScreen__baner__default Заказывайте 
+      span.m-helloScreen__baner__primary больше <br>
+      span.m-helloScreen__baner__default платите 
+      span.m-helloScreen__baner__primary меньше
+
+mixin m-footer 
+  .m-footer 
+    .m-footerTop
+      .m-footerTop__left 
+        a(href="#").m-footer__logo
+          include ../../assets/icons/CookToo-Logo-alt.svg
+      .m-footerTop__right
+        +b-textLink('b-textLink --black') +7 928 246 50 33
+        .m-footer__address г. Краснодар, ул. Ставропольская, д. 123
+    .m-footerBottom 
+      .m-footerBottom__left 
+        span Условия оплаты и доставки
+        span Политика конфиденциальности
+      .m-footerBottom__right
+        span Разработано
+        a(href="#").m-footer__companyLogo
+          include ../../assets/icons/ASTEQ-Logo.svg
+        
+
+
+
 
 
 

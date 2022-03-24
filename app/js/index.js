@@ -37,7 +37,6 @@ burger.onclick=function() {
                 burger.classList.remove('--close') 
                 document.body.classList.remove('--no-scroll')
                 headerMobile.classList.remove('--active')
-                header.classList.remove('--menuOpen')
 
                 if (scrolled < 10) {
                         header.classList.remove('--bg-white')    
@@ -49,7 +48,6 @@ burger.onclick=function() {
                 burger.classList.add('--close') 
                 document.body.classList.add('--no-scroll')
                 headerMobile.classList.add('--active')
-                header.classList.add('--menuOpen')
                 header.classList.add('--bg-white');
                 logo.classList.remove('--white')
 
@@ -58,7 +56,6 @@ burger.onclick=function() {
                         behavior: "smooth"
                 })
         }
-
 };
 
 window.onscroll = function() {
