@@ -28,7 +28,11 @@ $accents-green-500: #81b93c;
 $accents-yellow-100: #fef7e6;
 $accents-yellow-500: #f0ad00;
 $accents-red-300: #cb0000;
-
+$bg-orange-linear: linear-gradient(89.79deg, #ef4d08 0.16%, #ef4d08 7.36%, #f04e0a 14.57%, #f0500c 21.77%, #f1520f 28.98%, #f35613 36.18%, #f45917 43.38%, #f65d1c 50.59%, #f86222 57.79%, #fa6627 64.99%, #fb6a2b 72.2%, #fd6d2f 79.4%, #fe6f32 86.61%, #fe7135 93.81%, #ff7236 101.01%, #ff7236 108.22%);
+$bg-green-linear: linear-gradient(90deg, #81b93c 0%, #81b93c 6.67%, #82ba3d 13.33%, #83bb3f 20%, #85bc42 26.67%, #88be45 33.33%, #8bc149 40%, #8ec34d 46.67%, #92c651 53.33%, #95c955 60%, #98cb59 66.67%, #9acd5c 73.33%, #9cce5f 80%, #9ecf61 86.67%, #9fd062 93.33%, #9fd062 100%);
+$bg-yellow-linear: linear-gradient(90deg, #f0ad00 0%, #f0ad01 6.67%, #f0ae03 13.33%, #f1af07 20%, #f1b10d 26.67%, #f2b414 33.33%, #f3b71d 40%, #f4ba26 46.67%, #f5be30 53.33%, #f6c139 60%, #f7c442 66.67%, #f7c749 73.33%, #f8c94f 80%, #f8ca53 86.67%, #f9cb55 93.33%, #f9cb56 100%);
+$bg-brown-linear: linear-gradient(90deg, #724941 0%, #724941 6.67%, #724a42 13.33%, #734a42 20%, #744b44 26.67%, #754d45 33.33%, #764e47 40%, #785049 46.67%, #79524a 53.33%, #7b544c 60%, #7c554e 66.67%, #7d574f 73.33%, #7e5851 80%, #7f5851 86.67%, #7f5952 93.33%, #7f5952 100%);
+$bg-orange-linear-mob: linear-gradient(2.88deg, #ef4d08 2.4%, #ef4d08 8.74%, #f04e0a 15.09%, #f0500c 21.44%, #f1520f 27.79%, #f35613 34.13%, #f45917 40.48%, #f65d1c 46.83%, #f86222 53.17%, #fa6627 59.52%, #fb6a2b 65.87%, #fd6d2f 72.21%, #fe6f32 78.56%, #fe7135 84.91%, #ff7236 91.26%, #ff7236 97.6%);
 @mixin headings-h-1-s-84-w-700 {
   
   font-size: 84px;
@@ -359,4 +363,10 @@ $accents-red-300: #cb0000;
 }
 @mixin shadows-smooth-shadow-2 {
   box-shadow: 0px 0px 44px #000000;
+}
+
+@mixin breakpoint ($number) {
+  @media (max-width: $number) {
+    @content;
+  }
 }

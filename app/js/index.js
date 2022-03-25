@@ -40,6 +40,7 @@ burger.onclick=function() {
 
                 if (scrolled < 10) {
                         header.classList.remove('--bg-white')    
+                        header.classList.remove('--h-100per')
                         logo.classList.add('--white')
                 }
         }
@@ -48,7 +49,8 @@ burger.onclick=function() {
                 burger.classList.add('--close') 
                 document.body.classList.add('--no-scroll')
                 headerMobile.classList.add('--active')
-                header.classList.add('--bg-white');
+                header.classList.add('--bg-white')
+                header.classList.add('--h-100per')
                 logo.classList.remove('--white')
 
                 headerMobile.scrollTo({

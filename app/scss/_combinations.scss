@@ -1,1 +1,59 @@
 /* ================================ Combinations ================================ */
+
+.c-card{
+
+  max-width: 400px;
+  width: 100%;
+  padding: 18px 32px 20px;
+  color: $monochrome-white-100;
+  border-radius: 20px;
+
+  &__icons{
+
+    svg{
+      width: 45px;
+      height: 45px;
+
+      path{
+        fill: $monochrome-white-100;
+      }
+    }
+  }
+
+  &__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    &__name{
+      @include headings-h-5-s-24-w-700;
+    }
+
+    &__price{
+      display: flex;
+      align-items: flex-end;
+      @include headings-h-3-s-40-w-700;
+
+      &__sign{
+        @include content-s-28-w-700;
+      }
+    }
+  }
+
+  &.--orange{
+    background: $bg-orange-linear;
+    
+  }
+
+  &.--green{
+    background: $bg-green-linear;
+  }
+
+  &.--yellow{
+    background: $bg-yellow-linear;
+  }
+
+  &.--brown{
+    background: $bg-brown-linear;
+  }
+}

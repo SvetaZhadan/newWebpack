@@ -73,6 +73,20 @@ mixin b-burger(className)
     .b-burger__line
     .b-burger__line
 
+mixin c-card(className, name, price, sign)
+  .c-card(class=className)
+    .c-card__icons 
+      block
+    .c-card__title
+      .c-card__title__name=name
+      .c-card__title__price=price
+        .c-card__title__price__sign=sign
+
+//- +c-card('--green', 'Комплекс', '250', '₽')
+//-     include ../../assets/icons/Decorations/Soup.svg
+//-     include ../../assets/icons/Decorations/Steak-1.svg
+//-     include ../../assets/icons/Decorations/Salad.svg
+
 //- section(style="padding: 50px")
 
   h4 Buttons

@@ -78,8 +78,59 @@ mixin m-footer
         span Разработано
         a(href="#").m-footer__companyLogo
           include ../../assets/icons/ASTEQ-Logo.svg
-        
+mixin m-discounts 
+  .m-discounts
+    .m-discounts__bg
+      .m-discounts__container 
+        .m-discounts__container__left
+          include ../../assets/icons/Illustrations/perc.svg
+        .m-discounts__container__right 
+          .m-discounts__container__listItem
+            span.m-discounts-bold.--italic Бесплатная 
+            span доставка при заказе 
+            span.m-discounts-bold.--italic от 450 рублей 
+            span или более 2-х бизнес-ланчей
+          .m-discounts__container__listItem
+            span.m-discounts-bold Скидка 
+            span.m-discounts-bold.--italic 10% 
+            span при заказе 3-х и более обеденных сетов
+          .m-discounts__container__listItem
+            span.m-discounts-bold Скидка 
+            span.m-discounts-bold.--italic 15% 
+            span при заказе 5-ти и более обеденных сетов
 
+mixin m-benifits 
+  .m-benifits
+    .m-benifits__left
+      img(src="../../assets/images/About-Image.png", alt="")
+    .m-benifits__right 
+      .m-benifits__right__top 
+        .m-benifits__right__title Почему стоит заказать обед на 
+          span cook
+          span too
+          span .ru?
+        .m-benifits__checkList 
+          +b-checkListItem('b-checkListItem') Бесплатная доставка обеденных сетов
+          +b-checkListItem('b-checkListItem') Привлекательная система скидок и бонусов 
+          +b-checkListItem('b-checkListItem') Возможность заказа любого из 100 вариантов бизнес-ланча
+          +b-checkListItem('b-checkListItem') Ежедневное питание полноценной и полезной едой
+          +b-checkListItem('b-checkListItem') Регулярное расширение и обновление нашего меню
+      .m-benifits__right__bottom 
+        .m-benifits__right__rowTop
+          +c-card('--orange', 'Комплекс', '250', '₽')
+            include ../../assets/icons/Decorations/Soup.svg
+            include ../../assets/icons/Decorations/Steak-1.svg
+            include ../../assets/icons/Decorations/Salad.svg
+          +c-card('--yellow', 'Первое + Второе', '250', '₽')
+            include ../../assets/icons/Decorations/Soup.svg
+            include ../../assets/icons/Decorations/Steak-1.svg
+        .m-benifits__right__rowBottom
+          +c-card('--green', 'Первое + Салат', '250', '₽')
+            include ../../assets/icons/Decorations/Soup.svg
+            include ../../assets/icons/Decorations/Salad.svg
+          +c-card('--brown', 'Второе + Салат', '250', '₽')
+            include ../../assets/icons/Decorations/Steak-1.svg
+            include ../../assets/icons/Decorations/Salad.svg
 
 
 

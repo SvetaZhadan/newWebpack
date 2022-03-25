@@ -2,7 +2,6 @@
 
 body{
   overflow-x: hidden;
-  background-color: $accents-green-500;
   font-family: Mulish, sans-serif;
 }
 
@@ -80,17 +79,22 @@ body{
 .m-header{
   position: fixed;
   width: 100vw;
+  // height: 100%;
   overflow-y: scroll;
-  transition: background-color 0.3s, height 0.3s linear;
+  transition: background-color 0.3s, height 0.3s;
 
   &.--p-0{
     padding: 0;
   }
 
+  &.--h-100per{
+    height: 100%;
+  }
+
   &.--bg-white{
     // height: 100%;
     background-color: $monochrome-white-100;
-    transition: background-color 0.3s, height 0.3s linear;
+    transition: background-color 0.3s, height 0.3s;
     
 
     .m-header{
@@ -197,20 +201,22 @@ body{
   display: flex;
   align-items: flex-end;
   width: 100vw;
-  height: 100vh;
-  padding-bottom: 270px;
+  height: 110vh;
+  padding-bottom: 260px;
   overflow-x: hidden;
   background-image: url('../assets/images/Background-header.jpg');
 
   background-position: center;
   background-size: cover;
-  
+  transition: margin 0.3s ease, padding 0.3s ease;
+
   &__baner{
     @include headings-h-1-s-84-w-700;
     width: 100%;
     max-width: 1648px;
     margin: 0 auto;
-    transition: margin 0.3s ease, padding 0.5s;
+    margin-left: 170px;
+    transition: margin 0.3s ease, padding 0.3s ease;
 
     &__primary{
       color: $primary-500;
@@ -219,13 +225,11 @@ body{
 }
 
 .m-footer{
-  
   padding: 0 138px 46px;
-  background-color: $monochrome-white-100;
+  background-color: $monochrome-gray-30;
 
   &Top{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
     
@@ -234,6 +238,7 @@ body{
       text-align: right;
 
       .b-textLink{
+        font-size: 18px;
         font-weight: 700;
       }
     }
@@ -243,7 +248,6 @@ body{
 
   &Bottom{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
     height: 48px;
@@ -254,6 +258,7 @@ body{
     &__right{
       display: flex;
       align-items: center;
+
       span{
         margin-right: 17px;
       }
@@ -261,7 +266,7 @@ body{
 
     &__left{
       display: flex;
-      flex-wrap: wrap;
+
       span:first-child{
         margin-right: 48px;
       }
@@ -281,4 +286,133 @@ body{
       height: 120px;
     }
   }
+
+
 } 
+
+.m-discounts {
+  // position: relative;
+
+  &__bg{
+    // position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/icons/Backgrounds/percent-left.svg') repeat-y top left,  url('../assets/icons/Backgrounds/percent-right.svg')repeat-y 100% 0, $bg-orange-linear; 
+  
+    @include breakpoint(1000px) {
+      background: url('../assets/icons/Backgrounds/percent-left-top.svg') top no-repeat 100% auto,  url('../assets/icons/Backgrounds/percent-right-bottom.svg') bottom no-repeat, $bg-orange-linear-mob; 
+    }
+  }
+ 
+  &-bold{
+    @include headings-h-3-s-40-w-800;
+
+    &.--italic{    
+      @include headings-h-3-s-40-w-900-italic;
+
+      
+    }
+  }
+
+  &__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0 57px;
+
+    &__left{
+      margin-right: 102px;
+
+      svg{
+        width: 263px;
+        height: 322px;
+
+        path{
+          fill: $monochrome-white-100;
+        }
+      }
+    }
+
+    &__right{
+
+      @include headings-h-4-s-32-w-700;
+      max-width: 935px;
+      color: $monochrome-white-100;
+
+      .m-discounts__container__listItem{
+
+        &:nth-child(2){
+          margin: 30px 0;
+        }
+      }
+    }
+
+  }
+
+}
+
+.m-benifits{
+  display: flex;
+  justify-content: flex-start;
+  padding: 120px 0px 150px 0;
+
+  &__right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 10px 0px 72px;
+
+    &__title{
+      @include headings-h-3-s-40-w-700;
+      max-width: 633px;
+      margin-bottom: 32px;
+
+      span:first-child{
+        color: $primary-500;
+      }
+
+      span:nth-child(2){
+        color: $secondary-400;
+      }
+
+      span:last-child{
+        color: $monochrome-gray-400;
+      }
+    }
+
+    &__bottom{
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__rowTop, &__rowBottom{
+      display: flex;
+      justify-content: space-between;
+
+      .c-card:first-child{
+        margin-right: 18px;
+      }
+    }
+
+    &__rowTop{
+      margin-bottom: 18px;
+    }
+  }
+
+  &__checkList{
+
+    .b-checkListItem{
+      margin-bottom: 20px;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+
+  }
+  img{
+    max-height: 856px;
+  }
+}
+
