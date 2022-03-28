@@ -28,7 +28,28 @@ for (const ripple of ripples) {
 let header=document.querySelector('.m-header'),
         headerMobile=document.querySelector('.m-headerMenu'),
         logo=document.querySelector('.m-header__logo'),
-        burger=document.querySelector('.b-burger');
+        burger=document.querySelector('.b-burger'),
+        menuItem=headerMobile.querySelectorAll('.b-textLink ');
+
+        console.log(menuItem);
+
+for (let index = 0; index < menuItem.length; index++) {
+        menuItem[index].onclick=function(){
+                burger.classList.remove('--close') 
+                document.body.classList.remove('--no-scroll')
+                headerMobile.classList.remove('--active')
+                header.classList.remove('--h-100per')
+
+                let scrolled = window.pageYOffset;
+                if (scrolled < 10) {
+                        header.classList.remove('--bg-white')    
+                        header.classList.remove('--h-100per')
+                        logo.classList.add('--white')
+                }
+        }
+        
+}
+
 
 burger.onclick=function() {
         //onclose
@@ -37,7 +58,8 @@ burger.onclick=function() {
                 burger.classList.remove('--close') 
                 document.body.classList.remove('--no-scroll')
                 headerMobile.classList.remove('--active')
-
+                header.classList.remove('--h-100per')
+                
                 if (scrolled < 10) {
                         header.classList.remove('--bg-white')    
                         header.classList.remove('--h-100per')

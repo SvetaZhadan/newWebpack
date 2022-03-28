@@ -1,5 +1,9 @@
 /* ================================ Modules ================================ */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body{
   overflow-x: hidden;
   font-family: Mulish, sans-serif;
@@ -18,7 +22,7 @@ body{
 
   &.--active{
     display: block;
-    height: 100vh;
+    height: auto;
     padding: 24px 60px 72px;
   }
 
@@ -26,7 +30,7 @@ body{
     display: flex;
     flex-direction: column;
 
-    .b-textLink{
+    a{
       margin-bottom: 28px;    
       transition-duration: 0.3s;
 
@@ -57,7 +61,7 @@ body{
 
   }
 
-  &__contacts .b-textLink{
+  &__contacts a{
     font-weight: 700;
   }
 
@@ -93,6 +97,7 @@ body{
 
   &.--bg-white{
     // height: 100%;
+    z-index: 1;
     background-color: $monochrome-white-100;
     transition: background-color 0.3s, height 0.3s;
     
@@ -149,7 +154,7 @@ body{
     align-items: center;
     margin-top: 25px;
 
-    .b-textLink{
+    a {
       font-weight: 700;
     }
     
@@ -162,7 +167,7 @@ body{
   &__list{
     margin-bottom: 10px;
 
-    .b-textLink{
+    a {
       display: inline;
       margin-right: 40px;
       transition-duration: 0.3s;
@@ -200,7 +205,7 @@ body{
 .m-helloScreen{
   display: flex;
   align-items: flex-end;
-  width: 100vw;
+  width: 100%;
   height: 110vh;
   padding-bottom: 260px;
   overflow-x: hidden;
@@ -267,9 +272,14 @@ body{
     &__left{
       display: flex;
 
-      span:first-child{
-        margin-right: 48px;
+      &__item{
+        color: $monochrome-gray-500;
+
+        &:first-child{
+          margin-right: 48px;
+        }
       }
+
     }
 
 
@@ -291,18 +301,19 @@ body{
 } 
 
 .m-discounts {
-  // position: relative;
+  position: relative;
+  // height: 100%;
+  height: 419px;
+  overflow: hidden;
 
-  &__bg{
-    // position: absolute;
+  &::before {
+    position: absolute; 
     z-index: -1;
+    content: '';
     width: 100%;
     height: 100%;
-    background: url('../assets/icons/Backgrounds/percent-left.svg') repeat-y top left,  url('../assets/icons/Backgrounds/percent-right.svg')repeat-y 100% 0, $bg-orange-linear; 
-  
-    @include breakpoint(1000px) {
-      background: url('../assets/icons/Backgrounds/percent-left-top.svg') top no-repeat 100% auto,  url('../assets/icons/Backgrounds/percent-right-bottom.svg') bottom no-repeat, $bg-orange-linear-mob; 
-    }
+    background: url('../assets/icons/Backgrounds/percent-left.svg') repeat-y left,  url('../assets/icons/Backgrounds/percent-right.svg')repeat-y 100% 0, $bg-orange-linear;
+
   }
  
   &-bold{
@@ -310,12 +321,11 @@ body{
 
     &.--italic{    
       @include headings-h-3-s-40-w-900-italic;
-
-      
     }
   }
 
   &__container{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -335,10 +345,10 @@ body{
     }
 
     &__right{
-
-      @include headings-h-4-s-32-w-700;
       max-width: 935px;
+      padding: 40px 0;
       color: $monochrome-white-100;
+      @include headings-h-4-s-32-w-700;
 
       .m-discounts__container__listItem{
 
@@ -355,7 +365,9 @@ body{
 .m-benifits{
   display: flex;
   justify-content: flex-start;
+  // justify-content: space-between;
   padding: 120px 0px 150px 0;
+  background-color: $monochrome-gray-10;
 
   &__right{
     display: flex;
@@ -411,8 +423,136 @@ body{
     }
 
   }
-  img{
+
+  &__left{
     max-height: 856px;
+    border-radius: 0 24px 24px 0;
   }
 }
 
+.m-constructor{
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 152px 0 112px;
+
+
+  &__right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 112px;
+
+    &__check{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 470px;
+      height: 100%;
+      padding: 0 47px;
+      color: $primary-500;
+      background-image: url('../assets/icons/Illustrations/Fork-big.svg');
+      background-repeat: no-repeat;
+      background-position: bottom -52px right 75px;
+      border-radius: 24px;
+      box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
+      @include headings-h-3-s-40-w-700;
+      cursor: pointer;
+      text-align: center;
+      transition-duration: 0.3s;
+      
+      &:hover{
+        background-color: darken($monochrome-white-100,1);
+      }
+
+    }
+
+    &__freeCourier{
+      margin-top: 32px;
+      @include content-s-18-w-400;
+      text-align: center;
+
+      .freeCourier__primary{
+        color: $primary-500;
+        @include content-s-18-w-800;
+      }
+    }
+
+  }
+
+  &__left{
+
+    &__title{
+      @include headings-h-3-s-40-w-700;
+      
+    }
+
+    .b-iconLabel{
+      margin-bottom: 24px;
+    }
+  }
+
+  &__additionalGroup{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+
+    &__addFood:nth-child(2){
+      margin: 0 32px;
+    }
+
+    &__addFood{
+
+      .b-addButton{
+        width: 334px;
+        height: 466px;
+      }
+    }
+  }
+
+  .b-textLink{
+    width: 100%;
+    padding-top: 28px;
+  }
+
+  .--brown{
+
+
+
+    svg path{
+      fill: $accents-brown-500;
+    }
+  
+    .b-addButton{
+      border-color: $accents-brown-500;
+
+      &:hover {
+        background-color: $accents-brown-100;
+      }
+
+      &__text{
+        color: $accents-brown-500;
+      }
+    }
+  }
+
+  .--green{
+
+    svg path{
+      fill: $accents-green-500;
+    }
+  
+    .b-addButton{
+      border-color: $accents-green-500;
+
+      &:hover {
+        background-color: $accents-green-100;
+      }
+
+      &__text{
+        color: $accents-green-500;
+      }
+    }
+  }
+}

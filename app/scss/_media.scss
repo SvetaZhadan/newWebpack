@@ -1,5 +1,5 @@
 /* ================================ Media ================================ */
-@media (max-width: 1560px){
+@media (max-width: 1700px){
 
   .m-header{
 
@@ -22,9 +22,87 @@
     }
   }
 
-  .m-helloScreen{
-    // padding: 0 24px 250px;
+  .m-benifits{
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0px 75px 0;
+
+    &__left{
+      border-radius: 24px;
+    }
+
+    &__right{
+      margin-right: 0;
+      margin-left: 0;
+
+      &__top{
+        margin-top: 40px;
+      }
+
+      &__rowTop, &__rowBottom {
+        justify-content: center;
+        margin: 0;
+
+        .c-card{
+          margin-right: 18px;
+          margin-bottom: 18px;
+
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+      }
+
+      &__rowBottom{
+
+        .c-card{
+          margin-bottom: 0;
+
+          &:last-child{
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      &__title{
+        max-width: 100%;
+      }
+
+      &__bottom{
+        margin-top: 30px;
+      }
+    }
   }
+
+  .m-constructor{
+  
+    &__right{
+      margin-left: 60px;
+
+      &__check{
+        width: 400px;
+      }
+  
+    }
+  
+    &__additionalGroup{
+  
+      &__addFood:nth-child(2){
+        margin: 0 32px;
+      }
+  
+      &__addFood{
+  
+        .b-addButton{
+          width: 280px;
+          height: 390px;
+        }
+      }
+    }
+
+
+  }
+  
 }
 
 @media (min-width: 1400px){
@@ -79,6 +157,33 @@
     }
   }
 
+  .m-constructor{
+
+    padding: 64px 0;
+
+    &__right{
+      display: none;
+    }
+  
+    &__left{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  
+    &__additionalGroup{
+  
+      &__addFood{
+        
+        
+        .b-addButton{
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 1000px){
@@ -115,7 +220,7 @@
         align-items: center;
         
 
-        span:first-child{
+        &__item:first-child{
           margin-right: 0;
           margin-bottom: 18px;
         }
@@ -156,16 +261,12 @@
   }
 
   .m-discounts{
-    
-   
 
     &-bold{
       @include content-s-18-w-900;
 
       &.--italic{    
         @include content-s-18-w-900-italic;
-
-      
       }
     }
 
@@ -186,6 +287,7 @@
       &__right{
         width: auto;
         margin-top: 38px;
+        
         @include content-s-18-w-400;
 
         .m-discounts__container__listItem{
@@ -197,13 +299,62 @@
       }
     }
   }
+
+  .m-constructor{
+
+    &__left{
+
+      &__title{
+        @include headings-h-5-s-24-w-700;
+
+      }
+      .b-textLink{
+        @include content-s-18-w-400;
+      }
+    }
+
+    &__additionalGroup{
+      flex-direction: column;
+      margin: 26px 0px 32px;
+
+      &__addFood{
+        margin-top: 26px;
+
+        &:nth-child(2){
+          margin-top: 26px;
+          margin-right: 0;
+          margin-left: 0;
+        }
+
+        &:first-child{
+          margin-top: 0;
+        }
+
+        .b-iconLabel{
+          margin-bottom: 14px;
+
+          svg{
+            width: 28px;
+            height: 28px;
+          }
+
+          &__name{
+            margin-left: 14px;
+            @include content-s-16-w-400;
+          }
+        }
+      }
+
+    }
+  }
+
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 800px){
 
   .m-helloScreen{
-    
+    height: 100vh;
     padding: 0 24px 70px;
 
     &__baner{
@@ -211,4 +362,113 @@
     }
   }
 
+  .m-benifits{
+
+    padding: 0;
+
+    &__left{
+      width: 100%;
+      border-radius: 0;
+    }
+
+    &__right{
+      padding: 40px 16px 108px;
+
+      
+      &__rowTop, &__rowBottom {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+
+
+        .c-card{
+          margin-bottom: 18px;
+
+          &:first-child{
+            margin-right: 0;
+          }
+        }
+          
+      }
+
+
+      &__rowBottom{
+
+        .c-card{
+
+          &:last-child{
+            margin-bottom: 0;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 450px){
+
+  .m-benifits{
+
+    &__checkList{
+
+      svg{
+        width: 26px;
+        height: 26px;
+      }
+
+      .b-checkListItem{
+        margin-bottom: 16px;
+
+        &__text{
+          @include content-s-16-w-400;
+          margin-left: 10px;
+        }
+      }
+
+    }
+
+    &__right{
+      
+      &__title{
+        @include headings-h-5-s-24-w-700;
+        margin-bottom: 20px;
+      }
+
+      &__rowTop, &__rowBottom {
+
+        .c-card{
+          max-width: 288px;
+          margin-bottom: 18px;
+
+          &:first-child{
+            margin-right: 0;
+          }
+
+          svg{
+            width: 32px;
+            height: 32px;
+          }
+
+          &__title{
+
+            &__name{
+              @include content-s-18-w-700;
+            }
+
+            &__price{
+
+              @include content-s-28-w-700;
+
+              &__sign{
+                @include content-s-20-w-700;
+              }
+            }
+          }
+        }
+          
+      }
+
+    }
+  }
 }

@@ -1,0 +1,9 @@
+mixin c-card(className, name, price, sign)
+  .c-card(class=className)
+    .c-card__icons 
+      block
+    .c-card__title
+      .c-card__title__name=name
+      .c-card__title__price=price
+        .c-card__title__price__sign=sign
+

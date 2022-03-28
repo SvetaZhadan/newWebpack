@@ -18,11 +18,16 @@ mixin m-head
 mixin m-headerMenu
   .m-headerMenu
     nav.m-headerMenu__nav
-      +b-textLink('b-textLink --black --s-20') О нас
-      +b-textLink('b-textLink --black --s-20') Создать набор
-      +b-textLink('b-textLink --black --s-20') Оплата и доставка
-      +b-textLink('b-textLink --black --s-20') Как мы готовим?
-      +b-textLink('b-textLink --black --s-20') Контакты
+      a(href="#") 
+        +b-textLink('b-textLink --black --s-20') О нас
+      a(href="#") 
+        +b-textLink('b-textLink --black --s-20') Создать набор
+      a(href="#") 
+        +b-textLink('b-textLink --black --s-20') Оплата и доставка
+      a(href="#") 
+        +b-textLink('b-textLink --black --s-20') Как мы готовим?
+      a(href="#footer") 
+        +b-textLink('b-textLink --black --s-20') Контакты
     .m-headerMenu__socials
       +b-IconButton('b-socialLink --twitter --outline')
         include ../../assets/icons/Socials/Twitter.svg
@@ -42,11 +47,16 @@ mixin m-header
         a(href="#").m-header__logo.--white
           include ../../assets/icons/CookToo-Logo-alt.svg
         nav.m-header__list
-            +b-textLink('b-textLink --s-18') О нас
-            +b-textLink('b-textLink --s-18') Создать набор 
-            +b-textLink('b-textLink --s-18') Оплата и доставка
-            +b-textLink('b-textLink --s-18') Как мы готовим? 
-            +b-textLink('b-textLink --s-18') Контакты
+            a(href="#") 
+              +b-textLink('b-textLink --s-18') О нас
+            a(href="#") 
+              +b-textLink('b-textLink --s-18') Создать набор 
+            a(href="#") 
+              +b-textLink('b-textLink --s-18') Оплата и доставка
+            a(href="#") 
+              +b-textLink('b-textLink --s-18') Как мы готовим? 
+            a(href="#footer")  
+              +b-textLink('b-textLink --s-18') Контакты
       .m-header__right 
         +b-textLink('b-textLink --white --s-18') +7 928 246 50 33
         +b-button('b-roundButton') Заказать
@@ -62,7 +72,7 @@ mixin m-helloScreen
       span.m-helloScreen__baner__primary меньше
 
 mixin m-footer 
-  .m-footer 
+  .m-footer#footer
     .m-footerTop
       .m-footerTop__left 
         a(href="#").m-footer__logo
@@ -72,15 +82,15 @@ mixin m-footer
         .m-footer__address г. Краснодар, ул. Ставропольская, д. 123
     .m-footerBottom 
       .m-footerBottom__left 
-        span Условия оплаты и доставки
-        span Политика конфиденциальности
+        a(href="#").m-footerBottom__left__item  Условия оплаты и доставки
+        a(href="#").m-footerBottom__left__item  Политика конфиденциальности
       .m-footerBottom__right
         span Разработано
         a(href="#").m-footer__companyLogo
           include ../../assets/icons/ASTEQ-Logo.svg
 mixin m-discounts 
   .m-discounts
-    .m-discounts__bg
+      //- .m-discounts__bg
       .m-discounts__container 
         .m-discounts__container__left
           include ../../assets/icons/Illustrations/perc.svg
@@ -101,8 +111,7 @@ mixin m-discounts
 
 mixin m-benifits 
   .m-benifits
-    .m-benifits__left
-      img(src="../../assets/images/About-Image.png", alt="")
+    img.m-benifits__left(src="../../assets/images/About-Image.png", alt="")
     .m-benifits__right 
       .m-benifits__right__top 
         .m-benifits__right__title Почему стоит заказать обед на 
@@ -132,6 +141,30 @@ mixin m-benifits
             include ../../assets/icons/Decorations/Steak-1.svg
             include ../../assets/icons/Decorations/Salad.svg
 
+mixin m-constructor 
+  .m-constructor 
+    //- .m-constructor__container
+    .m-constructor__left
+      .m-constructor__left__title Создать бизнес-ланч
+      .m-constructor__left__container 
+        .m-constructor__additionalGroup 
+          .m-constructor__additionalGroup__addFood
+            +b-iconLabel('b-iconLabel', 'Первое') 
+              include ../../assets/icons/Decorations/Soup.svg
+            +b-addButton('b-addButton')
+          .m-constructor__additionalGroup__addFood.--brown
+            +b-iconLabel('b-iconLabel', 'Второе') 
+              include ../../assets/icons/Decorations/Steak-1.svg
+            +b-addButton('b-addButton')
+          .m-constructor__additionalGroup__addFood.--green
+            +b-iconLabel('b-iconLabel', 'Салат') 
+              include ../../assets/icons/Decorations/Salad.svg
+            +b-addButton('b-addButton')
+        +b-textLink('b-textLink --orange') + Добавить еще один обед
+    .m-constructor__right
+      .m-constructor__right__check Добавьте блюда в заказ
+      .m-constructor__right__freeCourier При заказе от 400 руб. доставка 
+        span.freeCourier__primary бесплатно
 
 
 
