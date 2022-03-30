@@ -78,11 +78,13 @@
   
     &__right{
       margin-left: 60px;
+    }
+
+    .c-check{
 
       &__check{
         width: 400px;
       }
-  
     }
   
     &__additionalGroup{
@@ -107,9 +109,14 @@
 
 @media (min-width: 1400px){
 
-  .m-headerMenu{
+  .m-headerMenu {
     display: none;
   }
+
+  .c-check-popup{
+    height: 0;
+  }
+
 
 }
 
@@ -164,23 +171,16 @@
     &__right{
       display: none;
     }
-  
-    &__left{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-  
-    &__additionalGroup{
-  
-      &__addFood{
-        
-        
-        .b-addButton{
-          margin-right: 0;
-        }
+
+    .c-check-popup{
+      display: block;
+    } 
+
+    .c-addButton__addFood{
+
+      .b-addButton{
+        width: 280px;
+        height: 390px;
       }
     }
   }
@@ -277,6 +277,10 @@
       &__left{
         margin-right: 0;
 
+        &__container{
+          margin-top: 25px;
+        }
+          
         svg{
           width: 148px;
           height: 214px;
@@ -286,7 +290,7 @@
 
       &__right{
         width: auto;
-        margin-top: 38px;
+        // margin-top: 38px;
         
         @include content-s-18-w-400;
 
@@ -302,52 +306,53 @@
 
   .m-constructor{
 
+    .b-iconLabel{
+      margin-bottom: 14px;
+  
+      svg{
+        width: 28px;
+        height: 28px;
+      }
+  
+      &__name{
+        margin-left: 14px;
+        @include content-s-16-w-400;
+      }
+    }
+
     &__left{
+
+      
+      .text-link__wrap{
+        border-width: 0px;
+      }
 
       &__title{
         @include headings-h-5-s-24-w-700;
 
       }
+
       .b-textLink{
         @include content-s-18-w-400;
       }
     }
 
-    &__additionalGroup{
-      flex-direction: column;
-      margin: 26px 0px 32px;
+    .c-addButton{
 
-      &__addFood{
-        margin-top: 26px;
+      &__additionalGroup{
 
-        &:nth-child(2){
-          margin-top: 26px;
-          margin-right: 0;
-          margin-left: 0;
-        }
-
-        &:first-child{
-          margin-top: 0;
-        }
-
-        .b-iconLabel{
-          margin-bottom: 14px;
-
-          svg{
-            width: 28px;
-            height: 28px;
-          }
-
-          &__name{
-            margin-left: 14px;
-            @include content-s-16-w-400;
-          }
-        }
+        flex-direction: column;
       }
 
-    }
-  }
+      &__addFood{
 
+        &:nth-child(2){
+          margin: 32px 0;
+        }
+      }
+    }
+
+  }
 }
 
 

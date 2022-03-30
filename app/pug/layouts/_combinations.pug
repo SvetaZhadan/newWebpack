@@ -7,3 +7,27 @@ mixin c-card(className, name, price, sign)
       .c-card__title__price=price
         .c-card__title__price__sign=sign
 
+
+mixin c-addButton
+  .c-addButton__additionalGroup
+    .c-addButton__addFood
+      +b-iconLabel('b-iconLabel', 'Первое') 
+        include ../../assets/icons/Decorations/Soup.svg
+      +b-addButton('b-addButton')
+    .c-addButton__addFood.--brown
+      +b-iconLabel('b-iconLabel', 'Второе') 
+        include ../../assets/icons/Decorations/Steak-1.svg
+      +b-addButton('b-addButton')
+    .c-addButton__addFood.--green
+      +b-iconLabel('b-iconLabel', 'Салат') 
+        include ../../assets/icons/Decorations/Salad.svg
+      +b-addButton('b-addButton')
+mixin c-check
+  .c-check__check Добавьте блюда в заказ
+
+mixin c-check-popup 
+  .c-check-popup 
+    .c-check-popup__freeCourier При заказе от 400 руб. доставка 
+      span.freeCourier__primary бесплатно
+    button.needMore Добавьте еще одно блюдо
+    .c-check__check-popup Добавьте блюда в заказ

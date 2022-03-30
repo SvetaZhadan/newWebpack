@@ -95,3 +95,18 @@ let scrolled = window.pageYOffset;
                 logo.classList.add('--white')
         }
 };
+
+let btnCheckPopop=document.querySelector('.needMore'),
+        checkPopup=document.querySelector('.c-check-popup'),
+        constructor=document.querySelector('.m-constructor');
+
+btnCheckPopop.onclick=function(){
+        if(checkPopup.classList.contains('--close')) {
+                checkPopup.classList.add('--h-100per');
+                checkPopup.classList.remove('--close');
+        }
+        else{
+                checkPopup.classList.remove('--h-100per');
+                checkPopup.classList.add('--close');
+        }
+}

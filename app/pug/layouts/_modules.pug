@@ -146,25 +146,15 @@ mixin m-constructor
     //- .m-constructor__container
     .m-constructor__left
       .m-constructor__left__title Создать бизнес-ланч
-      .m-constructor__left__container 
-        .m-constructor__additionalGroup 
-          .m-constructor__additionalGroup__addFood
-            +b-iconLabel('b-iconLabel', 'Первое') 
-              include ../../assets/icons/Decorations/Soup.svg
-            +b-addButton('b-addButton')
-          .m-constructor__additionalGroup__addFood.--brown
-            +b-iconLabel('b-iconLabel', 'Второе') 
-              include ../../assets/icons/Decorations/Steak-1.svg
-            +b-addButton('b-addButton')
-          .m-constructor__additionalGroup__addFood.--green
-            +b-iconLabel('b-iconLabel', 'Салат') 
-              include ../../assets/icons/Decorations/Salad.svg
-            +b-addButton('b-addButton')
-        +b-textLink('b-textLink --orange') + Добавить еще один обед
+      .m-constructor__left__container  
+        +c-addButton
+        .text-link__wrap
+          +b-textLink('b-textLink --orange') + Добавить еще один обед
     .m-constructor__right
-      .m-constructor__right__check Добавьте блюда в заказ
-      .m-constructor__right__freeCourier При заказе от 400 руб. доставка 
+      +c-check
+      .c-check__freeCourier При заказе от 400 руб. доставка 
         span.freeCourier__primary бесплатно
+  +c-check-popup 
 
 
 

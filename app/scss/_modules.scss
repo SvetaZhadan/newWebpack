@@ -301,20 +301,10 @@ body{
 } 
 
 .m-discounts {
-  position: relative;
-  // height: 100%;
-  height: 419px;
+  height: auto;
   overflow: hidden;
 
-  &::before {
-    position: absolute; 
-    z-index: -1;
-    content: '';
-    width: 100%;
-    height: 100%;
-    background: url('../assets/icons/Backgrounds/percent-left.svg') repeat-y left,  url('../assets/icons/Backgrounds/percent-right.svg')repeat-y 100% 0, $bg-orange-linear;
-
-  }
+  background: url('../assets/icons/Backgrounds/percent-left.svg') repeat-y left,  url('../assets/icons/Backgrounds/percent-right.svg')repeat-y 100% 0, $bg-orange-linear;
  
   &-bold{
     @include headings-h-3-s-40-w-800;
@@ -431,128 +421,34 @@ body{
 }
 
 .m-constructor{
+  position: relative;
   display: flex;
-  // align-items: center;
   justify-content: center;
   width: 100%;
   padding: 152px 0 112px;
 
-
-  &__right{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 112px;
-
-    &__check{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 470px;
-      height: 100%;
-      padding: 0 47px;
-      color: $primary-500;
-      background-image: url('../assets/icons/Illustrations/Fork-big.svg');
-      background-repeat: no-repeat;
-      background-position: bottom -52px right 75px;
-      border-radius: 24px;
-      box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
-      @include headings-h-3-s-40-w-700;
-      cursor: pointer;
-      text-align: center;
-      transition-duration: 0.3s;
-      
-      &:hover{
-        background-color: darken($monochrome-white-100,1);
-      }
-
-    }
-
-    &__freeCourier{
-      margin-top: 32px;
-      @include content-s-18-w-400;
-      text-align: center;
-
-      .freeCourier__primary{
-        color: $primary-500;
-        @include content-s-18-w-800;
-      }
-    }
-
-  }
-
   &__left{
+
+    .c-addButton__additionalGroup{
+      margin: 30px 0;
+    }
 
     &__title{
       @include headings-h-3-s-40-w-700;
       
     }
 
-    .b-iconLabel{
-      margin-bottom: 24px;
+    .text-link__wrap{
+      padding-top: 28px;
+      border-top: 1px dashed $primary-500;    
     }
   }
 
-  &__additionalGroup{
+  &__right{
     display: flex;
-    justify-content: space-between;
-    margin: 40px 0;
+    flex-direction: column;
+    margin-left: 112px;
 
-    &__addFood:nth-child(2){
-      margin: 0 32px;
-    }
-
-    &__addFood{
-
-      .b-addButton{
-        width: 334px;
-        height: 466px;
-      }
-    }
   }
 
-  .b-textLink{
-    width: 100%;
-    padding-top: 28px;
-  }
-
-  .--brown{
-
-
-
-    svg path{
-      fill: $accents-brown-500;
-    }
-  
-    .b-addButton{
-      border-color: $accents-brown-500;
-
-      &:hover {
-        background-color: $accents-brown-100;
-      }
-
-      &__text{
-        color: $accents-brown-500;
-      }
-    }
-  }
-
-  .--green{
-
-    svg path{
-      fill: $accents-green-500;
-    }
-  
-    .b-addButton{
-      border-color: $accents-green-500;
-
-      &:hover {
-        background-color: $accents-green-100;
-      }
-
-      &__text{
-        color: $accents-green-500;
-      }
-    }
-  }
 }
