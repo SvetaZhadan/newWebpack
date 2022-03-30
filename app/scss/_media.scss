@@ -1,4 +1,13 @@
 /* ================================ Media ================================ */
+@media (min-width: 2560px){
+  .m-benifits{
+    justify-content: center;
+    &__left{
+      border-radius: 24px;
+    }
+  }
+}
+
 @media (max-width: 1700px){
 
   .m-header{
@@ -104,6 +113,14 @@
 
 
   }
+
+
+  .c-foodCart{
+    
+    margin-right: 0px;
+    margin-bottom: 16px;
+
+  }
   
 }
 
@@ -115,6 +132,8 @@
 
   .c-check-popup{
     height: 0;
+    display: none;
+
   }
 
 
@@ -172,10 +191,6 @@
       display: none;
     }
 
-    .c-check-popup{
-      display: block;
-    } 
-
     .c-addButton__addFood{
 
       .b-addButton{
@@ -184,6 +199,11 @@
       }
     }
   }
+
+  .c-check-popup{
+    // display: block;
+    // height: 100px;
+  } 
 }
 
 @media (max-width: 1000px){

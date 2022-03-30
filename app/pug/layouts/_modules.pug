@@ -130,7 +130,7 @@ mixin m-benifits
             include ../../assets/icons/Decorations/Soup.svg
             include ../../assets/icons/Decorations/Steak-1.svg
             include ../../assets/icons/Decorations/Salad.svg
-          +c-card('--yellow', 'Первое + Второе', '250', '₽')
+          +c-card('--yellow ', 'Первое + Второе', '250', '₽')
             include ../../assets/icons/Decorations/Soup.svg
             include ../../assets/icons/Decorations/Steak-1.svg
         .m-benifits__right__rowBottom
@@ -140,6 +140,24 @@ mixin m-benifits
           +c-card('--brown', 'Второе + Салат', '250', '₽')
             include ../../assets/icons/Decorations/Steak-1.svg
             include ../../assets/icons/Decorations/Salad.svg
+
+mixin foodCartsFirst
+  .m-foodCartsFirst
+    +b-IconButton('b-transparentIconButton closefoodCartsFirst')
+      include ../../assets/icons/Actions/Close.svg
+    .m-foodCartsFirst__title Выберите блюдо
+    .m-foodCartsFirst__container
+      +c-foodCard('Свиная шея в ароматных специях', '200 г - 125 ккал')
+        img(src="../assets/icons/Card-Image.png", alt="")
+      +c-foodCard('Бифстейк из говядины с гелем из желтка', '250 г - 125 ккал / 2500 г - 125 ккал')
+        img(src="../assets/icons/Card-Image.png", alt="")
+      +c-foodCard('Томлёное седло ягнёнка с овощами в перечной карамели', '2500 г - 125 ккал')
+        img(src="../assets/icons/Card-Image.png", alt="")
+      +c-foodCard('Говяжьи щёчки с соусом из рябины и ризотто из сельдерея', '250 г - 125 ккал')
+        img(src="../assets/icons/Card-Image.png", alt="")
+      +c-foodCard('Баранина на рёбрах', '400 г - 125 ккал / 2500 г - 125 ккал')
+        img(src="../assets/icons/Card-Image.png", alt="")
+  +blackout
 
 mixin m-constructor 
   .m-constructor 
@@ -154,7 +172,7 @@ mixin m-constructor
       +c-check
       .c-check__freeCourier При заказе от 400 руб. доставка 
         span.freeCourier__primary бесплатно
-  +c-check-popup 
+    +c-check-popup 
 
 
 
