@@ -57,7 +57,6 @@ function toggleMenu(obj) {
 burger.onclick = function () {
   //onclose
   if (burger.classList.contains('--close')) {
-    
     toggleMenu('remove');
     logo.classList.add('--white');
   }
@@ -65,6 +64,12 @@ burger.onclick = function () {
   else {
     toggleMenu('add');
     logo.classList.remove('--white');
+
+    if (scrolled >= 10) {
+      header.classList.add('--bg-white');
+      logo.classList.remove('--white');
+    }
+    
     headerMobile.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -113,31 +118,78 @@ window.onscroll = function () {
 let closefoodCarts = document.querySelector('.closefoodCartsFirst'),
   foodFirstPopup = document.querySelector('.m-foodCartsFirst'),
   blackOut = document.querySelector('.blackout');
-  console.log('test 1');
 
-closefoodCarts.onclick = function () {
+  closefoodCarts.onclick = function () {
   popupVisible('remove', foodFirstPopup);
 };
-console.log('test 2');
 
 blackOut.onclick = function () {
   popupVisible('remove', foodFirstPopup);
 };
-console.log('test 3');
 
 let fitstCourseBtn = document.querySelector('.firstСourse'),
-  secondCourseBtn = document.querySelector('.seondСourse'),
-  sladCourseBtn = document.querySelector('.saladСourse');
+  secondCourseBtn = document.querySelector('.secondСourse'),
+  sladCourseBtn = document.querySelector('.saladCourse');
+ 
 
 fitstCourseBtn.onclick = function () {
-  console.log('test');
   let set;
   set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
   popupVisible(set, foodFirstPopup);
 };
+secondCourseBtn.onclick=function(){
+  let set;
+  set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
+  popupVisible(set, foodFirstPopup);
+}
+sladCourseBtn.onclick=function(){
+  let set;
+  set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
+  popupVisible(set, foodFirstPopup);
+}
 
 function popupVisible(obj, popup) {
   popup.classList[obj]('--open');
   blackOut.classList[obj]('--open');
   document.body.classList[obj]('--no-scroll');
+}
+
+let addDinerBtn=document.querySelector('.addDinerBtn'),
+  openDinner=document.querySelectorAll('.openDinner'),
+  addDiner=document.querySelector('.addDiner'),
+  closeDinner2=document.querySelectorAll('.closeDinner2');
+
+
+addDinerBtn.onclick=function(){
+
+  for (let index = 0; index < 5; index++) {
+    openDinner[index].classList.add('--open')
+    addDiner.classList.add('--open')
+  }
+}
+
+closeDinner2.onclick=function(){
+  for (let index = 0; index < 5; index++) {
+    openDinner[index].classList.remove('--open')
+
+  }
+  addDiner.classList.remove('--open')
+}
+
+let morph=document.querySelector('.b-morph'),
+  answer=document.querySelector('.m-payAndDel__answer')
+
+morph.onclick=function(){
+
+  if(morph.classList.contains('--open')){
+      morph.classList.remove('--open')
+      answer.classList.remove('--open')
+      
+  }
+
+  else{
+    morph.classList.add('--open')
+    answer.classList.add('--open')
+
+  }
 }

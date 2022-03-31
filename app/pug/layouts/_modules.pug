@@ -115,9 +115,9 @@ mixin m-benifits
     .m-benifits__right 
       .m-benifits__right__top 
         .m-benifits__right__title Почему стоит заказать обед на 
-          span cook
-          span too
-          span .ru?
+          span.red cook
+          span.gray too
+          span.lightgray .ru?
         .m-benifits__checkList 
           +b-checkListItem('b-checkListItem') Бесплатная доставка обеденных сетов
           +b-checkListItem('b-checkListItem') Привлекательная система скидок и бонусов 
@@ -161,85 +161,62 @@ mixin foodCartsFirst
 
 mixin m-constructor 
   .m-constructor 
-    //- .m-constructor__container
     .m-constructor__left
       .m-constructor__left__title Создать бизнес-ланч
+      +b-controlHeading('b-controlHeading openDinner','Обед 1')
+        button.closeDinner 
+          include ../../assets/icons/Actions/Trash.svg
       .m-constructor__left__container  
         +c-addButton
+        .addDiner
+          +b-controlHeading('b-controlHeading openDinner','Обед 2')
+            button.closeDinner2
+              include ../../assets/icons/Actions/Trash.svg
+          +c-addButton
         .text-link__wrap
-          +b-textLink('b-textLink --orange') + Добавить еще один обед
+          +b-textLink('b-textLink --orange addDinerBtn') + Добавить еще один обед
     .m-constructor__right
       +c-check
       .c-check__freeCourier При заказе от 400 руб. доставка 
         span.freeCourier__primary бесплатно
     +c-check-popup 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+mixin m-subscribe 
+  .m-subscribe
+    .m-subscribe__left 
+      .m-subscribe__title Подпишись на нас в соц.сетях
+      .m-subscribe__text Мы в них много шутим, рассказываем о новинках меню и проводим конкурсы с ценными и вкусными призами.
+    .m-subscribe__right
+      +b-IconButton('b-socialLink --twitter')
+        include ../../assets/icons/Socials/Twitter.svg
+      +b-IconButton('b-socialLink --vk')
+        include ../../assets/icons/Socials/vk.svg
+      +b-IconButton('b-socialLink --facebook')
+        include ../../assets/icons/Socials/Facebook.svg
+
+mixin m-about 
+  .m-about
+    img.m-about__left(src="../../assets/images/Benefits-Image.png", alt="")
+    .m-about__right 
+      .m-about__title Обеды на любой вкус
+      .m-about__text Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку. Мы приготовим и привезем вкусную еду в любую часть города и даже в зоны за его пределами. В нашей компании Вы можете как подобрать индивидуальный обед для каждого, если у Вас не слишком большое количество человек (от 10 чел.) и есть желание собирать заказы, так и выбрать комплексный обед для всех. Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку. Мы приготовим и привезем вкусную еду в любую часть города и даже в зоны за его пределами.
+
+mixin m-payAndDel
+  .m-payAndDel
+    .m-payAndDel__left
+      .m-payAndDel__title Оплата и доставка
+      .m-payAndDel__text Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку. Мы приготовим и привезем вкусную еду в любую часть города и даже в зоны за его пределами. В нашей компании Вы можете как подобрать индивидуальный обед для каждого, если у Вас не слишком большое количество человек (от 10 чел.) и есть желание собирать заказы, так и выбрать комплексный обед для всех.
+      a(href="#") 
+        +b-textLink('b-textLink --orange  --s-18') Условия оплаты, доставки и возврата
+    .m-payAndDel__right 
+      .m-payAndDel__question Сколько стоит доставка?
+        +b-morph
+      .m-payAndDel__answer Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.
+
+      .m-payAndDel__question Сколько стоит доставка?
+        +b-morph
+      .m-payAndDel__answer Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.
+
+      .m-payAndDel__question Сколько стоит доставка?
+        +b-morph
+      .m-payAndDel__answer Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.

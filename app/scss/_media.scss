@@ -1,7 +1,9 @@
 /* ================================ Media ================================ */
 @media (min-width: 2560px){
-  .m-benifits{
+
+  .m-benifits, .m-about{
     justify-content: center;
+
     &__left{
       border-radius: 24px;
     }
@@ -110,16 +112,28 @@
         }
       }
     }
-
-
   }
 
-
   .c-foodCart{
-    
     margin-right: 0px;
     margin-bottom: 16px;
+  }
 
+  .m-about{
+    flex-direction: column;
+    padding: 125px 0 0;
+
+    &__left{
+      border-radius: 24px;
+    }
+
+    &__right{
+      max-width: 948px;
+      max-height: auto;
+      margin-top: 40px;
+      margin-right: 0;
+      margin-left: 0;
+    }
   }
   
 }
@@ -131,9 +145,13 @@
   }
 
   .c-check-popup{
-    height: 0;
     display: none;
+    height: 0;
 
+  }
+
+  .b-burger{  
+    display: none;
   }
 
 
@@ -204,6 +222,13 @@
     // display: block;
     // height: 100px;
   } 
+
+  .m-subscribe{
+
+    &__right{
+      margin-left: 115px;
+    }
+  }
 }
 
 @media (max-width: 1000px){
@@ -373,6 +398,74 @@
     }
 
   }
+
+  .m-subscribe{
+    flex-direction: column;
+    align-items: center;
+    padding: 116px 24px;
+
+    &__right{
+      margin-top: 31px;
+      margin-left: 0px;
+    }
+
+    &__title{
+      @include headings-h-5-s-24-w-900;
+    }
+
+    &__text{
+      @include content-s-16-w-400;
+    }
+
+    .b-socialLink{
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .m-about{
+    padding: 0 0 80px;
+
+    &__left{
+      width: 100%;
+      border-radius: 0;
+    }
+
+    &__right{
+      height: auto;
+      margin: 40px 16px 0;
+    }
+
+    &__title{
+      @include headings-h-5-s-24-w-700;
+    }
+
+    &__text{
+      @include text-s-16-w-400;
+    }
+  }
+
+  .m-payAndDel{
+    flex-direction: column;
+    padding: 64px 16px 88px;
+
+    &__right{
+      margin-left: 0;
+      padding-top: 42px;
+    }
+
+    &__title{
+      @include headings-h-5-s-24-w-700;
+    }
+
+    &__text{
+      @include text-s-16-w-400;
+    }
+
+    .b-textLink{
+      @include content-s-14-w-400;
+    }
+  }
 }
 
 
@@ -429,6 +522,28 @@
 
     }
   }
+
+  .m-foodCartsFirst{
+    padding: 58px 20px;
+
+    &__container{
+      justify-content: center;
+    }
+
+    .c-foodCart{
+      margin-right: 0;
+  
+      &__name{
+        @include content-s-16-w-600;
+      }
+  
+      &__weight{
+        @include content-s-14-w-400;
+      }
+    }
+  } 
+
+
 }
 
 @media (max-width: 450px){

@@ -505,10 +505,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 32px;
 
   &__name {
+    width: 164px;
     color: $primary-500;
-    @include content-s-18-w-700;
+    @include content-s-36-w-700;
   }
 
   hr {
@@ -617,5 +619,43 @@
     path {
       fill: $primary-500;
     }
+  }
+}
+
+.b-morph {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  
+  .line-1, .line-2{
+    width: 26px;
+    height: 3px;
+    background-color: $primary-500;
+    transition: transform 0.3s ease, height 0.3s ease;
+  }
+
+  .line-2{
+    position: absolute;
+    transform: rotate(90deg);
+  }
+
+  &.--open{
+
+    .line-2{
+      transform: rotate(180deg);
+    }
+
+    .line-1{
+      height: 0;
+    }
+  }
+
+  &Main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

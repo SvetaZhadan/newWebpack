@@ -8,8 +8,8 @@ mixin c-card(className, name, price, sign)
         .c-card__title__price__sign=sign
 
 
-mixin c-addButton
-  .c-addButton__additionalGroup
+mixin c-addButton(className)
+  .c-addButton__additionalGroup(class=className)
     .c-addButton__addFood
       +b-iconLabel('b-iconLabel', 'Первое') 
         include ../../assets/icons/Decorations/Soup.svg
