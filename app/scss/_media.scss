@@ -135,6 +135,47 @@
       margin-left: 0;
     }
   }
+
+  .c-howWeCook {
+
+    padding: 64px 34px 88px;
+
+    &__container{
+      flex-direction: column;
+
+      img{
+
+        margin-right: 0;
+        margin-bottom: 24px;
+        border-radius: 24px;
+
+      }
+
+      &.--top{
+        flex-direction: column;
+        margin-left: 0;
+
+        img{
+          margin-left: 0;
+          border-radius: 24px;
+        }
+      }
+
+      &.--center{
+        margin: 49px 0px;
+      }
+  
+      &.--bottom{
+        margin-right: 0px;
+      }
+
+ 
+    }
+
+    &__mainTitle{
+      margin-bottom: 40px;
+    }
+  }
   
 }
 
@@ -147,7 +188,6 @@
   .c-check-popup{
     display: none;
     height: 0;
-
   }
 
   .b-burger{  
@@ -228,6 +268,10 @@
     &__right{
       margin-left: 115px;
     }
+  }
+
+  .m-payAndDel{
+    padding: 64px 70px 88px;
   }
 }
 
@@ -451,7 +495,6 @@
 
     &__right{
       margin-left: 0;
-      padding-top: 42px;
     }
 
     &__title{
@@ -466,6 +509,26 @@
       @include content-s-14-w-400;
     }
   }
+
+  .c-howWeCook{
+
+    &__mainTitle{
+      @include headings-h-4-s-32-w-700;
+    }
+
+    &__title{
+      @include headings-h-5-s-24-w-700;
+
+      svg{
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    &__text{
+      @include text-s-16-w-400;
+    }
+  } 
 }
 
 

@@ -36,7 +36,8 @@ mixin m-headerMenu
       +b-IconButton('b-socialLink --facebook --outline')
         include ../../assets/icons/Socials/facebook.svg
     .m-headerMenu__contacts 
-      +b-textLink('b-textLink --black --s-20') +7 928 246 50 33
+      a(href="tel:+79282465033")
+        +b-textLink('b-textLink --black --s-20') +7 928 246 50 33
       .m-headerMenu__address г. Краснодар, ул. Ставропольская, д. 123
 
 
@@ -58,7 +59,8 @@ mixin m-header
             a(href="#footer")  
               +b-textLink('b-textLink --s-18') Контакты
       .m-header__right 
-        +b-textLink('b-textLink --white --s-18') +7 928 246 50 33
+        a(href="tel:+79282465033")
+          +b-textLink('b-textLink --s-20') +7 928 246 50 33
         +b-button('b-roundButton') Заказать
       +b-burger
     +m-headerMenu
@@ -78,7 +80,8 @@ mixin m-footer
         a(href="#").m-footer__logo
           include ../../assets/icons/CookToo-Logo-alt.svg
       .m-footerTop__right
-        +b-textLink('b-textLink --black') +7 928 246 50 33
+        a(href="tel:+79282465033")
+          +b-textLink('b-textLink --black --s-20') +7 928 246 50 33
         .m-footer__address г. Краснодар, ул. Ставропольская, д. 123
     .m-footerBottom 
       .m-footerBottom__left 
@@ -209,14 +212,28 @@ mixin m-payAndDel
       a(href="#") 
         +b-textLink('b-textLink --orange  --s-18') Условия оплаты, доставки и возврата
     .m-payAndDel__right 
-      .m-payAndDel__question Сколько стоит доставка?
-        +b-morph
-      .m-payAndDel__answer Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.
+      +c-accordeonSection('Сколько стоит доставка?','Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.')
+      +c-accordeonSection('Могу ли я оплатить заказ наличными?','Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.')
+      +c-accordeonSection('Что мне делать, если заказ не привезли?','Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.')
 
-      .m-payAndDel__question Сколько стоит доставка?
-        +b-morph
-      .m-payAndDel__answer Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.
-
-      .m-payAndDel__question Сколько стоит доставка?
-        +b-morph
-      .m-payAndDel__answer Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.
+mixin c-howWeCook 
+  .c-howWeCook 
+    .c-howWeCook__mainTitle Как мы готовим?
+    .c-howWeCook__container.--top
+      img(src="../../assets/images/HWC-Image_1.png", alt="")
+      .c-howWeCook__containerText
+        .c-howWeCook__title Выгодно
+          include ../../assets/icons/Decorations/Money.svg
+        .c-howWeCook__text В отличие от кафе и ресторанов в стоимость наших блюд не входят расходы на аренду дорогостоящих помещений, содержание многочисленного персонала и обслуживание кухонного оборудования. На нашем сайте вы платите лишь за продукты и работу профессионального повара.  
+    .c-howWeCook__container.--center
+      img(src="../../assets/images/HWC-Image_2.png", alt="")
+      .c-howWeCook__containerText
+        .c-howWeCook__title Качественно
+          include ../../assets/icons/Decorations/Cook-Hat.svg
+        .c-howWeCook__text У нас работают лишь высокопрофессиональные повара с многолетним опытом работы в сфере общепита. Несмотря на это в компании действует система контроля качества, которая ежедневно следит за соответствием рабочих операций нашим высоким стандартам. 
+    .c-howWeCook__container.--bottom
+      img(src="../../assets/images/HWC-Image_3.png", alt="")
+      .c-howWeCook__containerText
+        .c-howWeCook__title Вкусно
+          include ../../assets/icons/Decorations/Chicken.svg
+        .c-howWeCook__text Все блюда готовятся по единой рецептурной карте с использованием только свежих продуктов. Это дает нашим клиентам возможность всегда быть уверенными в высоком качестве и вкусе наших блюд.

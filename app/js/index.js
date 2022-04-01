@@ -51,25 +51,31 @@ function toggleMenu(obj) {
   burger.classList[obj]('--close');
   headerMobile.classList[obj]('--active');
   header.classList[obj]('--h-100per');
-  header.classList[obj]('--bg-white');
 }
 
 burger.onclick = function () {
+  let scrolled = window.pageYOffset;
+
   //onclose
   if (burger.classList.contains('--close')) {
     toggleMenu('remove');
-    logo.classList.add('--white');
+    if (scrolled <= 10) {
+      header.classList.remove('--bg-white');
+      logo.classList.add('--white');
+    } 
+    
   }
   //onopen
   else {
     toggleMenu('add');
     logo.classList.remove('--white');
+    header.classList.add('--bg-white');
 
     if (scrolled >= 10) {
       header.classList.add('--bg-white');
       logo.classList.remove('--white');
     }
-    
+
     headerMobile.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -119,7 +125,7 @@ let closefoodCarts = document.querySelector('.closefoodCartsFirst'),
   foodFirstPopup = document.querySelector('.m-foodCartsFirst'),
   blackOut = document.querySelector('.blackout');
 
-  closefoodCarts.onclick = function () {
+closefoodCarts.onclick = function () {
   popupVisible('remove', foodFirstPopup);
 };
 
@@ -130,23 +136,22 @@ blackOut.onclick = function () {
 let fitstCourseBtn = document.querySelector('.firstСourse'),
   secondCourseBtn = document.querySelector('.secondСourse'),
   sladCourseBtn = document.querySelector('.saladCourse');
- 
 
 fitstCourseBtn.onclick = function () {
   let set;
   set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
   popupVisible(set, foodFirstPopup);
 };
-secondCourseBtn.onclick=function(){
+secondCourseBtn.onclick = function () {
   let set;
   set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
   popupVisible(set, foodFirstPopup);
-}
-sladCourseBtn.onclick=function(){
+};
+sladCourseBtn.onclick = function () {
   let set;
   set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
   popupVisible(set, foodFirstPopup);
-}
+};
 
 function popupVisible(obj, popup) {
   popup.classList[obj]('--open');
@@ -154,42 +159,62 @@ function popupVisible(obj, popup) {
   document.body.classList[obj]('--no-scroll');
 }
 
-let addDinerBtn=document.querySelector('.addDinerBtn'),
-  openDinner=document.querySelectorAll('.openDinner'),
-  addDiner=document.querySelector('.addDiner'),
-  closeDinner2=document.querySelectorAll('.closeDinner2');
+let addDinerBtn = document.querySelector('.addDinerBtn'),
+  openDinner = document.querySelectorAll('.openDinner'),
+  addDiner = document.querySelector('.addDiner'),
+  closeDinner2 = document.querySelectorAll('.closeDinner2');
 
-
-addDinerBtn.onclick=function(){
-
+addDinerBtn.onclick = function () {
   for (let index = 0; index < 5; index++) {
-    openDinner[index].classList.add('--open')
-    addDiner.classList.add('--open')
+    openDinner[index].classList.add('--open');
+    addDiner.classList.add('--open');
   }
-}
+};
 
-closeDinner2.onclick=function(){
+closeDinner2.onclick = function () {
   for (let index = 0; index < 5; index++) {
-    openDinner[index].classList.remove('--open')
-
+    openDinner[index].classList.remove('--open');
   }
-  addDiner.classList.remove('--open')
+  addDiner.classList.remove('--open');
+};
+
+let accordeonSection = document.querySelectorAll('.c-accordeonSection');
+
+// accordion({ query: '.c-accordeonSection__question' });
+
+for (const element of accordeonSection) {
+  let question = element.querySelector('.c-accordeonSection__question');
+  let answer = element.querySelector('.c-accordeonSection__answer');
+  let morph = element.querySelector('.b-morph');
+  question.onclick = function () {
+    if (morph.classList.contains('--open')) {
+      morph.classList.remove('--open');
+      answer.classList.remove('--open');
+    } else {
+      answer.classList.add('--open');
+      morph.classList.add('--open');
+  }
+  };
 }
 
-let morph=document.querySelector('.b-morph'),
-  answer=document.querySelector('.m-payAndDel__answer')
+let check = document.querySelector('.c-check__check'),
+  addButton = document.querySelectorAll('.b-addButton');
 
-morph.onclick=function(){
-
-  if(morph.classList.contains('--open')){
-      morph.classList.remove('--open')
-      answer.classList.remove('--open')
-      
-  }
-
-  else{
-    morph.classList.add('--open')
-    answer.classList.add('--open')
-
+function addButtonVisible() {
+  for (let index = 0; index < 3; index++) {
+    if (addButton[index].classList.contains('hover')) {
+      addButton[index].classList.remove('hover');
+    } else {
+      addButton[index].classList.add('hover');
+    }
   }
 }
+
+check.onmouseover = function () {
+  addButtonVisible();
+};
+
+check.onmouseout = function () {
+  addButtonVisible();
+};
+

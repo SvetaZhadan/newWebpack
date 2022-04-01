@@ -41,3 +41,11 @@ mixin c-foodCard(name, weight)
       .c-foodCart__weight=weight
     button.c-foodCart__btnAdd Добавить
 
+mixin c-accordeonSection(question, answer, className)
+  .c-accordeonSection
+    .c-accordeonSection__question=question
+      +b-morph
+    .c-accordeonSection__answer=answer
+
+
+

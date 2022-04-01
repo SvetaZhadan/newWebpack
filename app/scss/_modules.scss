@@ -105,7 +105,7 @@ body{
 
       &__list, &__right{
 
-        .b-textLink{
+        a .b-textLink{
           color: $monochrome-black-100;
   
           &:hover {
@@ -617,8 +617,10 @@ body{
 .m-payAndDel{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 96px 136px 124px;
+  background-color: $monochrome-gray-10;
+  transition: padding 0.3s ease;
 
   &__title{
     @include headings-h-3-s-40-w-700;
@@ -629,30 +631,6 @@ body{
     margin: 32px 0 24px;
   }
 
-  &__question{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 32px 0;
-    cursor: pointer;
-    transition-duration: 0.3s;
-    @include headings-h-5-s-24-w-600;
-    
-    &:hover{
-      color: $primary-500;
-    }
-    
-  }
-
-  &__answer{
-    height: 0px;
-    overflow: hidden;
-    transition: height 0.3s ease;
-    
-    &.--open{
-      height: auto;
-    }
-  }
 
   &__left{
     width: 100%;
@@ -660,6 +638,64 @@ body{
 
   &__right{
     width: 100%;
+    margin-top: 44px;
     margin-left: 86px;
+  }
+}
+
+.c-howWeCook {
+  padding: 120px 0 168px;
+
+  &__mainTitle {
+    margin-bottom: 96px;
+    text-align: center;
+    @include headings-h-2-s-48-w-700;
+  }
+
+  &__container{
+    display: flex;
+    align-items: center;
+
+    img{
+      margin-right: 80px;
+    }
+
+    &.--top{
+      flex-direction: row-reverse;
+      margin-left: 100px;
+
+      img{
+        margin-right: 0px;
+        margin-left: 80px;
+        border-radius: 24px 0 0 24px;
+      }
+    }
+
+    &.--center{
+      margin: 80px 100px;
+    }
+
+    &.--bottom{
+      margin-right: 100px;
+    }
+  }
+
+  &__title{
+    @include headings-h-4-s-32-w-700;
+    color: $primary-500;
+
+    svg{
+      width: 45px;
+      height: 45px;
+      margin-left: 10px;
+
+      path{
+        fill: $primary-500;
+      }
+    }
+  }
+
+  &__text{
+    @include text-s-24-w-400;
   }
 }

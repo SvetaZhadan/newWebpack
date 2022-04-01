@@ -86,7 +86,8 @@
       .b-addButton{
         border-color: $accents-brown-500;
   
-        &:hover {
+        &:hover,
+        &.hover {
           background-color: $accents-brown-100;
         }
   
@@ -105,7 +106,8 @@
       .b-addButton{
         border-color: $accents-green-500;
   
-        &:hover {
+        &:hover,
+        &.hover {
           background-color: $accents-green-100;
         }
   
@@ -143,6 +145,7 @@
     height: 732px;
     
     box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
 
     &:hover{
       background-color: darken($monochrome-white-100,1);
@@ -164,9 +167,9 @@
 
   &__check-popup{
     @include check-style;
+    height: 100%;
     margin: 0 auto;
     background-color: $monochrome-white-100;
-    height: 100%;
   }
 }
 
@@ -253,6 +256,17 @@
     transform: scale(1.05);
   }
 
+  &__btnAdd{
+    width: 100%;
+    padding: 18px 0;
+    color: $monochrome-white-100;
+    background-color: $primary-500;
+    transition-duration: 0.3s;
+
+    &.hover{
+      background-color: $accents-green-500;
+    }
+  }
 
   &__container{
     width: 278px;
@@ -277,15 +291,37 @@
     color: $monochrome-gray-400;
   }
 
-  &__btnAdd{
+
+}
+
+.c-accordeonSection{
+  border-bottom: 2px solid $monochrome-gray-100;
+
+  &__question{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 18px 0;
-    color: $monochrome-white-100;
-    background-color: $primary-500;
+    padding: 32px 0;
+    cursor: pointer;
     transition-duration: 0.3s;
+    @include headings-h-5-s-24-w-600;
 
     &:hover{
-      background-color: $accents-green-500;
+      color: $primary-500;
+    }
+    
+  }
+
+  &__answer{
+    // display: none;
+    height: 0;
+    overflow-y: hidden;
+    transition: height 0.3s ease;
+    
+    &.--open{
+      height: 60px;
+      margin-bottom: 32px;
     }
   }
 }

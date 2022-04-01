@@ -159,7 +159,8 @@
     @include content-s-18-w-600;
   }
 
-  &:hover {
+  &:hover,
+  &.hover {
     background-color: $accents-yellow-100;
 
     .b-addButton__text {
@@ -481,7 +482,7 @@
 
 .b-iconLabel {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 
   svg {
     width: 45px;
