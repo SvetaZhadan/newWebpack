@@ -556,8 +556,8 @@ body{
   align-items: flex-end;
   padding: 85px 24px 108px;
   color: $monochrome-white-100;
-  background: url('../assets/icons/Backgrounds/socials-left.svg') repeat-y left,  url('../assets/icons/Backgrounds/socials-right.svg')repeat-y 100% 0, $bg-orange-linear;
-
+  background: url('../assets/icons/Backgrounds/socials-left.svg') no-repeat left,  url('../assets/icons/Backgrounds/socials-right.svg') no-repeat 100% 0, $bg-orange-linear;
+  background-repeat: no-repeat;
 
   &__title{
     @include headings-h-3-s-40-w-700;

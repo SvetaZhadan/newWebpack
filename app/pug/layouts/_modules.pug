@@ -18,13 +18,13 @@ mixin m-head
 mixin m-headerMenu
   .m-headerMenu
     nav.m-headerMenu__nav
-      a(href="#") 
+      a(href="#about") 
         +b-textLink('b-textLink --black --s-20') О нас
-      a(href="#") 
+      a(href="#constructor") 
         +b-textLink('b-textLink --black --s-20') Создать набор
-      a(href="#") 
+      a(href="#payAndDel") 
         +b-textLink('b-textLink --black --s-20') Оплата и доставка
-      a(href="#") 
+      a(href="#howWeCook") 
         +b-textLink('b-textLink --black --s-20') Как мы готовим?
       a(href="#footer") 
         +b-textLink('b-textLink --black --s-20') Контакты
@@ -48,13 +48,13 @@ mixin m-header
         a(href="#").m-header__logo.--white
           include ../../assets/icons/CookToo-Logo-alt.svg
         nav.m-header__list
-            a(href="#") 
+            a(href="#about") 
               +b-textLink('b-textLink --s-18') О нас
-            a(href="#") 
+            a(href="#constructor") 
               +b-textLink('b-textLink --s-18') Создать набор 
-            a(href="#") 
+            a(href="#payAndDel") 
               +b-textLink('b-textLink --s-18') Оплата и доставка
-            a(href="#") 
+            a(href="#howWeCook") 
               +b-textLink('b-textLink --s-18') Как мы готовим? 
             a(href="#footer")  
               +b-textLink('b-textLink --s-18') Контакты
@@ -163,7 +163,7 @@ mixin foodCartsFirst
   +blackout
 
 mixin m-constructor 
-  .m-constructor 
+  .m-constructor#constructor
     .m-constructor__left
       .m-constructor__left__title Создать бизнес-ланч
       +b-controlHeading('b-controlHeading openDinner','Обед 1')
@@ -198,14 +198,14 @@ mixin m-subscribe
         include ../../assets/icons/Socials/Facebook.svg
 
 mixin m-about 
-  .m-about
+  .m-about#about
     img.m-about__left(src="../../assets/images/Benefits-Image.png", alt="")
     .m-about__right 
       .m-about__title Обеды на любой вкус
       .m-about__text Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку. Мы приготовим и привезем вкусную еду в любую часть города и даже в зоны за его пределами. В нашей компании Вы можете как подобрать индивидуальный обед для каждого, если у Вас не слишком большое количество человек (от 10 чел.) и есть желание собирать заказы, так и выбрать комплексный обед для всех. Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку. Мы приготовим и привезем вкусную еду в любую часть города и даже в зоны за его пределами.
 
 mixin m-payAndDel
-  .m-payAndDel
+  .m-payAndDel#payAndDel
     .m-payAndDel__left
       .m-payAndDel__title Оплата и доставка
       .m-payAndDel__text Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку. Мы приготовим и привезем вкусную еду в любую часть города и даже в зоны за его пределами. В нашей компании Вы можете как подобрать индивидуальный обед для каждого, если у Вас не слишком большое количество человек (от 10 чел.) и есть желание собирать заказы, так и выбрать комплексный обед для всех.
@@ -217,7 +217,7 @@ mixin m-payAndDel
       +c-accordeonSection('Что мне делать, если заказ не привезли?','Чтобы накормить рабочих на стройке, сотрудников в офисе вкусной, горячей и здоровой пищей, не нужно открывать свой ресторан неподалеку.')
 
 mixin c-howWeCook 
-  .c-howWeCook 
+  .c-howWeCook#howWeCook
     .c-howWeCook__mainTitle Как мы готовим?
     .c-howWeCook__container.--top
       img(src="../../assets/images/HWC-Image_1.png", alt="")

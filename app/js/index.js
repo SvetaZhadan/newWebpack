@@ -197,6 +197,7 @@ for (const element of accordeonSection) {
   };
 }
 
+
 let check = document.querySelector('.c-check__check'),
   addButton = document.querySelectorAll('.b-addButton');
 
@@ -217,4 +218,3 @@ check.onmouseover = function () {
 check.onmouseout = function () {
   addButtonVisible();
 };
-
