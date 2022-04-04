@@ -15,8 +15,55 @@ import { scrolly } from 'scrolly';
 import tabs from './plugins/tabs';
 import { rippleEffect, Ripple } from 'data-ripple';
 import accordion from './plugins/accordion';
+import { stringify } from 'postcss';
 
 // ================================ Code ======================================
+const autoCompleteJS = new autoComplete({ 
+    data: {
+        src: ["Москва, Нижний Сусальный переулок, 5к1", "Москва, Нижний Сусальный переулок, 5к2", "Москва, улица Горчакова, 11", "Москва, Павелецкая площадь, 1", "Москва, ул. Чехова, 81", "Москва, пер. Бухарестская, 74", "Москва, пер. Ломоносова, 72", "Москва, проезд Будапештсткая, 87", "Москва, ул. Гагарина, 63", "Москва, бульвар Ладыгина, 32","Москва, въезд Сталина, 47", "Москва, ул. Гоголя, 22"]
+    },
+// autoComplete.js Config Options
+events: {
+  input: {
+      open() {
+        console.log('open');
+          const position =
+              autoCompleteJS.input.getBoundingClientRect().bottom + autoCompleteJS.list.getBoundingClientRect().height >
+              (window.innerHeight || document.documentElement.clientHeight);
+
+          if (position) {
+              autoCompleteJS.list.style.bottom = autoCompleteJS.input.offsetHeight + 8 + "px";
+          } else {
+              autoCompleteJS.list.style.bottom = -autoCompleteJS.list.offsetHeight - 8 + "px";
+          }
+      },
+  },
+},
+
+resultsList: {
+  element: (list, data) => {
+      if (!data.results.length) {
+          // Create "No Results" message element
+          const message = document.createElement("div");
+          // Add class to the created element
+          message.setAttribute("class", "no_result");
+          // Add message text content
+          message.innerHTML = `<span>Неверно введен адрес</span>`;
+          // Append message element to the results list
+          list.prepend(message);
+      }
+  },
+  noResults: true,
+},
+resultItem: {
+  highlight: {
+      render: true
+  }
+}
+
+});
+
+
 const ripples = document.querySelectorAll('.--ripple');
 for (const ripple of ripples) {
   new Ripple(ripple, {
@@ -24,11 +71,47 @@ for (const ripple of ripples) {
   });
 }
 
+let timeInput = document.querySelector('.b-timeInput')
+let maskOptions = {
+  overwrite: true,
+  autofix: true,
+  mask: 'HH:MM',
+  blocks: {
+    HH: {
+      mask: IMask.MaskedRange,
+      placeholderChar: 'HH',
+      from: 12,
+      to: 16,
+      maxLength: 2,
+    },
+    MM: {
+      mask: IMask.MaskedRange,
+      placeholderChar: 'MM',
+      from: 0,
+      to: 59,
+      maxLength: 2
+    }
+  }
+}
+let mask = IMask(timeInput, maskOptions)
+
+// let secondInput = document.querySelectorAll('.b-secondInput');
+// var regExpMask = IMask(
+//   {
+//     mask: /^[1-6]\d{0,5}$/
+//   });
+
+// let muskNum=IMask(secondInput, regExpMask)
+
+let phoneMask = IMask(document.querySelector('.formPhoneNumber'), {
+  mask: '+{7}(000)000-00-00',
+});
+
 let header = document.querySelector('.m-header'),
   headerMobile = document.querySelector('.m-headerMenu'),
   logo = document.querySelector('.m-header__logo'),
   burger = document.querySelector('.b-burger'),
-  menuItem = headerMobile.querySelectorAll('.b-textLink ');
+  menuItem = headerMobile.querySelectorAll('.b-textLink');
 
 for (let index = 0; index < menuItem.length; index++) {
   menuItem[index].onclick = function () {
@@ -218,3 +301,61 @@ check.onmouseover = function () {
 check.onmouseout = function () {
   addButtonVisible();
 };
+
+let closeForm=document.querySelector('.closeForm'),
+popUpForm=document.querySelector('.m-popUpForm');
+
+closeForm.onclick=function(){
+  if (closeForm.classList.contains('--open')) {
+    closeForm.classList.remove('--open')
+    popUpForm.classList.remove('--open')
+    blackOut.classList.remove('--open')
+  }
+  else{
+    closeForm.classList.add('--open')
+    popUpForm.classList.add('--open')
+    blackOut.classList.add('--open')
+  }
+}
+
+//form
+let form=document.querySelector('.formCheckOut'),
+name=document.querySelector('.formName'),
+address=document.querySelector('.formAddress'),
+phoneNumber=document.querySelector('.formPhoneNumber'),
+formBtn=document.querySelector('.m-popUpForm__button'),
+time=document.querySelector('.formTime');
+
+
+name.onchange=function(){
+  let validName=name.value.length<=2
+  if(validName){
+    name.classList.add('--error')
+  }
+  else{
+    name.classList.remove('--error')
+  }
+}
+
+phoneNumber.onchange=function(){
+let validPhone=phoneNumber.value.length<16
+  if(validPhone){
+    phoneNumber.classList.add('--error')
+  }
+  else{
+    phoneNumber.classList.remove('--error')
+  }
+}
+
+// formBtn.onclick=function(){
+//   let validName=name.value.length<=2
+//   let validPhone=phoneNumber.value.length<16
+
+//   if(validName&&validPhone){
+//     console.log(false);
+//   }
+
+//   else{
+//     console.log(true);
+//   }
+// }

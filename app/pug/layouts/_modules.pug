@@ -14,6 +14,8 @@ mixin m-head
     link(rel='icon' href='write your path' type='image/svg+xml')
     link(rel='apple-touch-icon' href='write your path')
 
+    //- link(rel="stylesheet", href="../../scss/autoComplete.css")
+
 
 mixin m-headerMenu
   .m-headerMenu
@@ -237,3 +239,28 @@ mixin c-howWeCook
         .c-howWeCook__title Вкусно
           include ../../assets/icons/Decorations/Chicken.svg
         .c-howWeCook__text Все блюда готовятся по единой рецептурной карте с использованием только свежих продуктов. Это дает нашим клиентам возможность всегда быть уверенными в высоком качестве и вкусе наших блюд.
+
+mixin m-popUpForm
+  .m-popUpForm.--open
+    +b-IconButton('b-transparentIconButton closeForm')
+      include ../../assets/icons/Actions/Close.svg
+    .formCheckOut
+      .m-popUpForm__form 
+        .m-popUpForm__title Оформление заказа
+        +b-input('b-input formName', 'Ваше имя')
+        +b-input('b-input formPhoneNumber', 'Номер телефона') 
+        +b-input('b-input formAddress', 'Адрес доставки', 'autoComplete')
+        //- <input id="autoComplete" tabindex="1">
+        .m-popUpForm__address
+          +b-input('b-secondInput','Подъезд','', '1')
+          +b-input('b-secondInput','Домофон','', '4')
+          +b-input('b-secondInput','Этаж','', '2')
+          +b-input('b-secondInput','Квартира','', '3')
+        .m-popUpForm__comment
+          .m-popUpForm__text Комментарий
+          +b-textArea('b-textArea')
+        .m-popUpForm__text Желаемое время доставки
+        .m-popUpForm__time
+          +b-input('b-timeInput formTime') 
+          span Мы осуществляем доставку только с 12 до 16 часов дня
+      button.m-popUpForm__button Заказать

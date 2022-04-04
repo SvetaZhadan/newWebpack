@@ -288,10 +288,18 @@
 .b-input {
   padding: 16px 24px;
   background: $monochrome-gray-30;
+ 
   border-width: 0px;
   border-radius: 16px;
   outline: none;
   transition-duration: 0.1s;
+  @include content-s-16-w-400;
+
+  &::placeholder{
+    color: $monochrome-gray-650;
+    @include content-s-16-w-400;
+    opacity: 0.8;
+  }
 
   &:focus {
     border: 2px solid $primary-400;
@@ -314,6 +322,13 @@
   border-radius: 16px;
   outline: none;
   transition-duration: 0.1s;
+  @include content-s-18-w-400;
+
+  &::placeholder{
+    color: $monochrome-gray-650;
+    @include content-s-16-w-400;
+    opacity: 0.8;
+  }
 
   &:focus {
     border: 2px solid $primary-400;
@@ -327,9 +342,19 @@
   border-radius: 16px;
   outline: none;
   transition-duration: 0.1s;
+  scrollbar-width: none;
+  @include text-s-18-w-400;
+
 
   &:focus {
     border: 2px solid $primary-400;
+  }
+
+
+  &::-webkit-scrollbar {
+
+    /* webkit */
+    width: 4px;
   }
 
   &::-webkit-scrollbar,
