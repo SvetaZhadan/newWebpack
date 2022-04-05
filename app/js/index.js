@@ -18,51 +18,56 @@ import accordion from './plugins/accordion';
 import { stringify } from 'postcss';
 
 // ================================ Code ======================================
-const autoCompleteJS = new autoComplete({ 
-    data: {
-        src: ["Москва, Нижний Сусальный переулок, 5к1", "Москва, Нижний Сусальный переулок, 5к2", "Москва, улица Горчакова, 11", "Москва, Павелецкая площадь, 1", "Москва, ул. Чехова, 81", "Москва, пер. Бухарестская, 74", "Москва, пер. Ломоносова, 72", "Москва, проезд Будапештсткая, 87", "Москва, ул. Гагарина, 63", "Москва, бульвар Ладыгина, 32","Москва, въезд Сталина, 47", "Москва, ул. Гоголя, 22"]
-    },
-// autoComplete.js Config Options
-events: {
-  input: {
-      open() {
-        console.log('open');
-          const position =
-              autoCompleteJS.input.getBoundingClientRect().bottom + autoCompleteJS.list.getBoundingClientRect().height >
-              (window.innerHeight || document.documentElement.clientHeight);
+let source = [
+  'Москва, Нижний Сусальный переулок, 5к1',
+  'Москва, Нижний Сусальный переулок, 5к2',
+  'Москва, улица Горчакова, 11',
+  'Москва, Павелецкая площадь, 1',
+  'Москва, ул. Чехова, 81',
+  'Москва, пер. Бухарестская, 74',
+  'Москва, пер. Ломоносова, 72',
+  'Москва, проезд Будапештсткая, 87',
+  'Москва, ул. Гагарина, 63',
+  'Москва, бульвар Ладыгина, 32',
+  'Москва, въезд Сталина, 47',
+  'Москва, ул. Гоголя, 22',
+];
 
-          if (position) {
-              autoCompleteJS.list.style.bottom = autoCompleteJS.input.offsetHeight + 8 + "px";
-          } else {
-              autoCompleteJS.list.style.bottom = -autoCompleteJS.list.offsetHeight - 8 + "px";
-          }
+const autoCompleteJS = new autoComplete({
+  selector: '.autoComplete',
+  data: {
+    src: source,
+  },
+  // autoComplete.js Config Options
+  resultItem: {
+    highlight: true,
+  },
+
+  events: {
+    input: {
+      selection: (event) => {
+        const selection = event.detail.selection.value;
+        autoCompleteJS.input.value = selection;
       },
+    },
   },
-},
 
-resultsList: {
-  element: (list, data) => {
+  resultsList: {
+    element: (list, data) => {
       if (!data.results.length) {
-          // Create "No Results" message element
-          const message = document.createElement("div");
-          // Add class to the created element
-          message.setAttribute("class", "no_result");
-          // Add message text content
-          message.innerHTML = `<span>Неверно введен адрес</span>`;
-          // Append message element to the results list
-          list.prepend(message);
+        // Create "No Results" message element
+        const message = document.createElement('div');
+        // Add class to the created element
+        message.setAttribute('class', 'no_result');
+        // Add message text content
+        message.innerHTML = `<span>Неверно введен адрес</span>`;
+        // Append message element to the results list
+        list.prepend(message);
       }
+    },
+    noResults: true,
   },
-  noResults: true,
-},
-resultItem: {
-  highlight: {
-      render: true
-  }
-}
-
 });
-
 
 const ripples = document.querySelectorAll('.--ripple');
 for (const ripple of ripples) {
@@ -71,7 +76,7 @@ for (const ripple of ripples) {
   });
 }
 
-let timeInput = document.querySelector('.b-timeInput')
+let timeInput = document.querySelector('.b-timeInput');
 let maskOptions = {
   overwrite: true,
   autofix: true,
@@ -81,7 +86,7 @@ let maskOptions = {
       mask: IMask.MaskedRange,
       placeholderChar: 'HH',
       from: 12,
-      to: 16,
+      to: 15,
       maxLength: 2,
     },
     MM: {
@@ -89,22 +94,14 @@ let maskOptions = {
       placeholderChar: 'MM',
       from: 0,
       to: 59,
-      maxLength: 2
-    }
-  }
-}
-let mask = IMask(timeInput, maskOptions)
-
-// let secondInput = document.querySelectorAll('.b-secondInput');
-// var regExpMask = IMask(
-//   {
-//     mask: /^[1-6]\d{0,5}$/
-//   });
-
-// let muskNum=IMask(secondInput, regExpMask)
+      maxLength: 2,
+    },
+  },
+};
+let mask = IMask(timeInput, maskOptions);
 
 let phoneMask = IMask(document.querySelector('.formPhoneNumber'), {
-  mask: '+{7}(000)000-00-00',
+  mask: '+{7} (000) 000-00-00',
 });
 
 let header = document.querySelector('.m-header'),
@@ -145,8 +142,7 @@ burger.onclick = function () {
     if (scrolled <= 10) {
       header.classList.remove('--bg-white');
       logo.classList.add('--white');
-    } 
-    
+    }
   }
   //onopen
   else {
@@ -214,6 +210,7 @@ closefoodCarts.onclick = function () {
 
 blackOut.onclick = function () {
   popupVisible('remove', foodFirstPopup);
+  popupVisible('remove', popUpForm);
 };
 
 let fitstCourseBtn = document.querySelector('.firstСourse'),
@@ -276,10 +273,9 @@ for (const element of accordeonSection) {
     } else {
       answer.classList.add('--open');
       morph.classList.add('--open');
-  }
+    }
   };
 }
-
 
 let check = document.querySelector('.c-check__check'),
   addButton = document.querySelectorAll('.b-addButton');
@@ -302,60 +298,94 @@ check.onmouseout = function () {
   addButtonVisible();
 };
 
-let closeForm=document.querySelector('.closeForm'),
-popUpForm=document.querySelector('.m-popUpForm');
-
-closeForm.onclick=function(){
-  if (closeForm.classList.contains('--open')) {
-    closeForm.classList.remove('--open')
-    popUpForm.classList.remove('--open')
-    blackOut.classList.remove('--open')
-  }
-  else{
-    closeForm.classList.add('--open')
-    popUpForm.classList.add('--open')
-    blackOut.classList.add('--open')
-  }
-}
-
 //form
-let form=document.querySelector('.formCheckOut'),
-name=document.querySelector('.formName'),
-address=document.querySelector('.formAddress'),
-phoneNumber=document.querySelector('.formPhoneNumber'),
-formBtn=document.querySelector('.m-popUpForm__button'),
-time=document.querySelector('.formTime');
+let closeForm = document.querySelector('.closeForm'),
+  popUpForm = document.querySelector('.m-popUpForm'),
+  createOrder = document.querySelector('.createOrder');
 
+closeForm.onclick = function () {
+  popupVisible('remove', popUpForm);
+  closeForm.classList.remove('--open');
+};
 
-name.onchange=function(){
-  let validName=name.value.length<=2
-  if(validName){
-    name.classList.add('--error')
-  }
-  else{
-    name.classList.remove('--error')
+createOrder.onclick = function () {
+  popupVisible('add', popUpForm);
+  closeForm.classList.add('--open');
+};
+
+let form = document.querySelector('.formCheckOut'),
+  name = document.querySelector('.formName'),
+  address = document.querySelector('.formAddress'),
+  phoneNumber = document.querySelector('.formPhoneNumber'),
+  formBtn = document.querySelector('.m-popUpForm__button'),
+  time = document.querySelector('.formTime'),
+  comment = document.querySelector('.formComment');
+
+let valueForm = [
+  {
+    item: name,
+    check() {
+      return this.item.value.length >= 2;
+    },
+  },
+  {
+    item: phoneNumber,
+    check() {
+      return this.item.value.length == 18;
+    },
+  },
+  {
+    item: address,
+    check() {
+      return source.some((element) => element == this.item.value);
+    },
+  },
+  {
+    item: comment,
+    check() {
+      return this.item.value.length >= 0;
+    },
+  },
+  {
+    item: time,
+    check() {
+      return this.item.value.length == 5;
+    },
+  },
+];
+
+function checkForm(item, cond) {
+  if (cond) {
+    item.classList.remove('--error');
+    item.classList.add('--correct');
+  } else {
+    item.classList.add('--error');
+    item.classList.remove('--correct');
   }
 }
 
-phoneNumber.onchange=function(){
-let validPhone=phoneNumber.value.length<16
-  if(validPhone){
-    phoneNumber.classList.add('--error')
+valueForm[2].item.onchange = () => {
+  checkForm(valueForm[2].item, valueForm[2].check());
+};
+
+valueForm[0].item.oninput = () => {
+  valueForm[0].item.value = valueForm[0].item.value.replace(/[^а-яА-ЯёЁa-zA-Z]/g, '');
+
+  checkForm(valueForm[0].item, valueForm[0].check());
+};
+
+valueForm.forEach((element) => {
+  if (!element.item.classList.contains('formName')) element.item.oninput = () => checkForm(element.item, element.check());
+});
+
+
+
+form.onchange = function () {
+  let j = 0;
+  for (let i = 0; i < valueForm.length; i++) {
+    if (valueForm[i].check() == true) {
+      j++;
+      if (j == valueForm.length) formBtn.removeAttribute('disabled');
+    }
   }
-  else{
-    phoneNumber.classList.remove('--error')
-  }
-}
-
-// formBtn.onclick=function(){
-//   let validName=name.value.length<=2
-//   let validPhone=phoneNumber.value.length<16
-
-//   if(validName&&validPhone){
-//     console.log(false);
-//   }
-
-//   else{
-//     console.log(true);
-//   }
-// }
+};

@@ -289,7 +289,7 @@
   padding: 16px 24px;
   background: $monochrome-gray-30;
  
-  border-width: 0px;
+  // border-width: 0px;
   border-radius: 16px;
   outline: none;
   transition-duration: 0.1s;
@@ -302,15 +302,15 @@
   }
 
   &:focus {
-    border: 2px solid $primary-400;
+    outline: 2px solid $primary-400;
   }
 
   &.--error {
-    border: 2px solid $accents-red-300;
+    outline: 2px solid $accents-red-300;
   }
 
   &.--correct {
-    border: 2px solid $accents-green-500;
+    outline: 2px solid $accents-green-500;
   }
 }
 
@@ -331,7 +331,7 @@
   }
 
   &:focus {
-    border: 2px solid $primary-400;
+    outline: 2px solid $primary-400;
   }
 }
 
@@ -347,7 +347,7 @@
 
 
   &:focus {
-    border: 2px solid $primary-400;
+    outline: 2px solid $primary-400;
   }
 
 
@@ -382,7 +382,7 @@
   transition-duration: 0.1s;
 
   &:focus {
-    border: 2px solid $primary-400;
+    outline: 2px solid $primary-400;
   }
 
   &::placeholder {
@@ -390,11 +390,11 @@
   }
 
   &.--error {
-    border: 2px solid $accents-red-300;
+    outline: 2px solid $accents-red-300;
   }
 
   &.--correct {
-    border: 2px solid $accents-green-500;
+    outline: 2px solid $accents-green-500;
   }
 }
 

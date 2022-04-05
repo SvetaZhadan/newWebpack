@@ -63,7 +63,7 @@ mixin m-header
       .m-header__right 
         a(href="tel:+79282465033")
           +b-textLink('b-textLink --s-20') +7 928 246 50 33
-        +b-button('b-roundButton') Заказать
+        +b-button('b-roundButton createOrder') Заказать
       +b-burger
     +m-headerMenu
 
@@ -242,25 +242,26 @@ mixin c-howWeCook
 
 mixin m-popUpForm
   .m-popUpForm.--open
-    +b-IconButton('b-transparentIconButton closeForm')
-      include ../../assets/icons/Actions/Close.svg
-    .formCheckOut
-      .m-popUpForm__form 
-        .m-popUpForm__title Оформление заказа
-        +b-input('b-input formName', 'Ваше имя')
-        +b-input('b-input formPhoneNumber', 'Номер телефона') 
-        +b-input('b-input formAddress', 'Адрес доставки', 'autoComplete')
-        //- <input id="autoComplete" tabindex="1">
-        .m-popUpForm__address
-          +b-input('b-secondInput','Подъезд','', '1')
-          +b-input('b-secondInput','Домофон','', '4')
-          +b-input('b-secondInput','Этаж','', '2')
-          +b-input('b-secondInput','Квартира','', '3')
-        .m-popUpForm__comment
-          .m-popUpForm__text Комментарий
-          +b-textArea('b-textArea')
-        .m-popUpForm__text Желаемое время доставки
-        .m-popUpForm__time
-          +b-input('b-timeInput formTime') 
-          span Мы осуществляем доставку только с 12 до 16 часов дня
-      button.m-popUpForm__button Заказать
+    form.formCheckOut    
+      +b-IconButton('b-transparentIconButton closeForm')
+        include ../../assets/icons/Actions/Close.svg
+      .m-popUpForm__form
+        .m-popUpForm__formWrap
+          .m-popUpForm__title Оформление заказа
+          +b-input('b-input formName', 'Ваше имя')
+          +b-input('b-input formPhoneNumber', 'Номер телефона') 
+          +b-input('b-input formAddress autoComplete', 'Адрес доставки')
+          //- <input id="autoComplete" tabindex="1">
+          .m-popUpForm__address
+            +b-input('b-secondInput','Подъезд', '1')
+            +b-input('b-secondInput','Домофон', '4')
+            +b-input('b-secondInput','Этаж', '2')
+            +b-input('b-secondInput','Квартира', '3')
+          .m-popUpForm__comment
+            .m-popUpForm__text Комментарий
+            +b-textArea('b-textArea formComment')
+          .m-popUpForm__text Желаемое время доставки
+          .m-popUpForm__time
+            +b-input('b-timeInput formTime') 
+            span Мы осуществляем доставку только с 12 до 16 часов дня
+      button.m-popUpForm__button(disabled) Заказать

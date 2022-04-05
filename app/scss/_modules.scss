@@ -701,20 +701,36 @@ body{
 }
 
 .m-popUpForm{
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
   display: none;
   max-width: 560px;
+  height: 100%;
+  max-height: 832px;
   margin: 0 auto;
+  overflow: hidden;
+  overflow-y: scroll;
   background: $monochrome-white-100;
   border-radius: 24px;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+
+    /* webkit */
+    width: 0px;
+    height: 0px;
+  }
 
   .b-input, .b-textarea{
     width: 100%;
   }
 
   &.--open{
-    display: block;
+    display: flex;
   }
 
   &__title{
@@ -743,8 +759,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 58px;
-    padding: 56px 48px 0;
+    padding: 56px 48px 20px;
 
     .b-input{
       margin-bottom: 24px;
@@ -752,6 +767,10 @@ body{
       &:nth-child(4){
         margin-bottom: 0px;
       }
+    }
+
+    &Wrap{
+      position: relative;
     }
 
   }
@@ -771,7 +790,7 @@ body{
     width: 100%;
     margin-top: 8px;
     padding: 15px 55px;
-    color: #ffffff;
+    color: $monochrome-white-100;
     background-color: $primary-500;
     border-radius: 0px 0px 16px 16px;
     cursor: pointer;
@@ -787,14 +806,23 @@ body{
     &:hover{
       background-color: $accents-green-500;
     }
+
+    &:disabled{
+      background-color: $primary-200;
+      cursor: not-allowed;
+    }
   }
 
   .closeForm{
     position: absolute;
     top: 3%;
-    right: 2%;
+    right: 4%;
   }
 
+  .formCheckOut{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  }
 }
 
 //autoComplete
@@ -802,51 +830,62 @@ body{
 .autoComplete_wrapper{
   width: 100%;
 
-  @for $i from 1 through 100 {
+  #autoComplete_list_1{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    max-height: 203px;
+    padding: 18px 20px 26px;
+    overflow-y: scroll;
+    background: $monochrome-gray-30;
+    border-radius: 16px;
+    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
+    scrollbar-width: none;
 
-    #autoComplete_list_#{$i}{
-      max-height: 203px;
-      padding: 18px 20px 26px;
-      overflow-y: scroll;
-      background: $monochrome-gray-30;
+    &::-webkit-scrollbar {
+
+      /* webkit */
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-corner {
+      background-color: transparent; /* or add it to the track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $monochrome-gray-100;
       border-radius: 16px;
-      box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
-      // color: $monochrome-gray-650;
+    }
 
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-
-        /* webkit */
-        width: 4px;
-      }
-
-      &::-webkit-scrollbar,
-      &::-webkit-scrollbar-corner {
-        background-color: transparent; /* or add it to the track */
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: $monochrome-gray-100;
-        border-radius: 16px;
-      }
-
-      &::-webkit-resizer {
-        display: none;
-      }
+    &::-webkit-resizer {
+      display: none;
     }
   }
-}
 
-@for $i from 0 through 100 {
-  #autoComplete_result_#{$i} {
+  li{
     @include content-s-16-w-400;
     padding: 10px 0 18px;
     border-bottom: 2px solid $monochrome-gray-100;
     cursor: pointer;
-
+    transition: font-weight 0.3s;
+  
+    &:hover{
+      font-weight: 550;
+    }
+  
+    &:first-child{
+      padding-top: 0;
+    }
+  
     &:last-child{
+      padding-bottom: 0;
       border-bottom: none;
+    }
+  
+    mark{
+      background-color: transparent;
+      font-weight: 700;
     }
   }
 }
