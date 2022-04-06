@@ -424,6 +424,7 @@ body{
   width: 100%;
   padding: 152px 0 112px;
 
+
   &__left{
 
     .c-addButton__additionalGroup{
@@ -497,7 +498,7 @@ body{
 
   }
 
-  .c-foodCart{
+  .c-foodCarв{
     margin-right: 18px;
 
     &:last-child{
@@ -557,6 +558,7 @@ body{
   padding: 85px 24px 108px;
   color: $monochrome-white-100;
   background: url('../assets/icons/Backgrounds/socials-left.svg') no-repeat left,  url('../assets/icons/Backgrounds/socials-right.svg') no-repeat 100% 0, $bg-orange-linear;
+  // background: url('../assets/icons/Backgrounds/bg-socials.svg'), $bg-orange-linear;
   background-repeat: no-repeat;
 
   &__title{
@@ -645,6 +647,8 @@ body{
 
 .c-howWeCook {
   padding: 120px 0 168px;
+  background: url('../assets/icons/Backgrounds/Bg-Stars.svg') 100%;
+  transition: background 0.3s ease;
 
   &__mainTitle {
     margin-bottom: 96px;
@@ -718,6 +722,7 @@ body{
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
   scrollbar-width: none;
 
+
   &::-webkit-scrollbar {
 
     /* webkit */
@@ -731,6 +736,11 @@ body{
 
   &.--open{
     display: flex;
+    justify-content: center;
+  }
+
+  &.--no-scroll{
+    overflow: hidden;
   }
 
   &__title{
@@ -777,9 +787,16 @@ body{
 
   &__address{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
     margin: 18px 0 32px;
+  }
+
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    width: 222px;
   }
 
   &__comment{
@@ -822,7 +839,13 @@ body{
   .formCheckOut{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  }
+    justify-content: space-between;  
+  
+  }
+
+  input{
+    transition: padding 0.3s;
+  }
 }
 
 //autoComplete

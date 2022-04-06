@@ -32,20 +32,25 @@ mixin c-check-popup
     button.needMore Добавьте еще одно блюдо
     .c-check__check-popup Добавьте блюда в заказ
 
-mixin c-foodCard(name, weight)
-  .c-foodCart
-    .c-foodCart__img
-      block
-    .c-foodCart__container(data-ripple)
-      .c-foodCart__name=name
-      .c-foodCart__weight=weight
-    button.c-foodCart__btnAdd Добавить
+mixin c-foodCard
+  template.c-foodCard
+    .c-foodCard__container
+      .name
+      .weight
+      img.img(src='' alt='')
+    .c-foodCard__btnAdd Добавить
 
 mixin c-accordeonSection(question, answer, className)
   .c-accordeonSection
     .c-accordeonSection__question=question
       +b-morph
     .c-accordeonSection__answer=answer
+
+mixin c-sending(className, title, text)
+  .c-sending(class=className)
+    block 
+    .c-sending__title=title
+    .c-sending__text=text
 
 
 

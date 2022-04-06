@@ -18,7 +18,7 @@ mixin b-textLink(className)
   span(class=className)
     block
 mixin b-input(className, value, maxlength)
-  input(type="text" class=className placeholder=value maxlength=maxlength pattern = '^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]+ ?[а-яА-ЯёЁa-zA-Z]+$')
+  input(type="text" class=className placeholder=value maxlength=maxlength)
 
 mixin b-textArea(className)
   textarea(class=className)(name="", cols="60", rows="3", maxlength='140')

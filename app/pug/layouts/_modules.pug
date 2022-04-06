@@ -152,16 +152,16 @@ mixin foodCartsFirst
       include ../../assets/icons/Actions/Close.svg
     .m-foodCartsFirst__title Выберите блюдо
     .m-foodCartsFirst__container
-      +c-foodCard('Свиная шея в ароматных специях', '200 г - 125 ккал')
-        img(src="../assets/icons/Card-Image.png", alt="")
-      +c-foodCard('Бифстейк из говядины с гелем из желтка', '250 г - 125 ккал / 2500 г - 125 ккал')
-        img(src="../assets/icons/Card-Image.png", alt="")
-      +c-foodCard('Томлёное седло ягнёнка с овощами в перечной карамели', '2500 г - 125 ккал')
-        img(src="../assets/icons/Card-Image.png", alt="")
-      +c-foodCard('Говяжьи щёчки с соусом из рябины и ризотто из сельдерея', '250 г - 125 ккал')
-        img(src="../assets/icons/Card-Image.png", alt="")
-      +c-foodCard('Баранина на рёбрах', '400 г - 125 ккал / 2500 г - 125 ккал')
-        img(src="../assets/icons/Card-Image.png", alt="")
+      +c-foodCard
+
+      //- +c-foodCard('Бифстейк из говядины с гелем из желтка', '250 г - 125 ккал / 2500 г - 125 ккал')
+      //-   img(src="../assets/icons/Card-Image.png", alt="")
+      //- +c-foodCard('Томлёное седло ягнёнка с овощами в перечной карамели', '2500 г - 125 ккал')
+      //-   img(src="../assets/icons/Card-Image.png", alt="")
+      //- +c-foodCard('Говяжьи щёчки с соусом из рябины и ризотто из сельдерея', '250 г - 125 ккал')
+      //-   img(src="../assets/icons/Card-Image.png", alt="")
+      //- +c-foodCard('Баранина на рёбрах', '400 г - 125 ккал / 2500 г - 125 ккал')
+      //-   img(src="../assets/icons/Card-Image.png", alt="")
   +blackout
 
 mixin m-constructor 
@@ -241,8 +241,14 @@ mixin c-howWeCook
         .c-howWeCook__text Все блюда готовятся по единой рецептурной карте с использованием только свежих продуктов. Это дает нашим клиентам возможность всегда быть уверенными в высоком качестве и вкусе наших блюд.
 
 mixin m-popUpForm
-  .m-popUpForm.--open
-    form.formCheckOut    
+  .m-popUpForm
+    +c-sending('load', 'Отправляем заказ', 'Пожалуйста, подождите')
+      include ../../assets/icons/Actions/Preloader.svg
+    +c-sending('send', 'Заказ отправлен', 'В течение 40 минут всё будет готово')
+      include ../../assets/icons/Actions/Check.svg
+    +c-sending('error', 'Что-то пошло не так...', 'Повторите попытку позже')
+      include ../../assets/icons/Actions/Close.svg
+    form.formCheckOut.--sending
       +b-IconButton('b-transparentIconButton closeForm')
         include ../../assets/icons/Actions/Close.svg
       .m-popUpForm__form
@@ -253,10 +259,12 @@ mixin m-popUpForm
           +b-input('b-input formAddress autoComplete', 'Адрес доставки')
           //- <input id="autoComplete" tabindex="1">
           .m-popUpForm__address
-            +b-input('b-secondInput','Подъезд', '1')
-            +b-input('b-secondInput','Домофон', '4')
-            +b-input('b-secondInput','Этаж', '2')
-            +b-input('b-secondInput','Квартира', '3')
+            .m-popUpForm__container
+              +b-input('b-secondInput','Подъезд', '1')
+              +b-input('b-secondInput','Домофон', '4')
+            .m-popUpForm__container
+              +b-input('b-secondInput','Этаж', '2')
+              +b-input('b-secondInput','Квартира', '3')
           .m-popUpForm__comment
             .m-popUpForm__text Комментарий
             +b-textArea('b-textArea formComment')

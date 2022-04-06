@@ -148,7 +148,7 @@
     cursor: pointer;
 
     &:hover{
-      background-color: darken($monochrome-white-100,1);
+      background-color: darken($monochrome-white-100,0.1);
     }
 
 
@@ -184,14 +184,14 @@
   border-radius: 16px 16px 0px 0px;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15); 
   transition-duration: 0.3s;
+  scrollbar-width: none;
 
   &:hover{
     height: 130px;
   }
 
-  &.--h-100px{
+  &.--show{
     height: 100px;
-    
   }
   
   &.--open{
@@ -208,6 +208,14 @@
       color: $primary-500;
       @include content-s-12-w-800;
     }
+
+  }
+
+  &::-webkit-scrollbar{
+  
+    /* webkit */
+    width: 0;
+    height: 0;
   }
 
   .needMore {
@@ -223,18 +231,8 @@
   }
 }
 
-.c-check-popup{
-  scrollbar-width: none;
-}
 
-.c-check-popup::-webkit-scrollbar{
-
-  /* webkit */
-  width: 0;
-  height: 0;
-}
-
-.c-foodCart{
+.c-foodCard{
   // max-height: 467px;
   display: flex;
   flex-direction: column;
@@ -273,7 +271,7 @@
     padding: 0px 24px;
   }
 
-  &__img{
+  .img{
 
     img{
       width: 100vw;
@@ -281,16 +279,15 @@
 
   }
 
-  &__name{
+  .name{
     @include content-s-20-w-700;
     margin-bottom: 10px;
   }
 
-  &__weight{
+  .weight{
     @include content-s-16-w-400;
     color: $monochrome-gray-400;
   }
-
 
 }
 
@@ -323,5 +320,44 @@
       height: 60px;
       margin-bottom: 32px;
     }
+  }
+}
+
+.c-sending {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 832px;
+  margin: 0 auto;
+  background-color: $monochrome-white-100;
+
+  svg{
+    width: 164px;
+    height: 164px;
+
+    path{
+      fill: $primary-500;
+    }
+  }
+
+  &__title{
+    @include headings-h-5-s-24-w-700;
+    margin-top: 24px;
+  }
+
+  &__text{
+    @include content-s-14-w-700;
+    opacity: 0.4;
+  }
+
+  &.--open{
+    display: flex;
+    height: 100%;
   }
 }
