@@ -473,8 +473,6 @@ body{
   right: 0;
   left: 0;
   display: none;
-
-  // display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: 1650px;
@@ -485,6 +483,7 @@ body{
   background-color: $monochrome-white-100;
   border-radius: 24px;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
 
   &.--close{
     display: none;
@@ -498,7 +497,7 @@ body{
 
   }
 
-  .c-foodCarв{
+  .c-foodCard{
     margin-right: 18px;
 
     &:last-child{
@@ -721,6 +720,7 @@ body{
   border-radius: 24px;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
   scrollbar-width: none;
+  transition-duration: 0.3s;
 
 
   &::-webkit-scrollbar {
@@ -809,7 +809,6 @@ body{
     padding: 15px 55px;
     color: $monochrome-white-100;
     background-color: $primary-500;
-    border-radius: 0px 0px 16px 16px;
     cursor: pointer;
     font-size: 18px;
     font-weight: 600;
@@ -818,7 +817,7 @@ body{
     text-align: center;
     text-decoration: none;
     @include headings-h-5-s-24-w-600;
-    transition-duration: 0.3s;
+    transition: width 0.3s;
 
     &:hover{
       background-color: $accents-green-500;

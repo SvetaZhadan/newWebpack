@@ -3,7 +3,7 @@ import { popupVisible } from './functions';
 let btnCheckPopop = document.querySelector('.needMore'),
   checkPopup = document.querySelector('.c-check-popup');
 
-  btnCheckPopop.onclick = function () {
+btnCheckPopop.onclick = function () {
   if (checkPopup.classList.contains('--open')) {
     checkPopup.classList.remove('--open');
     document.body.classList.add('--no-scroll');
@@ -45,7 +45,6 @@ sladCourseBtn.onclick = function () {
   popupVisible(set, foodFirstPopup);
 };
 
-
 let addDinerBtn = document.querySelector('.addDinerBtn'),
   openDinner = document.querySelectorAll('.openDinner'),
   addDiner = document.querySelector('.addDiner'),
@@ -86,62 +85,48 @@ check.onmouseout = function () {
   addButtonVisible();
 };
 
+const data = [
+  {
+    name: 'Свиная шея в ароматных специях',
+    weight: '200 г - 125 ккал',
+    img: '../assets/icons/Card-Image1.png',
+  },
 
-const template = document.querySelector('.c-foodCard');
-const cardTemplate = template.querySelector('.c-foodCard__container');
+  {
+    name: 'Бифстейк из говядины с гелем из желтка',
+    weight: '250 г - 125 ккал / 2500 г - 125 ккал',
+    img: '../assets/icons/Card-Image2.png',
+  },
+  {
+    name: 'Томлёное седло ягнёнка с овощами в перечной карамели',
+    weight: '2500 г - 125 ккал',
+    img: '../assets/icons/Card-Image3.png',
+  },
+  {
+    name: 'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
+    weight: '2500 г - 125 ккал',
+    img: '../assets/icons/Card-Image4.png',
+  },
+  {
+    name: 'Баранина на рёбрах',
+    weight: '400 г - 125 ккал / 2500 г - 125 ккал',
+    img: '../assets/icons/Card-Image5.png',
+  },
+];
 
-getData().forEach(card => {
+const template = document.querySelector('.cardTemplate'),
+  content = template.content.querySelector('.c-foodCard'),
+  parent = document.querySelector('.m-foodCartsFirst__container');
+
+data.forEach((card) => {
   console.log('test 1');
-  const cardElem = document.importNode(cardTemplate, true);
+  const elem = document.importNode(content, true);
   for (const key in card) {
     if (key === 'img') {
-      cardElem.querySelector('.img').src = card.img;
+      elem.querySelector('.img').src = card.img;
     } else {
-      cardElem.querySelector('.' + key).textContent = card[key];
+      elem.querySelector('.' + key).textContent = card[key];
     }
-
   }
-  document.body.appendChild(cardElem)
-
-
+  parent.appendChild(elem);
 });
-
-function getData() {
-  return [
-    {
-      "name": "Dodge123",
-      "weight": 1967,
-      "img": "/images/car-1" 
-    },
-    {
-      "name": "Cadillac",
-      "weight": 1968,
-      "img": "/images/car-2" 
-    },
-  ];
-}
-
-
-// let cardFirst=[
-//   {
-//   name:'Свиная шея в ароматных специях',
-//   weight:'200 г - 125 ккал'
-//   },
-
-//   {
-//     name:'Бифстейк из говядины с гелем из желтка',
-//     weight:'250 г - 125 ккал / 2500 г - 125 ккал'
-//   },
-//   {
-//     name:'Томлёное седло ягнёнка с овощами в перечной карамели',
-//     weight:'2500 г - 125 ккал'
-//   },
-//   {
-//     name:'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
-//     weight:'2500 г - 125 ккал'
-//   },
-//   {
-//     name:'Баранина на рёбрах',
-//     weight:'400 г - 125 ккал / 2500 г - 125 ккал'
-//   },
-// ]

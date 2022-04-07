@@ -46,7 +46,7 @@ function MultiplePages(paths) {
         hash: true,
         minify: false,
         inject: 'body',
-        cache: false
+        cache: false,
       })
     );
   }
@@ -181,6 +181,7 @@ module.exports = {
               },
             },
           },
+
           'sass-loader',
         ],
       },

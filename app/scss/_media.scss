@@ -10,7 +10,7 @@
   }
 }
 
-@media (max-width: 1700px){
+@media (max-width: 1650px){
 
   .m-header{
 
@@ -114,7 +114,7 @@
     }
   }
 
-  .c-foodCart{
+  .c-foodCard{
     margin-right: 0px;
     margin-bottom: 16px;
   }
@@ -175,6 +175,11 @@
     &__mainTitle{
       margin-bottom: 40px;
     }
+  }
+
+  .m-foodCartsFirst{
+    margin: 0 auto;
+    border-radius: 0;
   }
   
 }
@@ -552,6 +557,8 @@
 
   .m-popUpForm{
     max-width: 100%;
+    max-height: 100%;
+    border-radius: 0;
 
     .formCheckOut{
       width: 100%;
@@ -621,9 +628,8 @@
       justify-content: center;
     }
 
-    .c-foodCart{
-      margin-right: 0;
-  
+    .c-foodCard{
+
       &__name{
         @include content-s-16-w-600;
       }
@@ -684,6 +690,13 @@
       }
     }
 
+  }
+
+  .m-foodCartsFirst{
+
+    .c-foodCard{
+      margin-right: 0;
+    }
   }
 }
 @media (max-width: 450px){

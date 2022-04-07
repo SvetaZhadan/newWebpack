@@ -33,12 +33,14 @@ mixin c-check-popup
     .c-check__check-popup Добавьте блюда в заказ
 
 mixin c-foodCard
-  template.c-foodCard
-    .c-foodCard__container
-      .name
-      .weight
-      img.img(src='' alt='')
-    .c-foodCard__btnAdd Добавить
+  template.cardTemplate
+    .c-foodCard
+      .c-foodCard__wrap
+        img.img(src='' alt='')
+        .c-foodCard__container
+          .c-foodCard__name.name
+          .c-foodCard__weight.weight
+      .c-foodCard__btnAdd Добавить
 
 mixin c-accordeonSection(question, answer, className)
   .c-accordeonSection
