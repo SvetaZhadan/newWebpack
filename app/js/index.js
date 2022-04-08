@@ -53,3 +53,4 @@ if (scrolled < 10) {
   logo.classList.add('--white');
 }
 }
+

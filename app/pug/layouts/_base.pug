@@ -7,7 +7,8 @@ mixin b-button(className)
 
 mixin b-addButton(className)
   div(class=className)
-    include ../../assets/icons/Actions/Plus.svg
+    .plus
+      include ../../assets/icons/Actions/Plus.svg
     span.b-addButton__text Нажмите, чтобы выбрать блюдо
 
 mixin b-IconButton(className)
@@ -38,19 +39,19 @@ mixin b-receptItem(className, name, count, classForName)
 mixin b-lunchPrice(className, name, price, sign)
   //- hr.b-lunchPrice__hr.--dark
   div(class=className)
-    .b-lunchPrice__container__name=name 
-    .b-lunchPrice__container__price=price
-      .b-lunchPrice__container__price__sign=sign
+    .b-lunchPricer__name=name 
+    .b-lunchPrice__price=price
+      .b-lunchPrice__sign=sign
   //- hr.b-lunchPrice__hr.--light
 mixin b-outcome(className, text, price, sign) 
   div(class=className)
     .b-outcome__text=text 
     .b-outcome__price=price 
-      .b-outcome__price__sign=sign 
+      .b-outcome__sign=sign 
 
 mixin b-iconLabel(className, name)
   div(class=className)
-    block 
+    block
     .b-iconLabel__name=name
 
 mixin b-controlHeading(className, name)

@@ -326,12 +326,11 @@
       &__left{
         flex-direction: column;
         align-items: center;
-        
+      }
 
-        &__item:first-child{
-          margin-right: 0;
-          margin-bottom: 18px;
-        }
+      &__item:first-child{
+        margin-right: 0;
+        margin-bottom: 18px;
       }
 
       &__right{
@@ -378,37 +377,33 @@
       }
     }
 
+    &__left{
+      margin-right: 0;
+        
+      svg{
+        width: 148px;
+        height: 214px;
+      }
+
+    }
+
+    &__right{
+      width: auto;
+      // margin-top: 38px;
+      
+      @include content-s-18-w-400;
+    }
+    
+    &__listItem{
+    
+      &:nth-child(2){
+        margin: 16px 0;
+      }
+    }
+
     &__container{
       flex-direction: column;
       padding: 0 24px 82px;
-
-      &__left{
-        margin-right: 0;
-
-        &__container{
-          margin-top: 25px;
-        }
-          
-        svg{
-          width: 148px;
-          height: 214px;
-        }
-
-      }
-
-      &__right{
-        width: auto;
-        // margin-top: 38px;
-        
-        @include content-s-18-w-400;
-
-        .m-discounts__container__listItem{
-
-          &:nth-child(2){
-            margin: 16px 0;
-          }
-        }
-      }
     }
   }
 
@@ -428,17 +423,16 @@
       }
     }
 
+    &__title{
+      @include headings-h-5-s-24-w-700;
+    }
+
     &__left{
 
-      
       .text-link__wrap{
         border-width: 0px;
       }
 
-      &__title{
-        @include headings-h-5-s-24-w-700;
-
-      }
 
       .b-textLink{
         @include content-s-18-w-400;
@@ -527,6 +521,28 @@
     .b-textLink{
       @include content-s-14-w-400;
     }
+
+    .c-accordeonSection{
+    
+      &__question{
+        @include content-s-18-w-600;
+      }
+
+      &__answer{
+        @include text-s-16-w-400;
+      }
+    }
+
+    .b-morph{
+
+      .line-1{
+        width: 22px;
+      }
+
+      .line-2{
+        width: 22px;
+      }
+    }
   }
 
   .c-howWeCook{
@@ -589,35 +605,33 @@
 
     &__right{
       padding: 40px 16px 108px;
+    }
 
-      
-      &__rowTop, &__rowBottom {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 0;
-
-
-        .c-card{
-          margin-bottom: 18px;
-
-          &:first-child{
-            margin-right: 0;
-          }
-        }
-          
-      }
+    &__rowTop, &__rowBottom {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 0;
 
 
-      &__rowBottom{
+      .c-card{
+        margin-bottom: 18px;
 
-        .c-card{
-
-          &:last-child{
-            margin-bottom: 0;
-          }
+        &:first-child{
+          margin-right: 0;
         }
       }
+        
+    }
 
+
+    &__rowBottom{
+
+      .c-card{
+
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
     }
   }
 
@@ -689,7 +703,6 @@
         @include content-s-14-w-400;
       }
     }
-
   }
 
   .m-foodCartsFirst{
@@ -718,50 +731,41 @@
           margin-left: 10px;
         }
       }
-
     }
 
-    &__right{
-      
-      &__title{
-        @include headings-h-5-s-24-w-700;
-        margin-bottom: 20px;
-      }
+    &__title{
+      @include headings-h-5-s-24-w-700;
+      margin-bottom: 20px;
+    }
 
-      &__rowTop, &__rowBottom {
+    &__rowTop, &__rowBottom {
 
-        .c-card{
-          max-width: 288px;
-          margin-bottom: 18px;
+      .c-card{
+        max-width: 288px;
+        margin-bottom: 18px;
 
-          &:first-child{
-            margin-right: 0;
-          }
-
-          svg{
-            width: 32px;
-            height: 32px;
-          }
-
-          &__title{
-
-            &__name{
-              @include content-s-18-w-700;
-            }
-
-            &__price{
-
-              @include content-s-28-w-700;
-
-              &__sign{
-                @include content-s-20-w-700;
-              }
-            }
-          }
+        &:first-child{
+          margin-right: 0;
         }
-          
-      }
 
+        svg{
+          width: 32px;
+          height: 32px;
+        }
+
+        &__name{
+          @include content-s-18-w-700;
+        }
+
+        &__price{
+          @include content-s-28-w-700;  
+        }
+
+        &__sign{
+          @include content-s-20-w-700;
+        }
+      }
+        
     }
   }
 }

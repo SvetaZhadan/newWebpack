@@ -3,9 +3,9 @@ mixin c-card(className, name, price, sign)
     .c-card__icons 
       block
     .c-card__title
-      .c-card__title__name=name
-      .c-card__title__price=price
-        .c-card__title__price__sign=sign
+      .c-card__name=name
+      .c-card__price=price
+        .c-card__sign=sign
 
 
 mixin c-addButton(className)
@@ -14,16 +14,46 @@ mixin c-addButton(className)
       +b-iconLabel('b-iconLabel', 'Первое') 
         include ../../assets/icons/Decorations/Soup.svg
       +b-addButton('b-addButton firstСourse')
+      +c-selectedFood
     .c-addButton__addFood.--brown
       +b-iconLabel('b-iconLabel ', 'Второе') 
         include ../../assets/icons/Decorations/Steak-1.svg
       +b-addButton('b-addButton secondСourse')
+      +c-selectedFood
     .c-addButton__addFood.--green
       +b-iconLabel('b-iconLabel', 'Салат') 
         include ../../assets/icons/Decorations/Salad.svg
       +b-addButton('b-addButton saladCourse')
+      +c-selectedFood
+
+mixin c-selectedFood 
+  .c-selectedFood 
+      img.img(src='' alt='')
+      .c-selectedFood__container
+        .c-selectedFood__name.name Свиная шея в ароматных специях и шикарным соусом
+        .c-selectedFood__weight.weight 2500 г - 125 ккал / 2500 г - 125 ккал
+        .c-selectedFood__bottom
+          include ../../assets/icons/Actions/Trash.svg
+          +b-quantityToggle('b-quantityToggle')
+
+mixin c-foodCard
+  template.cardTemplate
+    .c-foodCard
+      .c-foodCard__wrap
+        img.img(src='' alt='')
+        .c-foodCard__container
+          .c-foodCard__name.name 
+          .c-foodCard__weight.weight 
+      .c-foodCard__btnAdd Добавить
 mixin c-check
   .c-check__check Добавьте блюда в заказ
+    +c-checkOrder
+
+mixin c-checkOrder 
+  .c-checkOrder
+    +b-receptItem('b-receptItem',
+   'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
+   '250 г / 125 ккал', '--x2')
 
 mixin c-check-popup 
   .c-check-popup 
@@ -32,15 +62,7 @@ mixin c-check-popup
     button.needMore Добавьте еще одно блюдо
     .c-check__check-popup Добавьте блюда в заказ
 
-mixin c-foodCard
-  template.cardTemplate
-    .c-foodCard
-      .c-foodCard__wrap
-        img.img(src='' alt='')
-        .c-foodCard__container
-          .c-foodCard__name.name
-          .c-foodCard__weight.weight
-      .c-foodCard__btnAdd Добавить
+
 
 mixin c-accordeonSection(question, answer, className)
   .c-accordeonSection
@@ -53,6 +75,8 @@ mixin c-sending(className, title, text)
     block 
     .c-sending__title=title
     .c-sending__text=text
+
+
 
 
 

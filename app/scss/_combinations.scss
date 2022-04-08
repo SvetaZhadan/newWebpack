@@ -7,6 +7,7 @@
   padding: 18px 32px 20px;
   color: $monochrome-white-100;
   border-radius: 20px;
+  transition: width 0.3s;
 
   &__icons{
 
@@ -24,20 +25,21 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+  }
 
-    &__name{
-      @include headings-h-5-s-24-w-700;
-    }
+  &__name{
+    @include headings-h-5-s-24-w-700;
+  }
 
-    &__price{
-      display: flex;
-      align-items: flex-end;
-      @include headings-h-3-s-40-w-700;
+  &__price{
+    display: flex;
+    align-items: flex-end;
+    @include headings-h-3-s-40-w-700;
 
-      &__sign{
-        @include content-s-28-w-700;
-      }
-    }
+  }
+
+  &__sign{
+    @include content-s-28-w-700;
   }
 
   &.--orange{
@@ -58,7 +60,13 @@
   }
 }
 
+.b-addButton{
+  // display: none;
+}
+
 .c-addButton{
+  position: relative;
+
 
   &__additionalGroup{
     display: flex;
@@ -66,6 +74,7 @@
   }
 
   &__addFood{
+    position: relative;
 
     .b-iconLabel{
       margin-bottom: 24px;
@@ -78,9 +87,20 @@
 
     &.--brown{
 
+      .plus{
 
-      svg path{
-        fill: $accents-brown-500;
+        svg path{
+          fill: $accents-brown-500;
+        }
+
+      }
+
+      .b-iconLabel{
+        
+        svg path{
+          fill: $accents-brown-500;
+        }
+
       }
     
       .b-addButton{
@@ -99,8 +119,18 @@
   
     &.--green{
   
-      svg path{
-        fill: $accents-green-500;
+      .plus{
+        svg path{
+          fill: $accents-green-500;
+        }
+      }
+
+      .b-iconLabel{
+
+        svg path{
+          fill: $accents-green-500;
+        }
+
       }
     
       .b-addButton{
@@ -119,6 +149,63 @@
   }
 }
 
+.c-selectedFood {
+  display: none;
+  // display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 280px;
+  max-width: 334px;
+  height: 474px;
+  min-height: 390px;
+  overflow: hidden;
+  background-color: $monochrome-white-100;
+  border-radius: 16px;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  
+  .img{
+    width: 100%;
+    height: 254px;
+  }
+  
+  &__container{
+    padding: 24px 24px 15px;
+  }
+
+  &__name{
+    @include content-s-16-w-700;
+    margin-bottom: 10px;
+  }
+
+  &__weight{
+    @include content-s-14-w-400;
+    color: $monochrome-gray-400;
+  }
+
+  &__bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 39px;
+
+    svg{
+      width: 36px;
+      height: 36px;
+
+      path{
+        fill: $monochrome-black-100;
+      }
+    }
+  }
+
+  &.--open{
+    // display: flex;
+  }
+
+}
 @mixin check-style{
   display: flex;
   justify-content: center;
@@ -140,6 +227,7 @@
 .c-check{
 
   &__check{
+    position: relative;
 
     @include check-style;
     height: 732px;
@@ -171,6 +259,15 @@
     margin: 0 auto;
     background-color: $monochrome-white-100;
   }
+}
+
+.c-checkOrder{
+  position: absolute;
+  display: none;
+  height: 732px;
+  padding: 40px 38px 0 32px;
+  background-color: $monochrome-white-100;
+  border-radius: 24px;
 }
 
 .c-check-popup{
@@ -241,7 +338,7 @@
   width: 100%; 
   min-width: 200px; 
   max-width: 278px;
-  height: 430px;
+  // height: 430px;
   overflow: hidden;
   border-radius: 16px;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
@@ -267,7 +364,7 @@
 
   &__container{
     width: 278px;
-    padding: 24px 24px 0;
+    padding: 24px 24px 32px;
   }
 
   .img{
@@ -314,9 +411,10 @@
     height: 0;
     overflow-y: hidden;
     transition: height 0.3s ease;
+    @include text-s-18-w-400;
     
     &.--open{
-      height: 60px;
+      height: 75px;
       margin-bottom: 32px;
     }
   }

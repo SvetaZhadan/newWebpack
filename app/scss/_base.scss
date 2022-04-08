@@ -1,5 +1,10 @@
 /* ================================ Base ================================ */
 
+
+*::selection, *::selection {
+  background: $monochrome-gray-100;
+}
+
 .b-burger {
   display: flex;
   flex-direction: column;
@@ -167,6 +172,7 @@
       opacity: 1;
     }
   }
+
 }
 
 .b-transparentIconButton {
@@ -421,6 +427,7 @@
 }
 
 .b-receptItem {
+  text-align: left;
 
   &__name {
     @include text-s-18-w-400;
@@ -458,24 +465,25 @@
     }
   }
 
+  &__name {
+    @include content-s-18-w-700;
+    color: $monochrome-gray-500;
+  }
+
+  &__price {
+    @include headings-h-4-s-32-w-700;
+    display: inline-flex;
+    color: $primary-300;
+  }
+
+  &__sign {
+    @include headings-h-5-s-24-w-700;
+  }
+
   &__container {
     display: flex;
     justify-content: space-between;
 
-    &__name {
-      @include content-s-18-w-700;
-      color: $monochrome-gray-500;
-    }
-
-    &__price {
-      @include headings-h-4-s-32-w-700;
-      display: inline-flex;
-      color: $primary-300;
-
-      &__sign {
-        @include headings-h-5-s-24-w-700;
-      }
-    }
   }
 }
 
@@ -499,9 +507,10 @@
     color: $primary-500;
     @include headings-h-3-s-40-w-700;
 
-    &__price__sign {
-      @include content-s-18-w-700;
-    }
+  }
+  
+  &__sign {
+    @include content-s-18-w-700;
   }
 }
 
@@ -561,7 +570,7 @@
   width: 170px;
   height: 43px;
 
-  .b-quantityToggle__input {
+  &__input {
     width: 0;
     height: 0;
     opacity: 0;

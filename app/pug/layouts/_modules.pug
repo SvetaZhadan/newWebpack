@@ -70,10 +70,10 @@ mixin m-header
 mixin m-helloScreen 
   .m-helloScreen
     .m-helloScreen__baner 
-      span.m-helloScreen__baner__default Заказывайте 
-      span.m-helloScreen__baner__primary больше <br>
-      span.m-helloScreen__baner__default платите 
-      span.m-helloScreen__baner__primary меньше
+      span Заказывайте 
+      span.m-helloScreen__primary больше <br>
+      span платите 
+      span.m-helloScreen__primary меньше
 
 mixin m-footer 
   .m-footer#footer
@@ -87,29 +87,30 @@ mixin m-footer
         .m-footer__address г. Краснодар, ул. Ставропольская, д. 123
     .m-footerBottom 
       .m-footerBottom__left 
-        a(href="#").m-footerBottom__left__item  Условия оплаты и доставки
-        a(href="#").m-footerBottom__left__item  Политика конфиденциальности
+        a(href="#").m-footerBottom__item  Условия оплаты и доставки
+        a(href="#").m-footerBottom__item  Политика конфиденциальности
       .m-footerBottom__right
         span Разработано
         a(href="#").m-footer__companyLogo
           include ../../assets/icons/ASTEQ-Logo.svg
+
 mixin m-discounts 
   .m-discounts
       //- .m-discounts__bg
       .m-discounts__container 
-        .m-discounts__container__left
+        .m-discounts__left
           include ../../assets/icons/Illustrations/perc.svg
-        .m-discounts__container__right 
-          .m-discounts__container__listItem
+        .m-discounts__right 
+          .m-discounts__listItem
             span.m-discounts-bold.--italic Бесплатная 
             span доставка при заказе 
             span.m-discounts-bold.--italic от 450 рублей 
             span или более 2-х бизнес-ланчей
-          .m-discounts__container__listItem
+          .m-discounts__listItem
             span.m-discounts-bold Скидка 
             span.m-discounts-bold.--italic 10% 
             span при заказе 3-х и более обеденных сетов
-          .m-discounts__container__listItem
+          .m-discounts__listItem
             span.m-discounts-bold Скидка 
             span.m-discounts-bold.--italic 15% 
             span при заказе 5-ти и более обеденных сетов
@@ -118,8 +119,8 @@ mixin m-benifits
   .m-benifits
     img.m-benifits__left(src="../../assets/images/About-Image.png", alt="")
     .m-benifits__right 
-      .m-benifits__right__top 
-        .m-benifits__right__title Почему стоит заказать обед на 
+      .m-benifits__top 
+        .m-benifits__title Почему стоит заказать обед на 
           span.red cook
           span.gray too
           span.lightgray .ru?
@@ -129,8 +130,8 @@ mixin m-benifits
           +b-checkListItem('b-checkListItem') Возможность заказа любого из 100 вариантов бизнес-ланча
           +b-checkListItem('b-checkListItem') Ежедневное питание полноценной и полезной едой
           +b-checkListItem('b-checkListItem') Регулярное расширение и обновление нашего меню
-      .m-benifits__right__bottom 
-        .m-benifits__right__rowTop
+      .m-benifits__bottom 
+        .m-benifits__rowTop
           +c-card('--orange', 'Комплекс', '250', '₽')
             include ../../assets/icons/Decorations/Soup.svg
             include ../../assets/icons/Decorations/Steak-1.svg
@@ -138,7 +139,7 @@ mixin m-benifits
           +c-card('--yellow ', 'Первое + Второе', '250', '₽')
             include ../../assets/icons/Decorations/Soup.svg
             include ../../assets/icons/Decorations/Steak-1.svg
-        .m-benifits__right__rowBottom
+        .m-benifits__rowBottom
           +c-card('--green', 'Первое + Салат', '250', '₽')
             include ../../assets/icons/Decorations/Soup.svg
             include ../../assets/icons/Decorations/Salad.svg
@@ -146,38 +147,30 @@ mixin m-benifits
             include ../../assets/icons/Decorations/Steak-1.svg
             include ../../assets/icons/Decorations/Salad.svg
 
-mixin foodCartsFirst
-  .m-foodCartsFirst
-    +b-IconButton('b-transparentIconButton closefoodCartsFirst')
+mixin foodCardsFirst
+  .m-foodCardsFirst
+    +b-IconButton('b-transparentIconButton closefoodCardsFirst')
       include ../../assets/icons/Actions/Close.svg
-    .m-foodCartsFirst__title Выберите блюдо
-    .m-foodCartsFirst__container
+    .m-foodCardsFirst__title Выберите блюдо
+    .m-foodCardsFirst__container
       +c-foodCard
-
-      //- +c-foodCard('Бифстейк из говядины с гелем из желтка', '250 г - 125 ккал / 2500 г - 125 ккал')
-      //-   img(src="../assets/icons/Card-Image.png", alt="")
-      //- +c-foodCard('Томлёное седло ягнёнка с овощами в перечной карамели', '2500 г - 125 ккал')
-      //-   img(src="../assets/icons/Card-Image.png", alt="")
-      //- +c-foodCard('Говяжьи щёчки с соусом из рябины и ризотто из сельдерея', '250 г - 125 ккал')
-      //-   img(src="../assets/icons/Card-Image.png", alt="")
-      //- +c-foodCard('Баранина на рёбрах', '400 г - 125 ккал / 2500 г - 125 ккал')
-      //-   img(src="../assets/icons/Card-Image.png", alt="")
   +blackout
 
 mixin m-constructor 
   .m-constructor#constructor
     .m-constructor__left
-      .m-constructor__left__title Создать бизнес-ланч
+      .m-constructor__title Создать бизнес-ланч
       +b-controlHeading('b-controlHeading openDinner','Обед 1')
         button.closeDinner 
           include ../../assets/icons/Actions/Trash.svg
-      .m-constructor__left__container  
+      .m-constructor__container  
         +c-addButton
-        .addDiner
+        //- .addDiner
           +b-controlHeading('b-controlHeading openDinner','Обед 2')
             button.closeDinner2
               include ../../assets/icons/Actions/Trash.svg
           +c-addButton
+
         .text-link__wrap
           +b-textLink('b-textLink --orange addDinerBtn') + Добавить еще один обед
     .m-constructor__right
@@ -257,7 +250,6 @@ mixin m-popUpForm
           +b-input('b-input formName', 'Ваше имя')
           +b-input('b-input formPhoneNumber', 'Номер телефона') 
           +b-input('b-input formAddress autoComplete', 'Адрес доставки')
-          //- <input id="autoComplete" tabindex="1">
           .m-popUpForm__address
             .m-popUpForm__container
               +b-input('b-secondInput','Подъезд', '1')
