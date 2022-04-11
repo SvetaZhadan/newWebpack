@@ -14,26 +14,27 @@ mixin c-addButton(className)
       +b-iconLabel('b-iconLabel', 'Первое') 
         include ../../assets/icons/Decorations/Soup.svg
       +b-addButton('b-addButton firstСourse')
-      +c-selectedFood
+      +c-selectedFood('food11')
     .c-addButton__addFood.--brown
       +b-iconLabel('b-iconLabel ', 'Второе') 
         include ../../assets/icons/Decorations/Steak-1.svg
       +b-addButton('b-addButton secondСourse')
-      +c-selectedFood
+      +c-selectedFood('food12')
     .c-addButton__addFood.--green
       +b-iconLabel('b-iconLabel', 'Салат') 
         include ../../assets/icons/Decorations/Salad.svg
       +b-addButton('b-addButton saladCourse')
-      +c-selectedFood
+      +c-selectedFood('food13')
 
-mixin c-selectedFood 
-  .c-selectedFood 
+mixin c-selectedFood(idName)
+  .c-selectedFood(id=idName)
       img.img(src='' alt='')
       .c-selectedFood__container
-        .c-selectedFood__name.name Свиная шея в ароматных специях и шикарным соусом
-        .c-selectedFood__weight.weight 2500 г - 125 ккал / 2500 г - 125 ккал
+        .c-selectedFood__name.name 
+        .c-selectedFood__weight.weight 
         .c-selectedFood__bottom
-          include ../../assets/icons/Actions/Trash.svg
+          .c-selectedFood__button
+            include ../../assets/icons/Actions/Trash.svg
           +b-quantityToggle('b-quantityToggle')
 
 mixin c-foodCard

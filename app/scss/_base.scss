@@ -1,7 +1,7 @@
 /* ================================ Base ================================ */
 
 
-*::selection, *::selection {
+*::selection{
   background: $monochrome-gray-100;
 }
 
@@ -171,6 +171,10 @@
     .b-addButton__text {
       opacity: 1;
     }
+  }
+
+  &.--close{
+    display: none;
   }
 
 }

@@ -20,12 +20,24 @@ let closefoodCards = document.querySelector('.closefoodCardsFirst'),
   foodFirstPopup = document.querySelector('.m-foodCardsFirst'),
   blackOut = document.querySelector('.blackout');
 
+function removeDivs() {
+  let lastChild = parent.lastElementChild;
+  // console.log(lastChild.tagName);
+  while (lastChild.tagName === 'DIV') {
+    parent.removeChild(lastChild);
+    lastChild = parent.lastElementChild;
+  }
+}
+
 closefoodCards.onclick = function () {
   popupVisible('remove', foodFirstPopup);
+  let addButton = document.querySelectorAll('.b-addButton');
+  removeDivs();
 };
 
 blackOut.onclick = function () {
   popupVisible('remove', foodFirstPopup);
+  removeDivs();
 };
 
 const data = [
@@ -115,10 +127,8 @@ const data = [
     },
   ],
 ];
-
-function showCards(){
-
-  data[0].forEach((card) => {
+function showCards(obj) {
+  data[obj].forEach((card) => {
     const elem = document.importNode(content, true);
     for (const key in card) {
       if (key === 'img') {
@@ -127,110 +137,105 @@ function showCards(){
         elem.querySelector('.' + key).textContent = card[key];
       }
     }
+
     parent.appendChild(elem);
   });
 }
 
-let fitstCourseBtn = document.querySelectorAll('.firstСourse'),
-  secondCourseBtn = document.querySelectorAll('.secondСourse'),
-  sladCourseBtn = document.querySelectorAll('.saladCourse');
+// let selectedFood__button=document.querySelector('.c-selectedFood__button')
 
-for (const btn of fitstCourseBtn) {
-  btn.onclick = function () {
-    let set;
-    set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
-    popupVisible(set, foodFirstPopup);
-    showCards()
+// selectedFood__button.onclick=function(){
+//   console.log('close');
+//   let selectedFood=document.querySelector('.c-selectedFood'), 
+//   fitstCourseBtn = document.querySelector('.firstСourse');
+//   selectedFood.classList.remove('--open');
+//   fitstCourseBtn.classList.remove('--close');
+// }
 
-  };
+let addButton = document.querySelectorAll('.b-addButton');
+
+for (let i = 0; i < 3; i++) {
+  let Parent=addButton[i].parentNode;
+  
+  addButton[i].onclick=function(){
+    showCards(i);
+    addFood();
+    popupVisible('add', foodFirstPopup);
+    
+    console.log('test '+[i]);
+    
+    addButton[i].classList.add('--close');
+    for (let i = 0; i < 3; i++) {
+      let selectedFood=Parent.querySelectorAll('.c-selectedFood');
+      selectedFood[i].classList.add('--open')
+    }
+  }
 }
-// for (let i = 0; i < 3; i++) {
-//   addButton[i].onclick = function () {
-//     console.log(i);
 
-//     const template = document.querySelector('.cardTemplate'),
-//       content = template.content.querySelector('.c-foodCard'),
-//       parent = document.querySelector('.m-foodCardsFirst__container');
+//--------------------------//
+function addFood() {
+  let cardBtn = document.querySelectorAll('.c-foodCard__btnAdd');
+  cardBtn.forEach((button) => {
+    
+    button.onclick = function () {
+      for (let i = 0; i < 3; i++) {
+        // let addButton = document.querySelectorAll('.b-addButton');
+        // let Parent=addButton[i].parentNode;
+        // let selectedFood=Parent.querySelectorAll('.c-selectedFood');
+        // console.log('selectedFood ', selectedFood[i]);
 
-//     data[i].forEach((card) => {
-//       const elem = document.importNode(content, true);
-//       for (const key in card) {
-//         if (key === 'img') {
-//           elem.querySelector('.img').src = card.img;
-//         } else {
-//           elem.querySelector('.' + key).textContent = card[key];
-//         }
-//       }
-//       parent.appendChild(elem);
-//     });
+        // selectedFood[i].classList.add('--open')
+    
+        // console.log(Parent);
+        // addButton[i].classList.add('--close');
+        popupVisible('remove', foodFirstPopup);
+        removeDivs();
 
-//     data[i].length = 0;
+        let foodCard=document.querySelectorAll('.c-foodCard')
+        // for (let i = 0; i < 5; i++) {
+          console.log(foodCard);
+        // }
+      }
+      
 
-//     let cardBtn = document.querySelectorAll('.c-foodCard__btnAdd');
-//     for (let i = 0; i < cardBtn.length; i++) {
-//       cardBtn[i].onclick = function () {
-//         popupVisible('remove', foodFirstPopup);
-//       };
-//     }
+      // let selectedFood__name=document.querySelector('.c-selectedFood__name'),
+      // selectedFood__weight=document.querySelector('.c-selectedFood__weight'),
+      // foodCard__name=content.querySelectorAll('.foodCard__name'),
+      // foodCard__weight=content.querySelectorAll('.foodCard__weight');
 
-//     // fitstCourseBtn.onclick = function () {
-//     //   let set;
-//     //   set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
-//     //   popupVisible(set, foodFirstPopup);
 
-//     // };
-//   };
-// }
+      // for (let i = 0; i < 5; i++) {
+      //   selectedFood__name.innerHTML = foodCard__name[i];
+      //   selectedFood__weight.innerHTML = foodCard__weight[i];
+      // }
+    }
+  });
+}
 
-// const template = document.querySelector('.cardTemplate'),
-//   content = template.content.querySelector('.c-foodCard'),
-//   parent = document.querySelector('.m-foodCardsFirst__container');
+//-------------------------//
 
-// data[0].forEach((card) => {
-//   const elem = document.importNode(content, true);
-//   for (const key in card) {
-//     if (key === 'img') {
-//       elem.querySelector('.img').src = card.img;
-//     } else {
-//       elem.querySelector('.' + key).textContent = card[key];
-//     }
-//   }
-//   parent.appendChild(elem);
-// });
+let check = document.querySelector('.c-check__check');
 
-// let cardBtn = document.querySelectorAll('.c-foodCard__btnAdd');
+function addButtonVisible() {
+  let addButton = document.querySelectorAll('.b-addButton');
+  for (let index = 0; index < 3; index++) {
+    if (addButton[index].classList.contains('hover')) {
+      addButton[index].classList.remove('hover');
+    } else {
+      addButton[index].classList.add('hover');
+    }
+  }
+}
 
-// for (let i = 0; i < cardBtn.length; i++) {
-//   cardBtn[i].onclick = function () {
-//     popupVisible('remove', foodFirstPopup);
-// }
-// }
+check.onmouseover = () => addButtonVisible();
 
-// fitstCourseBtn.onclick = function () {
-//   let set;
-//   set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
-//   popupVisible(set, foodFirstPopup);
+check.onmouseout = () => addButtonVisible();
 
-// };
 
-// secondCourseBtn.onclick = function () {
-
-//   let set;
-//   set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
-//   popupVisible(set, foodFirstPopup);
-
-// };
-
-// sladCourseBtn.onclick = function () {
-//   let set;
-//   set = foodFirstPopup.classList.contains('--open') ? 'remove' : 'add';
-//   popupVisible(set, foodFirstPopup);
-// };
-
-let addDinerBtn = document.querySelector('.addDinerBtn'),
-  openDinner = document.querySelectorAll('.openDinner'),
-  addDiner = document.querySelector('.addDiner'),
-  closeDinner2 = document.querySelectorAll('.closeDinner2');
+// let addDinerBtn = document.querySelector('.addDinerBtn'),
+//   openDinner = document.querySelectorAll('.openDinner'),
+//   addDiner = document.querySelector('.addDiner'),
+//   closeDinner2 = document.querySelectorAll('.closeDinner2');
 
 // addDinerBtn.onclick = function () {
 //   for (let index = 0; index < 5; index++) {
@@ -246,22 +251,3 @@ let addDinerBtn = document.querySelector('.addDinerBtn'),
 //   addDiner.classList.remove('--open');
 // };
 
-let check = document.querySelector('.c-check__check');
-
-function addButtonVisible() {
-  for (let index = 0; index < 3; index++) {
-    if (addButton[index].classList.contains('hover')) {
-      addButton[index].classList.remove('hover');
-    } else {
-      addButton[index].classList.add('hover');
-    }
-  }
-}
-
-check.onmouseover = function () {
-  addButtonVisible();
-};
-
-check.onmouseout = function () {
-  addButtonVisible();
-};

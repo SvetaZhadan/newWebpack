@@ -46,42 +46,43 @@
       margin-right: 0;
       margin-left: 0;
 
-      &__top{
-        margin-top: 40px;
-      }
+    }
 
-      &__rowTop, &__rowBottom {
-        justify-content: center;
-        margin: 0;
+    &__top{
+      margin-top: 40px;
+    }
 
-        .c-card{
-          margin-right: 18px;
-          margin-bottom: 18px;
+    &__rowTop, &__rowBottom {
+      justify-content: center;
+      margin: 0;
 
-          &:last-child{
-            margin-right: 0;
-          }
+      .c-card{
+        margin-right: 18px;
+        margin-bottom: 18px;
+
+        &:last-child{
+          margin-right: 0;
         }
       }
+    }
 
-      &__rowBottom{
+    &__rowBottom{
 
-        .c-card{
+      .c-card{
+        margin-bottom: 0;
+
+        &:last-child{
           margin-bottom: 0;
-
-          &:last-child{
-            margin-bottom: 0;
-          }
         }
       }
+    }
 
-      &__title{
-        max-width: 100%;
-      }
+    &__title{
+      max-width: 100%;
+    }
 
-      &__bottom{
-        margin-top: 30px;
-      }
+    &__bottom{
+      margin-top: 30px;
     }
   }
 
@@ -270,9 +271,19 @@
 
     .c-addButton__addFood{
 
-      .b-addButton{
+      .b-addButton, {
         width: 280px;
         height: 390px;
+      }
+    }
+
+    .c-selectedFood{
+      width: 280px;
+      height: 390px;
+
+      &__container{
+
+        padding: 1px 24px 10px;
       }
     }
   }
@@ -635,26 +646,28 @@
     }
   }
 
-  .m-foodCartsFirst{
+  .m-foodCardsFirst{
     padding: 58px 20px;
+
+    &__title{
+      @include headings-h-5-s-24-w-700;
+    }
 
     &__container{
       justify-content: center;
     }
-
-    .c-foodCard{
-
-      &__name{
-        @include content-s-16-w-600;
-      }
-  
-      &__weight{
-        @include content-s-14-w-400;
-      }
-    }
   } 
-
-
+  
+  .c-foodCard{
+  
+    &__name{
+      @include content-s-16-w-600;
+    }
+    
+    &__weight{
+      @include content-s-14-w-400;
+    }
+  }
 }
 
 @media (max-width: 600px){
@@ -765,7 +778,6 @@
           @include content-s-20-w-700;
         }
       }
-        
     }
   }
 }

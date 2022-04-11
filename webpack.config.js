@@ -46,7 +46,6 @@ function MultiplePages(paths) {
         hash: true,
         minify: false,
         inject: 'body',
-        cache: false,
       })
     );
   }
@@ -166,24 +165,25 @@ module.exports = {
               url: false,
             },
           },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    'postcss-preset-env',
-                    {
-                      // Options
-                    },
+          (mode === 'production'
+          ? {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [
+                    [
+                      'postcss-preset-env',
+                      {
+                        // Options
+                      },
+                    ],
                   ],
-                ],
+                },
               },
-            },
-          },
-
+            }
+          : undefined),
           'sass-loader',
-        ],
+        ].filter(x => x !== undefined),
       },
       // JavaScript
       {
