@@ -18,11 +18,11 @@ mixin b-IconButton(className)
 mixin b-textLink(className)
   span(class=className)
     block
-mixin b-input(className, value, maxlength)
-  input(type="text" class=className placeholder=value maxlength=maxlength)
+mixin b-input(name, className, value, maxlength)
+  input(type="text" name=name class=className placeholder=value maxlength=maxlength)
 
-mixin b-textArea(className)
-  textarea(class=className)(name="", cols="60", rows="3", maxlength='140')
+mixin b-textArea(name, className)
+  textarea(anme=name class=className)(name="", cols="60", rows="3", maxlength='140')
 
 mixin b-checkListItem(className)
   div(class=className)

@@ -31,8 +31,22 @@ function removeDivs() {
 
 closefoodCards.onclick = function () {
   popupVisible('remove', foodFirstPopup);
-  let addButton = document.querySelectorAll('.b-addButton');
   removeDivs();
+
+  // let addButton = document.querySelectorAll('.b-addButton');
+
+  // for (let i = 0; i < 3; i++) {
+
+  //   let Parent=addButton[i].parentNode;
+  //   addButton[i].classList.remove('--close');
+  //   console.log('addButton[i] '+addButton[i]);
+
+  //   for (let i = 0; i < 3; i++) {
+  //     let selectedFood=Parent.querySelectorAll('.c-selectedFood');
+  //     selectedFood[i].classList.remove('--open');
+  //     console.log('selectedFood[i] '+selectedFood[i]);
+  //   }
+  // }
 };
 
 blackOut.onclick = function () {
@@ -162,7 +176,7 @@ for (let i = 0; i < 3; i++) {
     addFood();
     popupVisible('add', foodFirstPopup);
     
-    console.log('test '+[i]);
+    // console.log('test '+[i]);
     
     addButton[i].classList.add('--close');
     for (let i = 0; i < 3; i++) {
@@ -193,7 +207,7 @@ function addFood() {
 
         let foodCard=document.querySelectorAll('.c-foodCard')
         // for (let i = 0; i < 5; i++) {
-          console.log(foodCard);
+          // console.log(foodCard);
         // }
       }
       

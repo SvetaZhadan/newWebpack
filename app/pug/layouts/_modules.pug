@@ -247,21 +247,21 @@ mixin m-popUpForm
       .m-popUpForm__form
         .m-popUpForm__formWrap
           .m-popUpForm__title Оформление заказа
-          +b-input('b-input formName', 'Ваше имя')
-          +b-input('b-input formPhoneNumber', 'Номер телефона') 
-          +b-input('b-input formAddress autoComplete', 'Адрес доставки')
+          +b-input('name','b-input formName', 'Ваше имя')
+          +b-input('phone', 'b-input formPhoneNumber', 'Номер телефона') 
+          +b-input('address','b-input formAddress autoComplete', 'Адрес доставки')
           .m-popUpForm__address
             .m-popUpForm__container
-              +b-input('b-secondInput','Подъезд', '1')
-              +b-input('b-secondInput','Домофон', '4')
+              +b-input('pod', 'b-secondInput','Подъезд', '1')
+              +b-input('domofon','b-secondInput','Домофон', '4')
             .m-popUpForm__container
-              +b-input('b-secondInput','Этаж', '2')
-              +b-input('b-secondInput','Квартира', '3')
+              +b-input('level', 'b-secondInput','Этаж', '2')
+              +b-input('flat', 'b-secondInput','Квартира', '3')
           .m-popUpForm__comment
             .m-popUpForm__text Комментарий
-            +b-textArea('b-textArea formComment')
+            +b-textArea('comment','b-textArea formComment')
           .m-popUpForm__text Желаемое время доставки
           .m-popUpForm__time
-            +b-input('b-timeInput formTime') 
+            +b-input('time', 'b-timeInput formTime') 
             span Мы осуществляем доставку только с 12 до 16 часов дня
       button.m-popUpForm__button(disabled) Заказать

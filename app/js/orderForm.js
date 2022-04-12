@@ -30,7 +30,8 @@ let form = document.querySelector('.formCheckOut'),
   time = document.querySelector('.formTime'),
   comment = document.querySelector('.formComment'),
   load=document.querySelector('.load'),
-  send=document.querySelector('.send');
+  send=document.querySelector('.send'),
+  error=document.querySelector('.error');
 
 
 let valueForm = [
@@ -66,17 +67,6 @@ let valueForm = [
   },
 ];
 
-// function checkForm(item, cond) {
-//   if (cond) {
-//     item.classList.remove('--error');
-//     item.classList.add('--correct');
-//   } else {
-//     item.classList.add('--error');
-//     item.classList.remove('--correct');
-//   }
-// }
-
-
 valueForm[2].item.onchange = () => {
   checkForm(valueForm[2].item, valueForm[2].check());
 };
@@ -99,6 +89,8 @@ form.oninput = function () {
       if (j == valueForm.length) formBtn.removeAttribute('disabled');
     }
   }
+
+
 };
 
 //отмена отправки формы на enter
@@ -108,14 +100,46 @@ form.addEventListener('keydown', function (event) {
   }
 });
 
-formBtn.onclick=function(){
-  
-  if(!load.classList.contains('--open')){
-    load.classList.add('--open')
-    popUpForm.classList.add('--no-scroll')
-    
-    formBtn.setTimeout(send.classList.add('--open'), 3000);
-  }
+function toggleLoader() {
+  const loader = document.querySelector('.load')
+  loader.classList.toggle('--open')
+}
 
+function serializeForm(formNode) {
+  const { elements } = formNode
+
+  const data = new FormData()
+
+  Array.from(elements)
+    .filter((item) => !!item.name)
+    .forEach((element) => {
+      const { name, type } = element
+      const value = type
+
+      data.append(name, value)
+    })
+  
+  console.log(data)
+  return data
+}
+
+const applicantForm = document.querySelector('.formCheckOut')
+applicantForm.addEventListener('submit', handleFormSubmit)
+
+function handleFormSubmit(event) {
+  event.preventDefault()
+}
+
+
+formBtn.onclick=function(){
+  serializeForm(applicantForm)
+  // handleFormSubmit(applicantForm)
+  // load.classList.add('--open')
+  // setInterval(3000);
+  send.classList.add('--open')
+  // if(!load.classList.contains('--open')){
+  //   popUpForm.classList.add('--no-scroll')
+    
+  // }
 }
 
