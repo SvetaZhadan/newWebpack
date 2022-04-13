@@ -160,19 +160,12 @@ mixin m-constructor
   .m-constructor#constructor
     .m-constructor__left
       .m-constructor__title Создать бизнес-ланч
-      +b-controlHeading('b-controlHeading openDinner','Обед 1')
-        button.closeDinner 
-          include ../../assets/icons/Actions/Trash.svg
-      .m-constructor__container  
+      .m-constructor__container
         +c-addButton
-        //- .addDiner
-          +b-controlHeading('b-controlHeading openDinner','Обед 2')
-            button.closeDinner2
-              include ../../assets/icons/Actions/Trash.svg
-          +c-addButton
-
         .text-link__wrap
           +b-textLink('b-textLink --orange addDinerBtn') + Добавить еще один обед
+      .c-addButton__additionalGroup
+
     .m-constructor__right
       +c-check
       .c-check__freeCourier При заказе от 400 руб. доставка 

@@ -70,7 +70,20 @@
 
   &__additionalGroup{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+
+    .wrap{
+      margin-top: 48px;
+    }
+
+    .wrap__content{
+      display: flex;
+
+      &:first-child{
+        margin-top: 0;
+      }
+    }
   }
 
   &__addFood{
@@ -120,6 +133,7 @@
     &.--green{
   
       .plus{
+
         svg path{
           fill: $accents-green-500;
         }
@@ -217,7 +231,6 @@
   max-width: 470px;
   
   padding: 0 47px;
-  color: $primary-500;
   background-image: url('../assets/icons/Illustrations/Fork-big.svg');
   background-repeat: no-repeat;
   background-position: bottom -52px right 75px;
@@ -243,8 +256,21 @@
       background-color: darken($monochrome-white-100,0.1);
     }
 
+    .checkText{
+      color: $primary-500;
+    }
 
+    &.--full{
+      // height: 100%;
+      background: $monochrome-white-100;
+
+      .checkText{
+        display: none;
+        color: $primary-500;
+      }
+    }
   }
+
 
   &__freeCourier{
     margin-top: 32px;

@@ -31,10 +31,10 @@ mixin b-checkListItem(className)
     .b-checkListItem__text
       block
 
-mixin b-receptItem(className, name, count, classForName)
-  div(class=className)
-    .b-receptItem__name(class=classForName)=name
-    .b-receptItem__count=count
+mixin b-receptItem(className, name, weight, classForName)
+  .b-receptItem(class=className)
+    .b-receptItem__name.name(class=classForName)=name
+    .b-receptItem__weight.weight=weight
 
 mixin b-lunchPrice(className, name, price, sign)
   //- hr.b-lunchPrice__hr.--dark
@@ -62,7 +62,7 @@ mixin b-controlHeading(className, name)
 
 mixin b-quantityToggle(className)
   label(class=className)
-    input.b-quantityToggle__input(type="checkbox" checked)
+    input.b-quantityToggle__input(type="checkbox")
     span.b-quantityToggle__slider.--round
       span.b-quantityToggle__container
         span.b-quantityToggle__container-x1 x1

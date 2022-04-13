@@ -447,7 +447,7 @@
     }
   }
 
-  &__count {
+  &__weight {
     @include text-s-16-w-400;
     opacity: 0.4;
   }
@@ -541,11 +541,15 @@
 }
 
 .b-controlHeading {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
 
+  &.--open{
+    display: flex;
+  }
+  
   &__name {
     width: 164px;
     color: $primary-500;

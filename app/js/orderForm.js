@@ -86,7 +86,9 @@ form.oninput = function () {
   for (let i = 0; i < valueForm.length; i++) {
     if (valueForm[i].check() == true) {
       j++;
-      if (j == valueForm.length) formBtn.removeAttribute('disabled');
+      if (j == valueForm.length) formBtn.removeAttribute('disabled')
+      else formBtn.setAttribute('disabled', 'disabled')
+
     }
   }
 
@@ -132,7 +134,7 @@ function handleFormSubmit(event) {
 
 
 formBtn.onclick=function(){
-  serializeForm(applicantForm)
+  // serializeForm(applicantForm)
   // handleFormSubmit(applicantForm)
   // load.classList.add('--open')
   // setInterval(3000);

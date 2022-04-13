@@ -7,24 +7,28 @@ mixin c-card(className, name, price, sign)
       .c-card__price=price
         .c-card__sign=sign
 
-
 mixin c-addButton(className)
-  .c-addButton__additionalGroup(class=className)
-    .c-addButton__addFood
-      +b-iconLabel('b-iconLabel', 'Первое') 
-        include ../../assets/icons/Decorations/Soup.svg
-      +b-addButton('b-addButton firstСourse')
-      +c-selectedFood('food11')
-    .c-addButton__addFood.--brown
-      +b-iconLabel('b-iconLabel ', 'Второе') 
-        include ../../assets/icons/Decorations/Steak-1.svg
-      +b-addButton('b-addButton secondСourse')
-      +c-selectedFood('food12')
-    .c-addButton__addFood.--green
-      +b-iconLabel('b-iconLabel', 'Салат') 
-        include ../../assets/icons/Decorations/Salad.svg
-      +b-addButton('b-addButton saladCourse')
-      +c-selectedFood('food13')
+
+  template.c-addButton__additionalGroup(class=className)
+    .wrap
+      +b-controlHeading('b-controlHeading','Обед 1')
+        include ../../assets/icons/Actions/Trash.svg
+      .wrap__content
+        .c-addButton__addFood
+          +b-iconLabel('b-iconLabel', 'Первое') 
+            include ../../assets/icons/Decorations/Soup.svg
+          +b-addButton('b-addButton firstСourse')
+          +c-selectedFood('food11')
+        .c-addButton__addFood.--brown
+          +b-iconLabel('b-iconLabel ', 'Второе') 
+            include ../../assets/icons/Decorations/Steak-1.svg
+          +b-addButton('b-addButton secondСourse')
+          +c-selectedFood('food12')
+        .c-addButton__addFood.--green
+          +b-iconLabel('b-iconLabel', 'Салат') 
+            include ../../assets/icons/Decorations/Salad.svg
+          +b-addButton('b-addButton saladCourse')
+          +c-selectedFood('food13')
 
 mixin c-selectedFood(idName)
   .c-selectedFood(id=idName)
@@ -46,16 +50,16 @@ mixin c-foodCard
           .c-foodCard__name.name 
           .c-foodCard__weight.weight 
       .c-foodCard__btnAdd Добавить
+
 mixin c-check
-  .c-check__check Добавьте блюда в заказ
+  .c-check__check
+    span.checkText Добавьте блюда в заказ
     +c-checkOrder
+    +b-receptItem
 
 mixin c-checkOrder 
   .c-checkOrder
-    +b-receptItem('b-receptItem',
-   'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
-   '250 г / 125 ккал', '--x2')
-
+    
 mixin c-check-popup 
   .c-check-popup 
     .c-check-popup__freeCourier При заказе от 400 руб. доставка 
