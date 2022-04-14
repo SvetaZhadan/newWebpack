@@ -1,3 +1,4 @@
+
 style.
   h4{ text-align: center; text-transform: uppercase;}
 
@@ -58,7 +59,8 @@ mixin b-controlHeading(className, name)
   div(class=className)
     .b-controlHeading__name=name 
     hr
-    block
+    button.b-controlHeading__button
+      block
 
 mixin b-quantityToggle(className)
   label(class=className)

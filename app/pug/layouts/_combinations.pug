@@ -8,9 +8,8 @@ mixin c-card(className, name, price, sign)
         .c-card__sign=sign
 
 mixin c-addButton(className)
-
-  template.c-addButton__additionalGroup(class=className)
-    .wrap
+  template.dinnerTemplate(class=className)
+    .wrap.--open
       +b-controlHeading('b-controlHeading','Обед 1')
         include ../../assets/icons/Actions/Trash.svg
       .wrap__content
@@ -60,14 +59,12 @@ mixin c-check
 mixin c-checkOrder 
   .c-checkOrder
     
-mixin c-check-popup 
+mixin c-check-popup
   .c-check-popup 
     .c-check-popup__freeCourier При заказе от 400 руб. доставка 
       span.freeCourier__primary бесплатно
     button.needMore Добавьте еще одно блюдо
     .c-check__check-popup Добавьте блюда в заказ
-
-
 
 mixin c-accordeonSection(question, answer, className)
   .c-accordeonSection
