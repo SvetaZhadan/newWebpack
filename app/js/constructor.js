@@ -1,31 +1,36 @@
-import { popupVisible } from './functions';
+import { popupVisible } from './universalFunctions';
 
 const data = [
   [
     {
       name: '{ПЕРВОЕ}Свиная шея в ароматных специях',
       weight: '200 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image1.png',
     },
 
     {
       name: 'Бифстейк из говядины с гелем из желтка',
       weight: '250 г - 125 ккал / 2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image2.png',
     },
     {
       name: 'Томлёное седло ягнёнка с овощами в перечной карамели',
       weight: '2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image3.png',
     },
     {
       name: 'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
       weight: '2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image4.png',
     },
     {
       name: 'Баранина на рёбрах',
       weight: '400 г - 125 ккал / 2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image5.png',
     },
   ],
@@ -34,27 +39,32 @@ const data = [
     {
       name: '{ВТОРОЕ}Свиная шея в ароматных специях',
       weight: '200 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image1.png',
     },
 
     {
       name: 'Бифстейк из говядины с гелем из желтка',
       weight: '250 г - 125 ккал / 2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image2.png',
     },
     {
       name: 'Томлёное седло ягнёнка с овощами в перечной карамели',
       weight: '2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image3.png',
     },
     {
       name: 'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
       weight: '2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image4.png',
     },
     {
       name: 'Баранина на рёбрах',
       weight: '400 г - 125 ккал / 2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image5.png',
     },
   ],
@@ -68,6 +78,7 @@ const data = [
     {
       name: 'Бифстейк из говядины с гелем из желтка',
       weight: '250 г - 125 ккал / 2500 г - 125 ккал',
+      
       img: '../assets/icons/Card-Image2.png',
     },
     {
@@ -139,8 +150,18 @@ function removeDinner(node, index) {
       heading.classList.remove('--open');
     }
   }
-
 }
+
+let blackOut = document.querySelector('.blackoutfoodCards');
+
+blackOut.onclick = function () {
+  popupVisible('remove', foodPopup, blackOut);
+  removeDivs();
+  for (let i = 0; i < 3; i++) {
+    let selFoodParent = selectedFood[i].parentNode;
+    selFoodParent.classList.remove('--active');
+  }
+};
 
 let addDinerBtn = document.querySelector('.addDinerBtn'),
   removeDinnerBtn = document.querySelectorAll('.b-controlHeading__button');
@@ -172,7 +193,7 @@ function getData(index) {
   });
 }
 
-let foodFirstPopup = document.querySelector('.m-foodCardsFirst');
+let foodPopup = document.querySelector('.m-foodCards');
 let addButton = document.querySelectorAll('.b-addButton');
 let btnNum = 0;
 let selectedFood = document.querySelectorAll('.c-selectedFood');
@@ -181,10 +202,12 @@ for (let i = 0; i < addButton.length; i++) {
   addButton[i].onclick = function () {
     getData(i);
     addFood();
-    popupVisible('add', foodFirstPopup);
+    popupVisible('add', foodPopup, blackOut);
     let selFoodParent = selectedFood[i].parentNode;
     selFoodParent.classList.add('--active');
     btnNum = i;
+
+    openInfo()
   };
 }
 
@@ -205,33 +228,25 @@ function addButtonVisible(obj, elem) {
 }
 
 //-============Закрытие попапа=========================
-let closefoodCards = document.querySelector('.closefoodCardsFirst');
+let closefoodCards = document.querySelector('.closefoodCards');
 
 closefoodCards.onclick = function () {
-  popupVisible('remove', foodFirstPopup);
+  popupVisible('remove', foodPopup, blackOut);
   removeDivs();
 
   for (let i = 0; i < 3; i++) {
     let selFoodParent = selectedFood[i].parentNode;
     selFoodParent.classList.remove('--active');
-  }
-};
 
-let blackOut = document.querySelector('.blackout');
-
-blackOut.onclick = function () {
-  popupVisible('remove', foodFirstPopup);
-  removeDivs();
-  for (let i = 0; i < 3; i++) {
-    let selFoodParent = selectedFood[i].parentNode;
-    selFoodParent.classList.remove('--active');
+    let foodCardsInfo=document.querySelector('.m-foodCardsInfo');
+    foodCardsInfo.classList.remove('--open')
   }
 };
 
 //-==============Добавление карточек в попап через шаблон===========================
 const template = document.querySelector('.cardTemplate'),
   content = template.content.querySelector('.c-foodCard'),
-  parent = document.querySelector('.m-foodCardsFirst__container');
+  parent = document.querySelector('.m-foodCards__container');
 
 let btnCheckPopop = document.querySelector('.needMore'),
   checkPopup = document.querySelector('.c-check-popup');
@@ -254,16 +269,17 @@ function removeDivs() {
   }
 }
 
-//-============Добавление данных из карточки в попапе в картоску на гл странице=========================
+
+//-============Добавление данных из карточки в попапе в карточку на гл странице=========================
 function addFood() {
   let cardBtn = document.querySelectorAll('.c-foodCard__btnAdd');
   cardBtn.forEach((button) => {
     button.onclick = function () {
-      popupVisible('remove', foodFirstPopup);
+      popupVisible('remove', foodPopup, blackOut);
       removeDivs();
-
+      
       let foodCard = button.parentNode;
-      let img = foodCard.querySelector('.img');
+      let img = foodCard.querySelector('.img').src;
       let name = foodCard.querySelector('.name').innerHTML;
       let weight = foodCard.querySelector('.weight').innerHTML;
       let mainCont = addButton[btnNum].parentNode;
@@ -275,7 +291,7 @@ function addFood() {
       let cardWeight = selectedFood.querySelector('.weight');
       let cardImg = selectedFood.querySelector('.img');
 
-      cardImg.src = img.src;
+      cardImg.src = img;
       cardName.innerHTML = name;
       cardWeight.innerHTML = weight;
       addButton[btnNum].classList.add('--close');
@@ -291,7 +307,56 @@ function addFood() {
     };
   });
 }
-//-============Удаление карточки с едой на гл странице===============================
+
+//-=============
+function openInfo(){
+  let foodCard__wrap=document.querySelectorAll('.c-foodCard__wrap');
+  let foodCardsInfo=document.querySelector('.m-foodCardsInfo');
+  let infoName=foodCardsInfo.querySelector('.name')
+  let infoWeight=foodCardsInfo.querySelector('.weight')
+  let infoImg=foodCardsInfo.querySelector('.img')
+
+  for (let i = 0; i < foodCard__wrap.length; i++) {
+    foodCard__wrap[i].onclick=function(){
+      let parent=foodCard__wrap[i].parentNode,
+      name=parent.querySelector('.name').innerHTML,
+      weight=parent.querySelector('.weight').innerHTML,
+      img=parent.querySelector('.img').src
+
+      infoName.innerHTML=name
+      infoWeight.innerHTML=weight
+      infoImg.src = img;
+
+      foodCardsInfo.classList.add('--open')
+    }
+  }
+
+  let btn=foodCardsInfo.querySelector('.btn');
+  btn.onclick=function(){
+    popupVisible('remove',foodPopup, blackOut)
+    removeDivs()
+    foodCardsInfo.classList.remove('--open')
+    let mainCont = addButton[btnNum].parentNode;
+    let selectedFood = mainCont.querySelector('.c-selectedFood');
+
+    selectedFood.classList.add('--open');
+      
+    addButton[btnNum].classList.add('--close');
+    let cardName = selectedFood.querySelector('.name');
+    let cardWeight = selectedFood.querySelector('.weight');
+    let cardImg = selectedFood.querySelector('.img');
+
+    cardImg.src = infoImg.src;
+    cardName.innerHTML = infoName.innerHTML;
+    cardWeight.innerHTML = infoWeight.innerHTML;
+  }
+  
+  let closeOpenInfo=foodCardsInfo.querySelector('.b-iconButton')
+  closeOpenInfo.onclick=function(){
+    foodCardsInfo.classList.remove('--open')
+  }
+}
+//-============Удаление карточки с едой на гл странице=======================
 let selectedFood__button = document.querySelectorAll('.c-selectedFood__button');
 
 selectedFood__button.forEach((button) => {

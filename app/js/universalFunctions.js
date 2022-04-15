@@ -1,6 +1,5 @@
-let blackOut = document.querySelector('.blackout')
-function popupVisible(obj, popup) {
-  popup.classList[obj]('--open');
+function popupVisible(obj, elem, blackOut) {
+  elem.classList[obj]('--open');
   document.body.classList[obj]('--no-scroll');
   blackOut.classList[obj]('--open');
 }

@@ -147,14 +147,27 @@ mixin m-benifits
             include ../../assets/icons/Decorations/Steak-1.svg
             include ../../assets/icons/Decorations/Salad.svg
 
-mixin foodCardsFirst
-  .m-foodCardsFirst
-    +b-IconButton('b-transparentIconButton closefoodCardsFirst')
+mixin foodCards
+  .m-foodCards
+    +b-IconButton('b-transparentIconButton closefoodCards')
       include ../../assets/icons/Actions/Close.svg
-    .m-foodCardsFirst__title Выберите блюдо
-    .m-foodCardsFirst__container
+    .m-foodCards__title Выберите блюдо
+    .m-foodCards__container
       +c-foodCard
-  +blackout
+    +foodCardsInfo
+  +blackoutfoodCards
+
+mixin foodCardsInfo 
+  .m-foodCardsInfo
+    .m-foodCardsInfo__img 
+      +b-button('b-iconButton') 
+        include ../../assets/icons/Actions/ArrowLeft.svg
+      img.img(src="", alt="alt")
+    .m-foodCardsInfo__container 
+      .m-foodCardsInfo__name.name 
+      .m-foodCardsInfo__descr Свиная шея, сухая аджика, черный перец, прованские травы, молотый кориандр
+      .m-foodCardsInfo__weight.weight
+      button.b-squareButton.--smooth.btn Добавить
 
 mixin m-constructor 
   .m-constructor#constructor
@@ -258,3 +271,4 @@ mixin m-popUpForm
             +b-input('time', 'b-timeInput formTime') 
             span Мы осуществляем доставку только с 12 до 16 часов дня
       button.m-popUpForm__button(disabled) Заказать
+    +blackout

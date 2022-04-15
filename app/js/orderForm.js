@@ -1,5 +1,5 @@
 import { source } from './sources';
-import { popupVisible, checkForm } from './functions';
+import { popupVisible, checkForm } from './universalFunctions';
 
 
 let closeForm = document.querySelector('.closeForm'),
@@ -9,16 +9,16 @@ let closeForm = document.querySelector('.closeForm'),
 
 
 blackOut.onclick = function () {
-  popupVisible('remove', popUpForm);
+  popupVisible('remove', popUpForm, blackOut);
 };
 
 closeForm.onclick = function () {
-  popupVisible('remove', popUpForm);
+  popupVisible('remove', popUpForm, blackOut);
   closeForm.classList.remove('--open');
 };
 
 createOrder.onclick = function () {
-  popupVisible('add', popUpForm);
+  popupVisible('add', popUpForm, blackOut);
   closeForm.classList.add('--open');
 };
 
