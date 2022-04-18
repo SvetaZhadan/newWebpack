@@ -20,3 +20,10 @@ function checkForm(item, cond) {
 }
 export {checkForm}
 
+// function addFoodInCard(button){
+// let foodPopup = document.querySelector('.m-foodCards');
+// let blackOut = document.querySelector('.blackoutfoodCards');
+//     popupVisible('remove',foodPopup, blackOut)
+// }
+
+// export {addFoodInCard}

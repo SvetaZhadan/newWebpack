@@ -437,6 +437,7 @@
     @include text-s-18-w-400;
 
     &.--x2 {
+      transition: opacity 0.3s;
 
       &::after {
         content: ' x2';

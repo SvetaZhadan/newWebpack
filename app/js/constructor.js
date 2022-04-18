@@ -5,32 +5,32 @@ const data = [
     {
       name: '{ПЕРВОЕ}Свиная шея в ароматных специях',
       weight: '200 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image1.png',
     },
 
     {
       name: 'Бифстейк из говядины с гелем из желтка',
       weight: '250 г - 125 ккал / 2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image2.png',
     },
     {
       name: 'Томлёное седло ягнёнка с овощами в перечной карамели',
       weight: '2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image3.png',
     },
     {
       name: 'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
       weight: '2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image4.png',
     },
     {
       name: 'Баранина на рёбрах',
       weight: '400 г - 125 ккал / 2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image5.png',
     },
   ],
@@ -39,32 +39,32 @@ const data = [
     {
       name: '{ВТОРОЕ}Свиная шея в ароматных специях',
       weight: '200 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image1.png',
     },
 
     {
       name: 'Бифстейк из говядины с гелем из желтка',
       weight: '250 г - 125 ккал / 2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image2.png',
     },
     {
       name: 'Томлёное седло ягнёнка с овощами в перечной карамели',
       weight: '2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image3.png',
     },
     {
       name: 'Говяжьи щёчки с соусом из рябины и ризотто из сельдерея',
       weight: '2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image4.png',
     },
     {
       name: 'Баранина на рёбрах',
       weight: '400 г - 125 ккал / 2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image5.png',
     },
   ],
@@ -78,7 +78,7 @@ const data = [
     {
       name: 'Бифстейк из говядины с гелем из желтка',
       weight: '250 г - 125 ккал / 2500 г - 125 ккал',
-      
+
       img: '../assets/icons/Card-Image2.png',
     },
     {
@@ -133,6 +133,8 @@ function addDinner() {
     heading.classList.add('--open');
     name.innerHTML = `Обед ${dinners[i].order}`;
   }
+
+  test();
 }
 
 function removeDinner(node, index) {
@@ -192,20 +194,29 @@ function getData(index) {
 let foodPopup = document.querySelector('.m-foodCards');
 let addButton = document.querySelectorAll('.b-addButton');
 let btnNum = 0;
-let selectedFood = document.querySelectorAll('.c-selectedFood');
+// let selectedFood = document.querySelectorAll('.c-selectedFood');
 
-for (let i = 0; i < addButton.length; i++) {
-  addButton[i].onclick = function () {
-    getData(i);
-    addFood();
-    popupVisible('add', foodPopup, blackOut);
-    let selFoodParent = selectedFood[i].parentNode;
-    selFoodParent.classList.add('--active');
-    btnNum = i;
+function test() {
+  let btn = document.querySelectorAll('.b-addButton');
+  let selectedFood = document.querySelectorAll('.c-selectedFood');
+  for (let i = 0; i < addButton.length; i++) {
+    console.log(addButton[i].parentNode);
+    btn[i].onclick = function () {
+      getData(i);
+      addFood();
+      popupVisible('add', foodPopup, blackOut);
+      closeOpenInfo.classList.remove('--open');
 
-    openInfo()
-  };
+      let selFoodParent = selectedFood[i].parentNode;
+      selFoodParent.classList.add('--active');
+      btnNum = i;
+
+      openInfo();
+    };
+  }
 }
+
+test();
 
 function foodHint() {
   let addButton = document.querySelectorAll('.b-addButton');
@@ -223,15 +234,13 @@ function addButtonVisible(obj, elem) {
   elem.classList[obj]('hover');
 }
 
-function removeCards(){
-  let container=document.querySelector('.m-foodCards__container')
-  
-  let set=container.classList.contains('--close')?'remove':'add'
-  
-  remove(set)
+function removeCards() {
+  let container = document.querySelector('.m-foodCards__container');
+  let set = container.classList.contains('--close') ? 'remove' : 'add';
+  remove(set);
 
-  function remove(obj){
-    container.classList[obj]('--close')
+  function remove(obj) {
+    container.classList[obj]('--close');
   }
 }
 
@@ -269,7 +278,6 @@ function removeDivs() {
   }
 }
 
-
 //-============Добавление данных из карточки в попапе в карточку на гл странице=========================
 function addFood() {
   let cardBtn = document.querySelectorAll('.c-foodCard__btnAdd');
@@ -277,7 +285,7 @@ function addFood() {
     button.onclick = function () {
       popupVisible('remove', foodPopup, blackOut);
       removeDivs();
-      
+
       let foodCard = button.parentNode;
       let img = foodCard.querySelector('.img').src;
       let name = foodCard.querySelector('.name').innerHTML;
@@ -294,6 +302,7 @@ function addFood() {
       cardImg.src = img;
       cardName.innerHTML = name;
       cardWeight.innerHTML = weight;
+
       addButton[btnNum].classList.add('--close');
 
       let check = document.querySelector('.c-check__check');
@@ -304,52 +313,46 @@ function addFood() {
 
       checkName.innerHTML = name;
       checkWeight.innerHTML = weight;
-
-      // console.log(dinners);
-      // dinners[button].food = button + 1;
-
     };
   });
 }
 
 //-=============
-let closeOpenInfo=foodPopup.querySelector('.b-iconButton')
-function openInfo(){
-  let foodCard__wrap=document.querySelectorAll('.c-foodCard__wrap')
-  let foodCardsInfo=document.querySelector('.m-foodCardsInfo')
-  let infoName=foodCardsInfo.querySelector('.name')
-  let infoWeight=foodCardsInfo.querySelector('.weight')
-  let infoImg=foodCardsInfo.querySelector('.img')
+let closeOpenInfo = foodPopup.querySelector('.b-iconButton');
+function openInfo() {
+  let foodCardsInfo = document.querySelector('.m-foodCardsInfo');
+  let foodCard__wrap = document.querySelectorAll('.c-foodCard__wrap');
+  let infoName = foodCardsInfo.querySelector('.name');
+  let infoWeight = foodCardsInfo.querySelector('.weight');
+  let infoImg = foodCardsInfo.querySelector('.img');
 
-  foodCard__wrap.forEach(button => {
-    button.onclick=function(){
-      let parent=button.parentNode,
-      name=parent.querySelector('.name').innerHTML,
-      weight=parent.querySelector('.weight').innerHTML,
-      img=parent.querySelector('.img').src
+  foodCard__wrap.forEach((button) => {
+    button.onclick = function () {
+      let parent = button.parentNode,
+        name = parent.querySelector('.name').innerHTML,
+        weight = parent.querySelector('.weight').innerHTML,
+        img = parent.querySelector('.img').src;
 
-      infoName.innerHTML=name
-      infoWeight.innerHTML=weight
+      infoName.innerHTML = name;
+      infoWeight.innerHTML = weight;
       infoImg.src = img;
 
-      foodCardsInfo.classList.add('--open')
-      closeOpenInfo.classList.add('--open')
-      removeCards()
-    }
+      foodCardsInfo.classList.add('--open');
+      closeOpenInfo.classList.add('--open');
+      removeCards();
+    };
   });
 
-
-
-  let btn=foodCardsInfo.querySelector('.btn');
-  btn.onclick=function(){
-    popupVisible('remove',foodPopup, blackOut)
-    removeDivs()
-    foodCardsInfo.classList.remove('--open')
+  let btn = foodCardsInfo.querySelector('.btn');
+  btn.onclick = function () {
+    popupVisible('remove', foodPopup, blackOut);
+    removeDivs();
+    foodCardsInfo.classList.remove('--open');
     let mainCont = addButton[btnNum].parentNode;
     let selectedFood = mainCont.querySelector('.c-selectedFood');
 
     selectedFood.classList.add('--open');
-      
+
     addButton[btnNum].classList.add('--close');
     let cardName = selectedFood.querySelector('.name');
     let cardWeight = selectedFood.querySelector('.weight');
@@ -359,15 +362,22 @@ function openInfo(){
     cardName.innerHTML = infoName.innerHTML;
     cardWeight.innerHTML = infoWeight.innerHTML;
 
-    removeCards()
-  }
-  
-  closeOpenInfo.onclick=function(){
-    foodCardsInfo.classList.remove('--open')
-    removeCards()
-    closeOpenInfo.classList.remove('--open')
+    let check = document.querySelector('.c-check__check');
+    check.classList.add('--full');
 
-  }
+    let checkName = check.querySelector('.name');
+    let checkWeight = check.querySelector('.weight');
+
+    checkName.innerHTML = cardName.innerHTML;
+    checkWeight.innerHTML = cardWeight.innerHTML;
+    removeCards();
+  };
+
+  closeOpenInfo.onclick = function () {
+    foodCardsInfo.classList.remove('--open');
+    removeCards();
+    closeOpenInfo.classList.remove('--open');
+  };
 }
 //-============Удаление карточки с едой на гл странице=======================
 let selectedFood__button = document.querySelectorAll('.c-selectedFood__button');
@@ -382,26 +392,25 @@ selectedFood__button.forEach((button) => {
     let checkName = check.querySelector('.name');
     let checkWeight = check.querySelector('.weight');
 
-    checkName.innerHTML=""
-    checkWeight.innerHTML=""
+    checkName.innerHTML = '';
+    checkWeight.innerHTML = '';
 
-    if (check.innerText=="") {
-      check.classList.remove('--full')
+    if (check.innerText == '') {
+      check.classList.remove('--full');
     }
   };
 });
 
 function doubleFood(obj, button) {
   let checkName = check.querySelector('.name');
-  button.classList[obj]('--open')
-  checkName.classList[obj]('--x2')
+  button.classList[obj]('--open');
+  checkName.classList[obj]('--x2');
 }
 
-let sliderBtn=document.querySelectorAll('.b-quantityToggle__slider');
-sliderBtn.forEach(button => {
-  button.onclick=function(){
-
-    let set=button.classList.contains('--open') ? 'remove':'add'
-    doubleFood(set, button)
-  }
+let sliderBtn = document.querySelectorAll('.b-quantityToggle__slider');
+sliderBtn.forEach((button) => {
+  button.onclick = function () {
+    let set = button.classList.contains('--open') ? 'remove' : 'add';
+    doubleFood(set, button);
+  };
 });

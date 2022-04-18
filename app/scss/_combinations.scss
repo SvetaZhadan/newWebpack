@@ -80,9 +80,9 @@
       transition: height 0.3s;
       
       &.--open{
-        height: 615px;
+        height: 620px;
 
-        &:first-child{
+        &:first-child, &:nth-child(2){
           height: auto;
         }
 

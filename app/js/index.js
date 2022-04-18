@@ -19,7 +19,6 @@ import { stringify } from 'postcss';
 // js files
 import './autoComplete'
 import './plugins/ripple'
-import './plugins/offline'
 import './mask'
 import './header'
 import './constructor'

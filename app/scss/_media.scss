@@ -12,6 +12,17 @@
 
 @media (max-width: 1649px){
 
+  .m-foodCards{
+
+    &__top{
+      padding: 20px;
+
+      .b-iconButton{
+        padding: 0;
+      }
+    }
+  }
+
   .m-foodCardsInfo{
 
     &__img{
@@ -32,7 +43,7 @@
       flex-direction: row-reverse;
       justify-content: space-between;
       width: 100%;
-      background: $monochrome-white-100;
+
 
       .b-iconButton{
         z-index: 2;
@@ -280,7 +291,9 @@
       height: auto;
       margin-right: 0;
     }
-  }
+
+
+  }  
 
   .m-header{
 
@@ -372,6 +385,13 @@
 }
 
 @media (max-width: 1000px){
+
+  .m-foodCards{
+
+    &__top{
+      background: $monochrome-white-100;
+    }
+  }
 
   .m-foodCardsInfo{
 
@@ -695,6 +715,18 @@
 
 @media (max-width: 800px){
 
+  .m-foodCards{  
+
+    &__top{
+      background-color: $monochrome-white-100;
+      border-bottom: 1px solid $monochrome-gray-50;
+    }
+
+    &__title{
+      margin-top: 16px;
+    }
+  }
+
   .m-popUpForm{
     max-width: 100%;
     max-height: 100%;
@@ -765,22 +797,32 @@
 
     &__container{
       justify-content: center;
+    }  
+    
+    .c-foodCard{
+    
+      &__name{
+        @include content-s-16-w-600;
+      }
+    
+      &__weight{
+        @include content-s-14-w-400;
+      }
     }
   } 
   
-  .c-foodCard{
-  
-    &__name{
-      @include content-s-16-w-600;
-    }
-    
-    &__weight{
-      @include content-s-14-w-400;
-    }
-  }
+
+
 }
 
 @media (max-width: 600px){
+
+  .m-foodCards{
+
+    .c-foodCard{
+      margin-right: 0;
+    }
+  }
 
   .m-foodCardsInfo{
 
@@ -839,12 +881,6 @@
     }
   }
 
-  .m-foodCartsFirst{
-
-    .c-foodCard{
-      margin-right: 0;
-    }
-  }
 }
 @media (max-width: 450px){
 
