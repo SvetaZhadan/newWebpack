@@ -157,10 +157,6 @@ let blackOut = document.querySelector('.blackoutfoodCards');
 blackOut.onclick = function () {
   popupVisible('remove', foodPopup, blackOut);
   removeDivs();
-  for (let i = 0; i < 3; i++) {
-    let selFoodParent = selectedFood[i].parentNode;
-    selFoodParent.classList.remove('--active');
-  }
 };
 
 let addDinerBtn = document.querySelector('.addDinerBtn'),
@@ -227,20 +223,24 @@ function addButtonVisible(obj, elem) {
   elem.classList[obj]('hover');
 }
 
+function removeCards(){
+  let container=document.querySelector('.m-foodCards__container')
+  
+  let set=container.classList.contains('--close')?'remove':'add'
+  
+  remove(set)
+
+  function remove(obj){
+    container.classList[obj]('--close')
+  }
+}
+
 //-============Закрытие попапа=========================
 let closefoodCards = document.querySelector('.closefoodCards');
 
 closefoodCards.onclick = function () {
   popupVisible('remove', foodPopup, blackOut);
   removeDivs();
-
-  for (let i = 0; i < 3; i++) {
-    let selFoodParent = selectedFood[i].parentNode;
-    selFoodParent.classList.remove('--active');
-
-    let foodCardsInfo=document.querySelector('.m-foodCardsInfo');
-    foodCardsInfo.classList.remove('--open')
-  }
 };
 
 //-==============Добавление карточек в попап через шаблон===========================
@@ -253,11 +253,11 @@ let btnCheckPopop = document.querySelector('.needMore'),
 
 btnCheckPopop.onclick = function () {
   if (checkPopup.classList.contains('--open')) {
-    checkPopup.classList.remove('--open');
-    document.body.classList.add('--no-scroll');
-  } else {
-    checkPopup.classList.add('--open');
     document.body.classList.remove('--no-scroll');
+    checkPopup.classList.remove('--open');
+  } else {
+    document.body.classList.add('--no-scroll');
+    checkPopup.classList.add('--open');
   }
 };
 
@@ -304,21 +304,26 @@ function addFood() {
 
       checkName.innerHTML = name;
       checkWeight.innerHTML = weight;
+
+      // console.log(dinners);
+      // dinners[button].food = button + 1;
+
     };
   });
 }
 
 //-=============
+let closeOpenInfo=foodPopup.querySelector('.b-iconButton')
 function openInfo(){
-  let foodCard__wrap=document.querySelectorAll('.c-foodCard__wrap');
-  let foodCardsInfo=document.querySelector('.m-foodCardsInfo');
+  let foodCard__wrap=document.querySelectorAll('.c-foodCard__wrap')
+  let foodCardsInfo=document.querySelector('.m-foodCardsInfo')
   let infoName=foodCardsInfo.querySelector('.name')
   let infoWeight=foodCardsInfo.querySelector('.weight')
   let infoImg=foodCardsInfo.querySelector('.img')
 
-  for (let i = 0; i < foodCard__wrap.length; i++) {
-    foodCard__wrap[i].onclick=function(){
-      let parent=foodCard__wrap[i].parentNode,
+  foodCard__wrap.forEach(button => {
+    button.onclick=function(){
+      let parent=button.parentNode,
       name=parent.querySelector('.name').innerHTML,
       weight=parent.querySelector('.weight').innerHTML,
       img=parent.querySelector('.img').src
@@ -328,8 +333,12 @@ function openInfo(){
       infoImg.src = img;
 
       foodCardsInfo.classList.add('--open')
+      closeOpenInfo.classList.add('--open')
+      removeCards()
     }
-  }
+  });
+
+
 
   let btn=foodCardsInfo.querySelector('.btn');
   btn.onclick=function(){
@@ -349,11 +358,15 @@ function openInfo(){
     cardImg.src = infoImg.src;
     cardName.innerHTML = infoName.innerHTML;
     cardWeight.innerHTML = infoWeight.innerHTML;
+
+    removeCards()
   }
   
-  let closeOpenInfo=foodCardsInfo.querySelector('.b-iconButton')
   closeOpenInfo.onclick=function(){
     foodCardsInfo.classList.remove('--open')
+    removeCards()
+    closeOpenInfo.classList.remove('--open')
+
   }
 }
 //-============Удаление карточки с едой на гл странице=======================
@@ -366,5 +379,29 @@ selectedFood__button.forEach((button) => {
     let mainCont = parent.parentNode;
     let btn = mainCont.querySelector('.b-addButton');
     btn.classList.remove('--close');
+    let checkName = check.querySelector('.name');
+    let checkWeight = check.querySelector('.weight');
+
+    checkName.innerHTML=""
+    checkWeight.innerHTML=""
+
+    if (check.innerText=="") {
+      check.classList.remove('--full')
+    }
   };
+});
+
+function doubleFood(obj, button) {
+  let checkName = check.querySelector('.name');
+  button.classList[obj]('--open')
+  checkName.classList[obj]('--x2')
+}
+
+let sliderBtn=document.querySelectorAll('.b-quantityToggle__slider');
+sliderBtn.forEach(button => {
+  button.onclick=function(){
+
+    let set=button.classList.contains('--open') ? 'remove':'add'
+    doubleFood(set, button)
+  }
 });

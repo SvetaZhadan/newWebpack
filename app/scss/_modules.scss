@@ -504,6 +504,10 @@ body{
     justify-content: flex-start;
     margin-top: 48px;
 
+    &.--close{
+      visibility: hidden;
+      overflow: hidden;
+    }
   }
 
   .c-foodCard{
@@ -518,10 +522,29 @@ body{
     @include headings-h-3-s-40-w-700;
   }
 
+  &__top{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    .b-iconButton{
+      z-index: 2;
+      display: none;
+
+      &.--open{
+        display: block;
+      }
+    }
+  }
+
   .b-transparentIconButton{
-    position: absolute;
-    top: 3%;
-    right: 2%;
+
+    svg{
+
+      path{
+        fill: $monochrome-gray-400;
+      }
+    }
     z-index: 1;
   }
 
@@ -573,19 +596,19 @@ body{
   }
 
   &__img{
-    position: relative;
+    width: 50%;
+    height: 100%;
     margin-right: 65px;
-
+    
     .b-iconButton{
       position: absolute;
       top: 32px;
       left: 40px;
     }
+  }
 
-    img{
-      width: 100%;
-      height: 100%;
-    }
+  &__wrap{
+    flex-direction: column;
   }
 
   .btn{

@@ -15,16 +15,42 @@
   .m-foodCardsInfo{
 
     &__img{
-  
-      img{
-        height: auto;
-      }
+      height: 500px;
     }
   }
 
   .m-foodCards{
     margin: 0;
     border-radius: 0;
+
+    &__top{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      width: 100%;
+      background: $monochrome-white-100;
+
+      .b-iconButton{
+        z-index: 2;
+        display: none;
+        background-color: transparent;
+
+        svg{
+
+          path{
+            fill: $monochrome-gray-400;
+          }
+        }
+  
+        &.--open{
+          display: block;
+        }
+      }
+    }
   }
 
   .m-header{
@@ -154,8 +180,8 @@
 
   .c-howWeCook {
 
-    padding: 64px 34px 88px;
-
+    padding: 64px 16px 88px;
+    
     &__container{
       flex-direction: column;
 
@@ -226,7 +252,6 @@
   .b-burger{  
     display: none;
   }
-
 }
 
 @media (max-width: 1400px){
@@ -242,6 +267,20 @@
   //     margin-right: 0;
   //   }
   // }
+
+  .m-foodCardsInfo {
+
+    &.--open{
+      flex-direction: column;
+    }
+
+    &__img, &__container{
+      width: 100%;
+      max-width: 674px;
+      height: auto;
+      margin-right: 0;
+    }
+  }
 
   .m-header{
 
@@ -333,6 +372,37 @@
 }
 
 @media (max-width: 1000px){
+
+  .m-foodCardsInfo{
+
+    &.--open{
+      justify-content: space-between;
+    }
+    
+
+    &__img{
+      height: auto;
+    }
+    
+    &__name{
+      @include headings-h-5-s-24-w-700;
+      margin-bottom: 18px;
+    }
+
+    &__descr{
+      @include text-s-16-w-400;
+      margin-bottom: 12px;
+    }
+
+    &__weight{
+      @include content-s-14-w-400;
+    }
+
+    .btn{
+      width: 100%;
+      @include content-s-16-w-600;
+    }
+  }
   
   .m-footer{
 
@@ -484,7 +554,7 @@
     
     .wrap.--open{
       height: auto;
-      margin-top: 0;
+      // margin-top: 0;
     }
 
     .b-controlHeading{
@@ -623,7 +693,6 @@
   } 
 }
 
-
 @media (max-width: 800px){
 
   .m-popUpForm{
@@ -667,15 +736,13 @@
       align-items: center;
       margin-bottom: 0;
 
-
       .c-card{
         margin-bottom: 18px;
 
         &:first-child{
           margin-right: 0;
         }
-      }
-        
+      }  
     }
 
     &__rowBottom{
@@ -714,6 +781,17 @@
 }
 
 @media (max-width: 600px){
+
+  .m-foodCardsInfo{
+
+    &__container{
+      padding: 0 20px;
+    }
+
+    .btn{
+      border-radius: 0;
+    }
+  }
 
   .m-popUpForm{
 

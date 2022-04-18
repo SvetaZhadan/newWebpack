@@ -83,7 +83,7 @@
         height: 615px;
 
         &:first-child{
-          // height: 550px;
+          height: auto;
         }
 
       }
@@ -254,7 +254,6 @@
   @include headings-h-3-s-40-w-700;
   cursor: pointer;
   text-align: center;
-  transition-duration: 0.3s;
 }
 
 .c-check{
@@ -307,9 +306,11 @@
 
   &__check-popup{
     @include check-style;
+
     height: 100%;
     margin: 0 auto;
     background-color: $monochrome-white-100;
+    transition-duration: 0.3s;
   }
 }
 
