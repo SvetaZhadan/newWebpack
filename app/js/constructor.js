@@ -133,8 +133,8 @@ function addDinner() {
     heading.classList.add('--open');
     name.innerHTML = `Обед ${dinners[i].order}`;
   }
-
   test();
+
 }
 
 function removeDinner(node, index) {
@@ -159,6 +159,9 @@ let blackOut = document.querySelector('.blackoutfoodCards');
 blackOut.onclick = function () {
   popupVisible('remove', foodPopup, blackOut);
   removeDivs();
+  removeCards();
+  foodCardsInfo.classList.remove('--open');
+  closeInfo.classList.remove('--open');
 };
 
 let addDinerBtn = document.querySelector('.addDinerBtn'),
@@ -198,19 +201,14 @@ let btnNum = 0;
 
 function test() {
   let btn = document.querySelectorAll('.b-addButton');
-  let selectedFood = document.querySelectorAll('.c-selectedFood');
   for (let i = 0; i < addButton.length; i++) {
-    console.log(addButton[i].parentNode);
+    // console.log(btn.length);
     btn[i].onclick = function () {
       getData(i);
       addFood();
       popupVisible('add', foodPopup, blackOut);
-      closeOpenInfo.classList.remove('--open');
-
-      let selFoodParent = selectedFood[i].parentNode;
-      selFoodParent.classList.add('--active');
+      closeInfo.classList.remove('--open');
       btnNum = i;
-
       openInfo();
     };
   }
@@ -250,6 +248,13 @@ let closefoodCards = document.querySelector('.closefoodCards');
 closefoodCards.onclick = function () {
   popupVisible('remove', foodPopup, blackOut);
   removeDivs();
+
+  removeCards();
+  foodCardsInfo.classList.remove('--open');
+  closeInfo.classList.remove('--open');
+
+  // foodCardsInfo.classList.remove('--open');
+  // closeInfo.classList.remove('--open');
 };
 
 //-==============Добавление карточек в попап через шаблон===========================
@@ -318,9 +323,9 @@ function addFood() {
 }
 
 //-=============
-let closeOpenInfo = foodPopup.querySelector('.b-iconButton');
+let closeInfo = foodPopup.querySelector('.b-iconButton');
+let foodCardsInfo = document.querySelector('.m-foodCardsInfo');
 function openInfo() {
-  let foodCardsInfo = document.querySelector('.m-foodCardsInfo');
   let foodCard__wrap = document.querySelectorAll('.c-foodCard__wrap');
   let infoName = foodCardsInfo.querySelector('.name');
   let infoWeight = foodCardsInfo.querySelector('.weight');
@@ -338,7 +343,7 @@ function openInfo() {
       infoImg.src = img;
 
       foodCardsInfo.classList.add('--open');
-      closeOpenInfo.classList.add('--open');
+      closeInfo.classList.add('--open');
       removeCards();
     };
   });
@@ -373,10 +378,10 @@ function openInfo() {
     removeCards();
   };
 
-  closeOpenInfo.onclick = function () {
-    foodCardsInfo.classList.remove('--open');
+  closeInfo.onclick = function () {
     removeCards();
-    closeOpenInfo.classList.remove('--open');
+    foodCardsInfo.classList.remove('--open');
+    closeInfo.classList.remove('--open');
   };
 }
 //-============Удаление карточки с едой на гл странице=======================

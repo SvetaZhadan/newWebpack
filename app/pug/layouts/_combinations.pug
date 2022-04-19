@@ -66,11 +66,12 @@ mixin c-check-popup
     button.needMore Добавьте еще одно блюдо
     .c-check__check-popup Добавьте блюда в заказ
 
-mixin c-accordeonSection(question, answer, className)
+mixin c-accordeonSection(question, answer)
   .c-accordeonSection
     .c-accordeonSection__question=question
       +b-morph
-    .c-accordeonSection__answer=answer
+    .c-accordeonSection__answer
+      span.answer=answer
 
 mixin c-sending(className, title, text)
   .c-sending(class=className)

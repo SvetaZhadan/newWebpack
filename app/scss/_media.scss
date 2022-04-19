@@ -386,13 +386,6 @@
 
 @media (max-width: 1000px){
 
-  .m-foodCards{
-
-    &__top{
-      background: $monochrome-white-100;
-    }
-  }
-
   .m-foodCardsInfo{
 
     &.--open{
@@ -715,6 +708,15 @@
 
 @media (max-width: 800px){
 
+  
+  .m-foodCards{
+
+    &__top{
+      position: fixed;
+      background: $monochrome-white-100;
+    }
+  }
+
   .m-foodCards{  
 
     &__top{
@@ -811,8 +813,6 @@
     }
   } 
   
-
-
 }
 
 @media (max-width: 600px){

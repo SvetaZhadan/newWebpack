@@ -242,9 +242,8 @@
 }
 @mixin check-style{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  max-width: 470px;
   
   padding: 0 47px;
   background-image: url('../assets/icons/Illustrations/Fork-big.svg');
@@ -260,7 +259,7 @@
 
   &__check{
     position: relative;
-
+    width: 464px;
     @include check-style;
     height: 732px;
     
@@ -282,7 +281,6 @@
     }
 
     &.--full{
-      // height: 100%;
       background: $monochrome-white-100;
 
       .checkText{
@@ -306,7 +304,7 @@
 
   &__check-popup{
     @include check-style;
-
+    max-width: 470px;
     height: 100%;
     margin: 0 auto;
     background-color: $monochrome-white-100;
@@ -461,13 +459,16 @@
 
   &__answer{
     // display: none;
-    height: 0;
+    // height: 0;
+    // visibility: hidden;
     overflow-y: hidden;
-    transition: height 0.3s ease;
+    transition-duration: 0.5s;
     @include text-s-18-w-400;
     
     &.--open{
-      height: 75px;
+      // display: block;
+      // visibility: visible;
+      // height: 100%;
       margin-bottom: 32px;
     }
   }
