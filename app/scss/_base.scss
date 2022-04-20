@@ -554,9 +554,9 @@
   }
   
   &__name {
-    width: 164px;
     color: $primary-500;
     @include content-s-36-w-700;
+    white-space: pre;
   }
 
   hr {

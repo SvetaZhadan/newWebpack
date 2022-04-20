@@ -5,7 +5,6 @@ function popupVisible(obj, elem, blackOut) {
 }
 
 export {popupVisible}
-let formBtn = document.querySelector('.m-popUpForm__button'); 
 
 function checkForm(item, cond) {
   
@@ -15,7 +14,6 @@ function checkForm(item, cond) {
   } else {
     item.classList.add('--error');
     item.classList.remove('--correct');
-    formBtn.setAttribute('disabled');
   }
 }
 export {checkForm}

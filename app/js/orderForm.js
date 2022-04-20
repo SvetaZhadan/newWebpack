@@ -1,6 +1,34 @@
 import { source } from './sources';
 import { popupVisible, checkForm } from './universalFunctions';
+import IMask from 'imask';
 
+let timeInput = document.querySelector('.b-timeInput');
+let maskOptions = {
+  overwrite: true,
+  autofix: true,
+  mask: 'HH:MM',
+  blocks: {
+    HH: {
+      mask: IMask.MaskedRange,
+      placeholderChar: 'HH',
+      from: 12,
+      to: 15,
+      maxLength: 2,
+    },
+    MM: {
+      mask: IMask.MaskedRange,
+      placeholderChar: 'MM',
+      from: 0,
+      to: 59,
+      maxLength: 2,
+    },
+  },
+};
+let mask = IMask(timeInput, maskOptions);
+
+let phoneMask = IMask(document.querySelector('.formPhoneNumber'), {
+  mask: '+{7} (000) 000-00-00',
+});
 
 let closeForm = document.querySelector('.closeForm'),
   popUpForm = document.querySelector('.m-popUpForm'),
@@ -32,7 +60,6 @@ let form = document.querySelector('.formCheckOut'),
   load=document.querySelector('.load'),
   send=document.querySelector('.send'),
   error=document.querySelector('.error');
-
 
 let valueForm = [
   {
@@ -88,11 +115,8 @@ form.oninput = function () {
       j++;
       if (j == valueForm.length) formBtn.removeAttribute('disabled')
       else formBtn.setAttribute('disabled', 'disabled')
-
     }
   }
-
-
 };
 
 //отмена отправки формы на enter
@@ -102,46 +126,7 @@ form.addEventListener('keydown', function (event) {
   }
 });
 
-function toggleLoader() {
-  const loader = document.querySelector('.load')
-  loader.classList.toggle('--open')
-}
-
-function serializeForm(formNode) {
-  const { elements } = formNode
-
-  const data = new FormData()
-
-  Array.from(elements)
-    .filter((item) => !!item.name)
-    .forEach((element) => {
-      const { name, type } = element
-      const value = type
-
-      data.append(name, value)
-    })
-  
-  console.log(data)
-  return data
-}
-
-const applicantForm = document.querySelector('.formCheckOut')
-applicantForm.addEventListener('submit', handleFormSubmit)
-
-function handleFormSubmit(event) {
-  event.preventDefault()
-}
-
-
 formBtn.onclick=function(){
-  // serializeForm(applicantForm)
-  // handleFormSubmit(applicantForm)
-  // load.classList.add('--open')
-  // setInterval(3000);
   send.classList.add('--open')
-  // if(!load.classList.contains('--open')){
-  //   popUpForm.classList.add('--no-scroll')
-    
-  // }
 }
 

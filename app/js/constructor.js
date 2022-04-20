@@ -34,7 +34,6 @@ const data = [
       img: '../assets/icons/Card-Image5.png',
     },
   ],
-
   [
     {
       name: '{ВТОРОЕ}Свиная шея в ароматных специях',
@@ -106,79 +105,154 @@ let dinners = [
   },
 ];
 
+const dinnerTemplate = document.querySelector('.dinnerTemplate');
+const dinnerContainer = document.querySelector('.c-addButton__additionalGroup');
+makeClone(dinnerContainer, dinnerTemplate);
+
+const blackOut = document.querySelector('.blackoutfoodCards');
+const addDinerBtn = document.querySelector('.addDinerBtn');
+const foodPopup = document.querySelector('.m-foodCards');
+const addButton = document.querySelectorAll('.b-addButton');
+const check = document.querySelector('.c-check__check');
+const closefoodCards = document.querySelector('.closefoodCards');
+const template = document.querySelector('.cardTemplate'),
+  content = template.content.querySelector('.c-foodCard'),
+  parent = document.querySelector('.m-foodCards__container');
+
+const btnCheckPopop = document.querySelector('.needMore'),
+  checkPopup = document.querySelector('.c-check-popup');
+
+const closeInfo = foodPopup.querySelector('.b-iconButton'),
+  foodCardsInfo = document.querySelector('.m-foodCardsInfo');
+
+const selectedFood__button = document.querySelectorAll('.c-selectedFood__button');
+
+const sliderBtn = document.querySelectorAll('.b-quantityToggle__slider');
+let activeButton;
+let btnNum = 0;
+
+addDinerBtn.onclick = () => {
+  makeClone(dinnerContainer, dinnerTemplate);
+  addDinner();
+  removeDinners();
+};
+
+test();
+
+check.onmouseover = () => foodHint();
+check.onmouseout = () => foodHint();
+
+//-============Закрытие попапа=========================
+
+blackOut.onclick = closePopupFoodCards;
+closefoodCards.onclick = closePopupFoodCards;
+
+//-==============Добавление карточек в попап через шаблон===========================
+
+btnCheckPopop.onclick = function () {
+  let set = checkPopup.classList.contains('--open') ? 'remove' : 'add';
+  openCheckPopup(set);
+};
+
+//-============Удаление карточки с едой на гл странице=======================
+
+selectedFood__button.forEach((button) => {
+  button.onclick = function () {
+    const parent = button.parentNode.parentNode.parentNode,
+      mainCont = parent.parentNode,
+      btn = mainCont.querySelector('.b-addButton'),
+      checkName = check.querySelector('.name'),
+      checkWeight = check.querySelector('.weight');
+
+    parent.classList.remove('--open');
+
+    btn.classList.remove('--close');
+    checkName.innerHTML = '';
+    checkWeight.innerHTML = '';
+
+    if (check.innerText == '') {
+      check.classList.remove('--full');
+    }
+  };
+});
+
+sliderBtn.forEach((button) => {
+  button.onclick = function () {
+    let set = button.classList.contains('--open') ? 'remove' : 'add';
+    doubleFood(set, button);
+  };
+});
+
+// Создание новых (по шаблону template) карточек
 function makeClone(parent, template) {
-  let clone = template.content.cloneNode(true);
+  const clone = template.content.cloneNode(true);
   parent.appendChild(clone);
 }
 
-let dinnerTemplate = document.querySelector('.dinnerTemplate'),
-  dinnerContainer = document.querySelector('.c-addButton__additionalGroup');
-makeClone(dinnerContainer, dinnerTemplate);
-
 function addDinner() {
-  makeClone(dinnerContainer, dinnerTemplate);
+  const childs = document.querySelectorAll('.wrap');
 
   dinners.push({
-    order: 1,
+    order: childs.length,
     food: [{}, {}, {}],
   });
 
-  let childs = dinnerContainer.querySelectorAll('.wrap');
   for (const [i, child] of childs.entries()) {
-    dinners[i].order = i + 1;
+    console.dir(child);
 
-    let heading = child.querySelector('.b-controlHeading'),
+    const heading = child.querySelector('.b-controlHeading'),
       name = child.querySelector('.b-controlHeading__name');
 
     heading.classList.add('--open');
-    name.innerHTML = `Обед ${dinners[i].order}`;
+    name.innerHTML = `Обед ${i + 1}`;
   }
+  console.log(dinners);
   test();
-
 }
 
-function removeDinner(node, index) {
-  node.remove();
-  dinners = dinners.splice(index);
+function removeDinner(index) {
+  const childs = dinnerContainer.querySelectorAll('.wrap');
 
-  let childs = dinnerContainer.querySelectorAll('.wrap');
+  dinners.splice(index, 1);
+
   for (const [i, child] of childs.entries()) {
-    dinners[i].order = i + 1;
-    let name = child.querySelector('.b-controlHeading__name');
-    name.innerHTML = `Обед ${dinners[i].order}`;
+    const name = child.querySelector('.b-controlHeading__name');
+    name.innerHTML = `Обед ${i + 1}`;
 
     if (childs.length == 1) {
-      let heading = child.querySelector('.b-controlHeading');
+      const heading = child.querySelector('.b-controlHeading');
       heading.classList.remove('--open');
     }
   }
 }
 
-let blackOut = document.querySelector('.blackoutfoodCards');
-
-blackOut.onclick = function () {
-  popupVisible('remove', foodPopup, blackOut);
-  removeDivs();
+function visibleFoodInfo(obj) {
   removeCards();
-  foodCardsInfo.classList.remove('--open');
-  closeInfo.classList.remove('--open');
-};
+  foodCardsInfo.classList[obj]('--open');
+  closeInfo.classList[obj]('--open');
+}
 
-let addDinerBtn = document.querySelector('.addDinerBtn'),
-  removeDinnerBtn = document.querySelectorAll('.b-controlHeading__button');
+function addHint(obj, elem) {
+  elem.classList[obj]('hover');
+}
 
-addDinerBtn.onclick = () => {
-  addDinner();
-  removeDinnerBtn = document.querySelectorAll('.b-controlHeading__button');
+function removeCards() {
+  const container = document.querySelector('.m-foodCards__container');
+  const set = container.classList.contains('--close') ? 'remove' : 'add';
+  container.classList[set]('--close');
+}
+
+function removeDinners() {
+  const removeDinnerBtn = document.querySelectorAll('.b-controlHeading__button');
 
   removeDinnerBtn.forEach(
     (elem, i) =>
       (elem.onclick = function () {
-        removeDinner(this.parentNode.parentNode, i);
-        removeDinnerBtn = document.querySelectorAll('.b-controlHeading__button');
+        this.parentNode.parentNode.remove();
+        removeDinner(i);
       })
   );
-};
+}
 
 function getData(index) {
   data[index].forEach((card) => {
@@ -194,228 +268,151 @@ function getData(index) {
   });
 }
 
-let foodPopup = document.querySelector('.m-foodCards');
-let addButton = document.querySelectorAll('.b-addButton');
-let btnNum = 0;
-// let selectedFood = document.querySelectorAll('.c-selectedFood');
-
 function test() {
-  let btn = document.querySelectorAll('.b-addButton');
-  for (let i = 0; i < addButton.length; i++) {
-    // console.log(btn.length);
-    btn[i].onclick = function () {
-      getData(i);
+  const btnsFirstCourse = document.querySelectorAll('.b-addButton.firstСourse');
+  const btnsSecondCourse = document.querySelectorAll('.b-addButton.secondСourse');
+  const btnsThirdSalad = document.querySelectorAll('.b-addButton.saladCourse');
+  handlerTest(btnsFirstCourse, 0);
+  handlerTest(btnsSecondCourse, 1);
+  handlerTest(btnsThirdSalad, 2);
+}
+
+function handlerTest(btns, numberOfData) {
+  const wraps = document.querySelectorAll('.wrap');
+
+  btns.forEach((btn, i) => {
+    btn.onclick = () => {
+      btn.parentNode.classList.add('--active');
+      wraps.forEach((wrap) => {
+        // console.log('wrap', wrap, wrap.querySelector('.--active') );
+      });
+      dinners[i].food[numberOfData] = data[numberOfData];
+      getData(numberOfData);
       addFood();
       popupVisible('add', foodPopup, blackOut);
+      document.querySelector('.m-foodCards__container').classList.remove('--close');
       closeInfo.classList.remove('--open');
-      btnNum = i;
+      btnNum = numberOfData;
       openInfo();
-    };
-  }
-}
-
-test();
-
-function foodHint() {
-  let addButton = document.querySelectorAll('.b-addButton');
-  for (const btn of addButton) {
-    let set = btn.classList.contains('hover') ? 'remove' : 'add';
-    addButtonVisible(set, btn);
-  }
-}
-
-let check = document.querySelector('.c-check__check');
-check.onmouseover = () => foodHint();
-check.onmouseout = () => foodHint();
-
-function addButtonVisible(obj, elem) {
-  elem.classList[obj]('hover');
-}
-
-function removeCards() {
-  let container = document.querySelector('.m-foodCards__container');
-  let set = container.classList.contains('--close') ? 'remove' : 'add';
-  remove(set);
-
-  function remove(obj) {
-    container.classList[obj]('--close');
-  }
-}
-
-//-============Закрытие попапа=========================
-let closefoodCards = document.querySelector('.closefoodCards');
-
-closefoodCards.onclick = function () {
-  popupVisible('remove', foodPopup, blackOut);
-  removeDivs();
-
-  removeCards();
-  foodCardsInfo.classList.remove('--open');
-  closeInfo.classList.remove('--open');
-
-  // foodCardsInfo.classList.remove('--open');
-  // closeInfo.classList.remove('--open');
-};
-
-//-==============Добавление карточек в попап через шаблон===========================
-const template = document.querySelector('.cardTemplate'),
-  content = template.content.querySelector('.c-foodCard'),
-  parent = document.querySelector('.m-foodCards__container');
-
-let btnCheckPopop = document.querySelector('.needMore'),
-  checkPopup = document.querySelector('.c-check-popup');
-
-btnCheckPopop.onclick = function () {
-  if (checkPopup.classList.contains('--open')) {
-    document.body.classList.remove('--no-scroll');
-    checkPopup.classList.remove('--open');
-  } else {
-    document.body.classList.add('--no-scroll');
-    checkPopup.classList.add('--open');
-  }
-};
-
-function removeDivs() {
-  let lastChild = parent.lastElementChild;
-  while (lastChild.tagName === 'DIV') {
-    parent.removeChild(lastChild);
-    lastChild = parent.lastElementChild;
-  }
-}
-
-//-============Добавление данных из карточки в попапе в карточку на гл странице=========================
-function addFood() {
-  let cardBtn = document.querySelectorAll('.c-foodCard__btnAdd');
-  cardBtn.forEach((button) => {
-    button.onclick = function () {
-      popupVisible('remove', foodPopup, blackOut);
-      removeDivs();
-
-      let foodCard = button.parentNode;
-      let img = foodCard.querySelector('.img').src;
-      let name = foodCard.querySelector('.name').innerHTML;
-      let weight = foodCard.querySelector('.weight').innerHTML;
-      let mainCont = addButton[btnNum].parentNode;
-      let selectedFood = mainCont.querySelector('.c-selectedFood');
-
-      selectedFood.classList.add('--open');
-
-      let cardName = selectedFood.querySelector('.name');
-      let cardWeight = selectedFood.querySelector('.weight');
-      let cardImg = selectedFood.querySelector('.img');
-
-      cardImg.src = img;
-      cardName.innerHTML = name;
-      cardWeight.innerHTML = weight;
-
-      addButton[btnNum].classList.add('--close');
-
-      let check = document.querySelector('.c-check__check');
-      check.classList.add('--full');
-
-      let checkName = check.querySelector('.name');
-      let checkWeight = check.querySelector('.weight');
-
-      checkName.innerHTML = name;
-      checkWeight.innerHTML = weight;
+      activeButton = btn;
     };
   });
 }
 
-//-=============
-let closeInfo = foodPopup.querySelector('.b-iconButton');
-let foodCardsInfo = document.querySelector('.m-foodCardsInfo');
+function foodHint() {
+  const addButton = document.querySelectorAll('.b-addButton');
+  for (const btn of addButton) {
+    const set = btn.classList.contains('hover') ? 'remove' : 'add';
+    addHint(set, btn);
+  }
+}
+
+function addNameFood(name, newname, weight, newweight, img, newimg) {
+  newname.innerHTML = name.innerHTML;
+  newweight.innerHTML = weight.innerHTML;
+  newimg.src = img.src;
+}
+
+function addFood() {
+  const cardBtn = document.querySelectorAll('.c-foodCard__btnAdd');
+  cardBtn.forEach((button) => {
+    button.onclick = function () {
+      check.classList.add('--full');
+      addButton[btnNum].classList.add('--close');
+
+      const foodCard = button.parentNode,
+        img = foodCard.querySelector('.img'),
+        name = foodCard.querySelector('.name'),
+        weight = foodCard.querySelector('.weight');
+
+      closePopupFoodCards();
+
+      const mainCont = addButton[btnNum].parentNode,
+        selectedFood = mainCont.querySelector('.c-selectedFood');
+      selectedFood.classList.add('--open');
+
+      const cardName = selectedFood.querySelector('.name'),
+        cardWeight = selectedFood.querySelector('.weight'),
+        cardImg = selectedFood.querySelector('.img');
+
+      console.log(name, cardName);
+      addNameFood(name, cardName, weight, cardWeight, img, cardImg);
+
+      const checkName = check.querySelector('.name'),
+        checkWeight = check.querySelector('.weight');
+
+      addNameFood(name, checkName, weight, checkWeight);
+    };
+  });
+}
+
 function openInfo() {
-  let foodCard__wrap = document.querySelectorAll('.c-foodCard__wrap');
-  let infoName = foodCardsInfo.querySelector('.name');
-  let infoWeight = foodCardsInfo.querySelector('.weight');
-  let infoImg = foodCardsInfo.querySelector('.img');
+  const foodCard__wrap = document.querySelectorAll('.c-foodCard__wrap'),
+    infoName = foodCardsInfo.querySelector('.name'),
+    infoWeight = foodCardsInfo.querySelector('.weight'),
+    infoImg = foodCardsInfo.querySelector('.img');
 
   foodCard__wrap.forEach((button) => {
     button.onclick = function () {
       let parent = button.parentNode,
-        name = parent.querySelector('.name').innerHTML,
-        weight = parent.querySelector('.weight').innerHTML,
-        img = parent.querySelector('.img').src;
+        name = parent.querySelector('.name'),
+        weight = parent.querySelector('.weight'),
+        img = parent.querySelector('.img');
 
-      infoName.innerHTML = name;
-      infoWeight.innerHTML = weight;
-      infoImg.src = img;
-
-      foodCardsInfo.classList.add('--open');
-      closeInfo.classList.add('--open');
-      removeCards();
+      addNameFood(name, infoName, weight, infoWeight, img, infoImg);
+      visibleFoodInfo('add');
     };
   });
 
   let btn = foodCardsInfo.querySelector('.btn');
   btn.onclick = function () {
-    popupVisible('remove', foodPopup, blackOut);
-    removeDivs();
-    foodCardsInfo.classList.remove('--open');
-    let mainCont = addButton[btnNum].parentNode;
-    let selectedFood = mainCont.querySelector('.c-selectedFood');
-
-    selectedFood.classList.add('--open');
-
-    addButton[btnNum].classList.add('--close');
-    let cardName = selectedFood.querySelector('.name');
-    let cardWeight = selectedFood.querySelector('.weight');
-    let cardImg = selectedFood.querySelector('.img');
-
-    cardImg.src = infoImg.src;
-    cardName.innerHTML = infoName.innerHTML;
-    cardWeight.innerHTML = infoWeight.innerHTML;
-
-    let check = document.querySelector('.c-check__check');
     check.classList.add('--full');
 
-    let checkName = check.querySelector('.name');
-    let checkWeight = check.querySelector('.weight');
+    addButton[btnNum].classList.add('--close');
 
-    checkName.innerHTML = cardName.innerHTML;
-    checkWeight.innerHTML = cardWeight.innerHTML;
+    closePopupFoodCards();
+    foodCardsInfo.classList.remove('--open');
+    const mainCont = addButton[btnNum].parentNode,
+      selectedFood = mainCont.querySelector('.c-selectedFood');
+    selectedFood.classList.add('--open');
+
+    const cardName = selectedFood.querySelector('.name'),
+      cardWeight = selectedFood.querySelector('.weight'),
+      cardImg = selectedFood.querySelector('.img');
+
+    addNameFood(infoName, cardName, infoWeight, cardWeight, infoImg, cardImg);
+
+    const checkName = check.querySelector('.name'),
+      checkWeight = check.querySelector('.weight');
+
+    addNameFood(cardName, checkName, cardWeight, checkWeight);
+
     removeCards();
   };
 
   closeInfo.onclick = function () {
-    removeCards();
-    foodCardsInfo.classList.remove('--open');
-    closeInfo.classList.remove('--open');
+    visibleFoodInfo('remove');
   };
 }
-//-============Удаление карточки с едой на гл странице=======================
-let selectedFood__button = document.querySelectorAll('.c-selectedFood__button');
-
-selectedFood__button.forEach((button) => {
-  button.onclick = function () {
-    let parent = button.parentNode.parentNode.parentNode;
-    parent.classList.remove('--open');
-    let mainCont = parent.parentNode;
-    let btn = mainCont.querySelector('.b-addButton');
-    btn.classList.remove('--close');
-    let checkName = check.querySelector('.name');
-    let checkWeight = check.querySelector('.weight');
-
-    checkName.innerHTML = '';
-    checkWeight.innerHTML = '';
-
-    if (check.innerText == '') {
-      check.classList.remove('--full');
-    }
-  };
-});
 
 function doubleFood(obj, button) {
-  let checkName = check.querySelector('.name');
+  const checkName = check.querySelector('.name');
   button.classList[obj]('--open');
   checkName.classList[obj]('--x2');
 }
 
-let sliderBtn = document.querySelectorAll('.b-quantityToggle__slider');
-sliderBtn.forEach((button) => {
-  button.onclick = function () {
-    let set = button.classList.contains('--open') ? 'remove' : 'add';
-    doubleFood(set, button);
-  };
-});
+function closePopupFoodCards() {
+  activeButton.parentNode.classList.remove('--active');
+  popupVisible('remove', foodPopup, blackOut);
+  let lastChild = parent.lastElementChild;
+  while (lastChild.tagName === 'DIV') {
+    parent.removeChild(lastChild);
+    lastChild = parent.lastElementChild;
+  }
+  visibleFoodInfo('remove');
+}
+
+function openCheckPopup(obj) {
+  document.body.classList[obj]('--no-scroll');
+  checkPopup.classList[obj]('--open');
+}
