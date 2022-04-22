@@ -137,7 +137,7 @@ addDinerBtn.onclick = () => {
   removeDinners();
 };
 
-test();
+openCurrentPopup();
 
 check.onmouseover = () => foodHint();
 check.onmouseout = () => foodHint();
@@ -169,6 +169,7 @@ selectedFood__button.forEach((button) => {
     btn.classList.remove('--close');
     checkName.innerHTML = '';
     checkWeight.innerHTML = '';
+    checkName.classList.remove('--x2');
 
     if (check.innerText == '') {
       check.classList.remove('--full');
@@ -178,8 +179,10 @@ selectedFood__button.forEach((button) => {
 
 sliderBtn.forEach((button) => {
   button.onclick = function () {
-    let set = button.classList.contains('--open') ? 'remove' : 'add';
-    doubleFood(set, button);
+    const checkName = check.querySelector('.name');
+    const obj = button.classList.contains('--open') ? 'remove' : 'add';
+    button.classList[obj]('--open');
+    checkName.classList[obj]('--x2');
   };
 });
 
@@ -198,16 +201,14 @@ function addDinner() {
   });
 
   for (const [i, child] of childs.entries()) {
-    console.dir(child);
-
     const heading = child.querySelector('.b-controlHeading'),
       name = child.querySelector('.b-controlHeading__name');
 
     heading.classList.add('--open');
     name.innerHTML = `Обед ${i + 1}`;
   }
-  console.log(dinners);
-  test();
+
+  openCurrentPopup();
 }
 
 function removeDinner(index) {
@@ -268,7 +269,7 @@ function getData(index) {
   });
 }
 
-function test() {
+function openCurrentPopup() {
   const btnsFirstCourse = document.querySelectorAll('.b-addButton.firstСourse');
   const btnsSecondCourse = document.querySelectorAll('.b-addButton.secondСourse');
   const btnsThirdSalad = document.querySelectorAll('.b-addButton.saladCourse');
@@ -315,10 +316,15 @@ function addNameFood(name, newname, weight, newweight, img, newimg) {
 
 function addFood() {
   const cardBtn = document.querySelectorAll('.c-foodCard__btnAdd');
+  const addButton = document.querySelectorAll('.b-addbutton');
+  console.log('ccasd', cardBtn)
   cardBtn.forEach((button) => {
     button.onclick = function () {
+      const currentCard = document.querySelector('.wrap .--active .b-addButton');
+      console.log(addButton, btnNum);
+      console.log(currentCard, '123123123123123');
       check.classList.add('--full');
-      addButton[btnNum].classList.add('--close');
+      currentCard.classList.add('--close');
 
       const foodCard = button.parentNode,
         img = foodCard.querySelector('.img'),
@@ -327,7 +333,7 @@ function addFood() {
 
       closePopupFoodCards();
 
-      const mainCont = addButton[btnNum].parentNode,
+      const mainCont = currentCard.parentNode,
         selectedFood = mainCont.querySelector('.c-selectedFood');
       selectedFood.classList.add('--open');
 
@@ -335,7 +341,7 @@ function addFood() {
         cardWeight = selectedFood.querySelector('.weight'),
         cardImg = selectedFood.querySelector('.img');
 
-      console.log(name, cardName);
+      // console.log(name, cardName);
       addNameFood(name, cardName, weight, cardWeight, img, cardImg);
 
       const checkName = check.querySelector('.name'),
@@ -354,7 +360,7 @@ function openInfo() {
 
   foodCard__wrap.forEach((button) => {
     button.onclick = function () {
-      let parent = button.parentNode,
+      const parent = button.parentNode,
         name = parent.querySelector('.name'),
         weight = parent.querySelector('.weight'),
         img = parent.querySelector('.img');
@@ -393,12 +399,6 @@ function openInfo() {
   closeInfo.onclick = function () {
     visibleFoodInfo('remove');
   };
-}
-
-function doubleFood(obj, button) {
-  const checkName = check.querySelector('.name');
-  button.classList[obj]('--open');
-  checkName.classList[obj]('--x2');
 }
 
 function closePopupFoodCards() {
